@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write   # necessario per git push dei dati
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     # evita run concorrenti se il job precedente è ancora in corso
     concurrency:
       group: scrutinio-sbt
@@ -31,7 +33,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: Fetch scrutinio
         id: fetch
