@@ -252,6 +252,107 @@
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
+
+    /* ── AFFLUENZA PANEL ── */
+    .affluenza-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 20px;
+      align-items: center;
+    }
+    .afflu-pct-block {
+      text-align: center;
+    }
+    .afflu-pct {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--text);
+      letter-spacing: -0.03em;
+    }
+    .afflu-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .afflu-bar-block {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .afflu-bar-track {
+      height: 10px;
+      background: var(--border);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .afflu-bar-fill {
+      height: 100%;
+      background: #2e7d32;
+      border-radius: 5px;
+      transition: width 0.4s ease;
+    }
+    .afflu-totals {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .afflu-totals strong { color: var(--text); }
+    .afflu-gender-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 130px;
+    }
+    .afflu-gender-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+    }
+    .afflu-gender-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .afflu-gender-label { color: var(--muted); width: 12px; }
+    .afflu-gender-bar-track {
+      flex: 1;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .afflu-gender-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.4s ease;
+    }
+    .afflu-gender-pct {
+      font-weight: 700;
+      color: var(--text);
+      min-width: 36px;
+      text-align: right;
+    }
+    @media (max-width: 600px) {
+      .affluenza-panel {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto;
+      }
+      .afflu-gender-block {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        gap: 16px;
+      }
+    }
+
     /* ── SINDACO CARDS ── */
     .candidates-grid {
       display: grid;
@@ -671,6 +772,7 @@
     <span>Caricamento dati…</span>
   </div>
 
+  <div id="affluenza-panel"></div>
   <div id="tab-sindaco"     class="tab-panel" role="tabpanel" aria-labelledby="btn-sindaco"></div>
   <div id="tab-liste"       class="tab-panel" role="tabpanel" aria-labelledby="btn-liste"></div>
   <div id="tab-consiglieri" class="tab-panel" role="tabpanel" aria-labelledby="btn-consiglieri"></div>
@@ -791,6 +893,7 @@ async function fetchAll() {
 // ───────────────────────────────────────────────
 function render() {
   renderStatus();
+  renderAffluenza();
   renderSindaco();
   renderListe();
   renderConsiglieri();
@@ -818,6 +921,65 @@ function renderStatus() {
   } else {
     banner.classList.remove('visible');
   }
+}
+
+
+// ───────────────────────────────────────────────
+// AFFLUENZA PANEL
+// ───────────────────────────────────────────────
+function renderAffluenza() {
+  const { raggrup } = state;
+  const panel = document.getElementById('affluenza-panel');
+  if (!raggrup || !panel) return;
+
+  const v = raggrup.voti || {};
+  const iscritti  = v.iscri_totali  || 0;
+  const votanti   = v.tvotanti      || 0;
+  const iscM      = v.iscri_maschi  || 0;
+  const iscF      = v.iscri_femm    || 0;
+  const votM      = v.tvmas         || 0;
+  const votF      = v.tvfem         || 0;
+
+  const pct    = iscritti > 0 ? (votanti / iscritti * 100) : 0;
+  const pctM   = iscM     > 0 ? (votM    / iscM     * 100) : 0;
+  const pctF   = iscF     > 0 ? (votF    / iscF     * 100) : 0;
+  const fmt1   = n => n.toFixed(1).replace('.', ',') + '%';
+
+  const noData = iscritti === 0;
+
+  panel.innerHTML = `
+    <div class="affluenza-panel">
+      <div class="afflu-pct-block">
+        <div class="afflu-pct">${noData ? '—' : fmt1(pct)}</div>
+        <div class="afflu-label">Affluenza</div>
+      </div>
+      <div class="afflu-bar-block">
+        <div class="afflu-bar-track">
+          <div class="afflu-bar-fill" style="width:${noData ? 0 : pct.toFixed(1)}%"></div>
+        </div>
+        <div class="afflu-totals">
+          Votanti: <strong>${fmtNum(votanti)}</strong> su <strong>${fmtNum(iscritti)}</strong> iscritti
+        </div>
+      </div>
+      <div class="afflu-gender-block">
+        <div class="afflu-gender-row">
+          <div class="afflu-gender-dot" style="background:#1565c0"></div>
+          <span class="afflu-gender-label">M</span>
+          <div class="afflu-gender-bar-track">
+            <div class="afflu-gender-bar-fill" style="background:#1565c0;width:${noData ? 0 : pctM.toFixed(1)}%"></div>
+          </div>
+          <span class="afflu-gender-pct">${noData ? '—' : fmt1(pctM)}</span>
+        </div>
+        <div class="afflu-gender-row">
+          <div class="afflu-gender-dot" style="background:#c62828"></div>
+          <span class="afflu-gender-label">F</span>
+          <div class="afflu-gender-bar-track">
+            <div class="afflu-gender-bar-fill" style="background:#c62828;width:${noData ? 0 : pctF.toFixed(1)}%"></div>
+          </div>
+          <span class="afflu-gender-pct">${noData ? '—' : fmt1(pctF)}</span>
+        </div>
+      </div>
+    </div>`;
 }
 
 // ───────────────────────────────────────────────
