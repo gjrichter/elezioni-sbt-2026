@@ -994,34 +994,31 @@ function renderConsiglieri() {
 
       const allZero = candList.every(c => c.voti === 0);
 
-      if (allZero) {
-        innerHtml = `<div class="waiting-message">In attesa dello scrutinio…</div>`;
-      } else {
-        candList.sort((a, b) => b.voti - a.voti);
-        const rows = candList.map((c, i) => {
-          const pct = totVotiLista > 0
-            ? (c.voti/totVotiLista*100).toFixed(1).replace('.', ',') + '%'
-            : '0,0%';
-          return `<tr>
-            <td>${i+1}</td>
-            <td>${escHtml(c.nome)}</td>
-            <td>${fmtNum(c.voti)}</td>
-            <td>${pct}</td>
-          </tr>`;
-        }).join('');
+      // always show candidates — sort by votes desc when available, else keep original order
+      if (!allZero) candList.sort((a, b) => b.voti - a.voti);
+      const rows = candList.map((c, i) => {
+        const pct = totVotiLista > 0
+          ? (c.voti/totVotiLista*100).toFixed(1).replace('.', ',') + '%'
+          : '—';
+        return `<tr>
+          <td>${i+1}</td>
+          <td>${escHtml(c.nome)}</td>
+          <td>${allZero ? '—' : fmtNum(c.voti)}</td>
+          <td>${pct}</td>
+        </tr>`;
+      }).join('');
 
-        innerHtml = `<table class="candi-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Nome</th>
-              <th>Voti</th>
-              <th>%</th>
-            </tr>
-          </thead>
-          <tbody>${rows}</tbody>
-        </table>`;
-      }
+      innerHtml = `<table class="candi-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Voti</th>
+            <th>%</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>`;
     }
 
     const listVoti = listData?.voti?.totVotiLista || 0;
