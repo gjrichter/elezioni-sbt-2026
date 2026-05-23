@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elezioni Comunali 2026 – San Benedetto del Tronto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f8f9fa;
+      --border: #e9ecef;
+      --text: #212529;
+      --muted: #6c757d;
+      --fede: #a52929;
+      --dandrea: #4a148c;
+      --mozzoni: #0a3d7a;
+      --success: #198754;
+      --warning-bg: #fff3cd;
+      --warning-text: #856404;
+      --header-bg: #0b1d2a;
+      --header-text: #ffffff;
+      --tab-active-border: 3px solid;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    /* ── ITALIAN TRICOLOR ── */
+    .tricolor {
+      height: 4px;
+      background: linear-gradient(to right, #009246 33.33%, #ffffff 33.33% 66.66%, #ce2b37 66.66%);
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--header-bg);
+      color: var(--header-text);
+      padding: 18px 20px 16px;
+    }
+    .header-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .header-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 6px;
+    }
+    header h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.6rem; }
+    }
+    header h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-top: 4px;
+      color: rgba(255,255,255,0.75);
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 6px;
+    }
+    header p.tagline {
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.42);
+      margin-top: 5px;
+      letter-spacing: 0.3px;
+    }
+    /* LIVE indicator */
+    .live-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #ff4444;
+    }
+    @media (max-width: 600px) {
+      .live-badge { display: none; }
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ff4444;
+      animation: pulse-live 1.4s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse-live {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.75); }
+    }
+
+    /* ── STICKY STACK ── */
+    .sticky-stack {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    /* ── STATUS STRIP ── */
+    .status-strip {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 20px;
+    }
+    .status-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .status-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .status-item {
+      font-size: 0.78rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .status-item strong {
+      color: var(--text);
+      font-weight: 800;
+      font-size: 0.88rem;
+    }
+    @media (max-width: 600px) {
+      .status-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 14px;
+      }
+      .status-item { white-space: normal; }
+    }
+    .status-item.countdown strong {
+      color: var(--success);
+    }
+    .status-item.countdown.urgent strong {
+      color: #dc3545;
+    }
+
+    /* Progress bar for sezioni */
+    .sezioni-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sezioni-bar-track {
+      width: 80px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .sezioni-bar-fill {
+      height: 100%;
+      background: var(--success);
+      border-radius: 2px;
+      transition: width 0.6s ease;
+    }
+
+    /* ── PRE-SCRUTINIO BANNER ── */
+    .pre-scrutinio-banner {
+      background: var(--warning-bg);
+      color: var(--warning-text);
+      border-bottom: 1px solid #ffc107;
+      padding: 10px 20px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-align: center;
+      display: none;
+      /* inside .sticky-stack so it stays visible */
+    }
+    .pre-scrutinio-banner.visible { display: block; }
+
+    /* ── ERROR BANNER ── */
+    .error-banner {
+      background: #f8d7da;
+      color: #842029;
+      border-bottom: 1px solid #f5c2c7;
+      padding: 10px 20px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      text-align: center;
+      display: none;
+    }
+    .error-banner.visible { display: block; }
+
+    /* ── TAB NAV ── */
+    .tab-nav {
+      background: var(--bg);
+      border-bottom: 2px solid var(--border);
+      padding: 0 20px;
+      /* sticky behaviour provided by parent .sticky-stack */
+    }
+    .tab-nav-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      gap: 0;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      padding: 14px 22px 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color 0.18s, border-color 0.18s;
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active {
+      color: var(--text);
+      border-bottom-color: var(--text);
+    }
+
+    /* ── MAIN CONTENT ── */
+    .main {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 24px 20px 60px;
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── SINDACO CARDS ── */
+    .candidates-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    /* Leader card spans full width on desktop when 3 candidates */
+    @media (min-width: 601px) {
+      .candidates-grid .candidate-card:first-child {
+        grid-column: 1 / -1;
+      }
+      .candidates-grid .candidate-card:first-child .card-pct {
+        font-size: 8rem;
+      }
+      .candidates-grid .candidate-card:first-child .card-body {
+        padding: 32px 36px;
+      }
+      .candidates-grid .candidate-card:first-child .card-name {
+        font-size: 1.6rem;
+      }
+      .candidates-grid .candidate-card:first-child .card-top-stripe {
+        height: 16px;
+      }
+    }
+    @media (max-width: 600px) {
+      .candidates-grid { grid-template-columns: 1fr; }
+    }
+
+    .candidate-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--bg);
+      transition: box-shadow 0.2s;
+    }
+    .candidate-card:hover {
+      box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+    }
+    .candidate-card.is-leader {
+      border-color: transparent;
+    }
+
+    .card-top-stripe {
+      height: 12px;
+    }
+
+    .card-body {
+      padding: 24px;
+    }
+
+    .card-name {
+      font-size: 1.25rem;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+
+    .card-subtitle {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .coalition-pill {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 18px;
+    }
+
+    .card-pct {
+      font-size: clamp(3.5rem, 8vw, 5rem);
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 12px;
+      letter-spacing: -0.03em;
+      transition: color 0.3s;
+    }
+    /* Leader card gets the larger size since it spans full width */
+    @media (min-width: 601px) {
+      .candidates-grid .candidate-card:first-child .card-pct {
+        font-size: 8rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .card-pct { font-size: 4rem; }
+    }
+
+    .card-bar-track {
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .card-bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 0.8s ease;
+    }
+
+    .card-votes {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .card-votes span {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .card-lists {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .list-pill {
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 4px;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    /* ── LISTE TAB ── */
+    .coalition-section {
+      margin-bottom: 28px;
+    }
+
+    .coalition-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-radius: 6px 6px 0 0;
+      color: #fff;
+      gap: 8px;
+    }
+    .coalition-header-left {
+      display: flex;
+      flex-direction: column;
+    }
+    .coalition-header-name {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      opacity: 0.85;
+      text-transform: uppercase;
+    }
+    .coalition-header-cand {
+      font-size: 1.0rem;
+      font-weight: 800;
+    }
+    .coalition-header-right {
+      text-align: right;
+      flex-shrink: 0;
+    }
+    .coalition-header-votes {
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+    .coalition-header-pct {
+      font-size: 0.75rem;
+      opacity: 0.85;
+    }
+
+    .liste-table {
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 6px 6px;
+      overflow: hidden;
+    }
+
+    .lista-row {
+      display: grid;
+      grid-template-columns: 1fr 120px 70px 52px;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+    .lista-row:last-child { border-bottom: none; }
+    .lista-row:hover { background: var(--surface); }
+
+    .lista-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .lista-bar-track {
+      height: 5px;
+      background: var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .lista-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      transition: width 0.7s ease;
+    }
+
+    .lista-votes {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-align: right;
+    }
+    .lista-pct {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    @media (max-width: 500px) {
+      .lista-row {
+        grid-template-columns: 1fr 80px 60px 46px;
+        gap: 6px;
+      }
+    }
+
+    /* ── CONSIGLIERI TAB ── */
+    .accordion-item {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 16px;
+      background: var(--surface);
+      cursor: pointer;
+      user-select: none;
+      gap: 10px;
+      transition: background 0.15s;
+    }
+    .accordion-header:hover { background: var(--border); }
+
+    .accordion-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .coalition-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .accordion-list-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .accordion-header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .accordion-votes {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .accordion-chevron {
+      font-size: 0.7rem;
+      color: var(--muted);
+      transition: transform 0.2s;
+    }
+    .accordion-item.open .accordion-chevron {
+      transform: rotate(180deg);
+    }
+
+    .accordion-body {
+      display: none;
+      border-top: 1px solid var(--border);
+    }
+    .accordion-item.open .accordion-body { display: block; }
+
+    .waiting-message {
+      padding: 16px;
+      font-style: italic;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .candi-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .candi-table th {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      color: var(--muted);
+      padding: 8px 14px;
+      text-align: left;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .candi-table th:nth-child(3),
+    .candi-table th:nth-child(4) { text-align: right; }
+
+    .candi-table td {
+      font-size: 0.82rem;
+      padding: 8px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+    .candi-table tr:last-child td { border-bottom: none; }
+    .candi-table td:nth-child(1) {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.75rem;
+      width: 36px;
+    }
+    .candi-table td:nth-child(3),
+    .candi-table td:nth-child(4) { text-align: right; }
+    .candi-table td:nth-child(3) { font-weight: 700; }
+    .candi-table td:nth-child(4) { color: var(--muted); font-size: 0.75rem; }
+
+    .candi-table tbody tr:hover { background: var(--surface); }
+
+    /* ── LOADING STATE ── */
+    .loading-overlay {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 60px 20px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid var(--border);
+      border-top-color: var(--mozzoni);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── UTILS ── */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.72rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      max-width: 780px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+<div class="tricolor"></div>
+
+<header>
+  <div class="header-inner">
+    <div class="live-badge"><span class="live-dot"></span>IN DIRETTA</div>
+    <p class="header-eyebrow">Comune di San Benedetto del Tronto &middot; Lunedì 25 Maggio 2026</p>
+    <h1>Elezioni Comunali 2026</h1>
+    <h2>San Benedetto del Tronto</h2>
+    <p class="tagline">Scrutinio in tempo reale &middot; dati non ufficiali</p>
+  </div>
+</header>
+
+<div class="sticky-stack">
+  <div class="status-strip" role="status" aria-live="polite">
+    <div class="status-inner">
+      <div class="status-row" id="status-row">
+        <div class="status-item sezioni-wrap">
+          <span>Sezioni: <strong id="s-sezioni">—</strong></span>
+          <div class="sezioni-bar-track" aria-hidden="true">
+            <div class="sezioni-bar-fill" id="s-sezioni-bar" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="status-item">Votanti: <strong id="s-votanti">—</strong></div>
+        <div class="status-item">Agg.: <strong id="s-time">—</strong></div>
+        <div class="status-item countdown" id="s-countdown-wrap">Pross. agg.: <strong id="s-countdown">5:00</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pre-scrutinio-banner" id="pre-scrutinio-banner" role="alert">
+    ⏳ Lo scrutinio non è ancora iniziato — dati a zero
+  </div>
+
+  <div class="error-banner" id="error-banner" role="alert">
+    <span id="error-text">⚠️ Errore nel caricamento dati</span>
+  </div>
+
+  <nav class="tab-nav" role="tablist" aria-label="Sezioni risultati">
+    <div class="tab-nav-inner">
+      <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="tab-sindaco"     id="btn-sindaco"     onclick="switchTab('sindaco')">SINDACO</button>
+      <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-liste"       id="btn-liste"       onclick="switchTab('liste')">LISTE</button>
+      <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-consiglieri" id="btn-consiglieri" onclick="switchTab('consiglieri')">CONSIGLIERI</button>
+    </div>
+  </nav>
+</div>
+
+<main class="main">
+  <div class="loading-overlay" id="loading">
+    <div class="spinner"></div>
+    <span>Caricamento dati…</span>
+  </div>
+
+  <div id="tab-sindaco"     class="tab-panel" role="tabpanel" aria-labelledby="btn-sindaco"></div>
+  <div id="tab-liste"       class="tab-panel" role="tabpanel" aria-labelledby="btn-liste"></div>
+  <div id="tab-consiglieri" class="tab-panel" role="tabpanel" aria-labelledby="btn-consiglieri"></div>
+</main>
+
+<footer>
+  Dati non ufficiali a scopo informativo &mdash; fonte: Comune di San Benedetto del Tronto
+</footer>
+
+<script>
+// ───────────────────────────────────────────────
+// CONFIG
+// ───────────────────────────────────────────────
+const BASE = 'https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/';
+const FILES = ['meta.json','totale_raggrup.json','totale_liste.json','totale_candidati.json'];
+const REFRESH_INTERVAL = 300; // seconds
+
+const COALITION_COLORS = { 1: '#a52929', 2: '#4a148c', 3: '#0a3d7a' };
+const COALITION_BG_LIGHT = { 1: '#fdf0f0', 2: '#f5eeff', 3: '#eaf0fb' };
+const COALITION_LABELS = { 1: 'Centro-sinistra', 2: 'Civica', 3: 'Centro-destra' };
+
+// ───────────────────────────────────────────────
+// STATE
+// ───────────────────────────────────────────────
+let state = {
+  meta: null,
+  raggrup: null,
+  liste: null,
+  candidati: null,
+  lastFetch: null,
+  countdownSec: REFRESH_INTERVAL,
+};
+
+let countdownTimer = null;
+let refreshTimer = null;
+
+// ───────────────────────────────────────────────
+// FORMATTING
+// ───────────────────────────────────────────────
+function fmtNum(n) {
+  if (n === null || n === undefined) return '—';
+  return Number(n).toLocaleString('it-IT');
+}
+
+function fmtPct(val, total) {
+  if (!total || total === 0) return '0,0%';
+  return (val / total * 100).toFixed(1).replace('.', ',') + '%';
+}
+
+function fmtRawPct(val, total) {
+  if (!total || total === 0) return 0;
+  return val / total * 100;
+}
+
+function fmtTime(isoStr) {
+  if (!isoStr) return '—';
+  try {
+    const d = new Date(isoStr);
+    return d.toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' });
+  } catch(e) { return '—'; }
+}
+
+function fmtCountdown(sec) {
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return `${m}:${String(s).padStart(2,'0')}`;
+}
+
+function prettyCity(str) {
+  if (!str) return '—';
+  // Strip province in parentheses e.g. "SAN BENEDETTO DEL TRONTO (AP)" → "San Benedetto del Tronto"
+  const clean = str.replace(/\s*\([^)]*\)\s*$/, '').trim().toLowerCase();
+  const titled = clean.replace(/\b\w/g, c => c.toUpperCase());
+  return titled.replace(/\b(Del|Della|Delle|Degli|Di|Da|Dei|Dello|Sul|Sulla|Sui|Sulle|In|Al|Alla|Alle|Agli|D')\b/g, w => w.toLowerCase());
+}
+
+// ───────────────────────────────────────────────
+// DATA FETCH
+// ───────────────────────────────────────────────
+async function fetchAll() {
+  const cb = `?_=${Date.now()}`;
+  try {
+    const [meta, raggrup, liste, candidati] = await Promise.all(
+      FILES.map(f => fetch(BASE + f + cb).then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status} for ${f}`);
+        return r.json();
+      }))
+    );
+    state.meta = meta;
+    state.raggrup = raggrup;
+    state.liste = liste;
+    state.candidati = candidati;
+    state.lastFetch = new Date();
+    state.countdownSec = REFRESH_INTERVAL;
+
+    document.getElementById('error-banner').classList.remove('visible');
+    document.getElementById('loading').style.display = 'none';
+
+    render();
+  } catch (err) {
+    console.error('Fetch error:', err);
+    const lastTime = state.lastFetch ? fmtTime(state.lastFetch.toISOString()) : '—';
+    document.getElementById('error-text').textContent =
+      `⚠️ Errore nel caricamento dati — ultimo aggiornamento: ${lastTime}`;
+    document.getElementById('error-banner').classList.add('visible');
+    document.getElementById('loading').style.display = 'none';
+    // Reset countdown so visible timer matches the next scheduled retry
+    state.countdownSec = REFRESH_INTERVAL;
+    if (!state.meta) {
+      // still show loading indicator
+      document.getElementById('loading').style.display = 'flex';
+    }
+  }
+}
+
+// ───────────────────────────────────────────────
+// RENDER HELPERS
+// ───────────────────────────────────────────────
+function render() {
+  renderStatus();
+  renderSindaco();
+  renderListe();
+  renderConsiglieri();
+}
+
+function renderStatus() {
+  const meta = state.meta;
+  if (!meta) return;
+
+  const sezioni = meta.sezioni_scrutinate || 0;
+  const total = meta.sezioni_total || 43;
+  const votanti = meta.votanti || 0;
+  const iscritti = meta.iscritti || 0;
+  const pctVotanti = fmtPct(votanti, iscritti);
+
+  document.getElementById('s-sezioni').textContent = `${sezioni} / ${total}`;
+  document.getElementById('s-sezioni-bar').style.width = `${(sezioni/total*100).toFixed(1)}%`;
+  document.getElementById('s-votanti').textContent = `${fmtNum(votanti)} (${pctVotanti})`;
+  document.getElementById('s-time').textContent = fmtTime(meta.fetched_at);
+
+  // pre-scrutinio banner
+  const banner = document.getElementById('pre-scrutinio-banner');
+  if (sezioni === 0) {
+    banner.classList.add('visible');
+  } else {
+    banner.classList.remove('visible');
+  }
+}
+
+// ───────────────────────────────────────────────
+// SINDACO TAB
+// ───────────────────────────────────────────────
+function renderSindaco() {
+  const { raggrup } = state;
+  if (!raggrup) return;
+
+  const anagrafica = raggrup.anagrafica || [];
+  const votiRaggrup = raggrup.voti?.arrVotiRaggrup || {};
+  const tvotival = raggrup.voti?.tvotival || 0;
+
+  // Build candidate list
+  let candidates = anagrafica.map(a => {
+    const v = votiRaggrup[String(a.nraggrup)] || {};
+    return {
+      ...a,
+      voti: v.voti || 0,
+      color: COALITION_COLORS[a.nraggrup] || '#555',
+    };
+  });
+
+  // Sort by votes desc; if all zero, by nraggrup
+  const allZero = candidates.every(c => c.voti === 0);
+  if (!allZero) {
+    candidates.sort((a, b) => b.voti - a.voti);
+  } else {
+    candidates.sort((a, b) => a.nraggrup - b.nraggrup);
+  }
+
+  const maxVoti = candidates.reduce((m, c) => Math.max(m, c.voti), 0);
+
+  const html = `<div class="candidates-grid">
+    ${candidates.map((c, idx) => {
+      const isLeader = idx === 0;
+      const pctNum = fmtRawPct(c.voti, tvotival);
+      const pctStr = allZero ? '0,0%' : (pctNum.toFixed(1).replace('.', ',') + '%');
+      const barW = maxVoti > 0 ? (c.voti / maxVoti * 100).toFixed(1) : 0;
+      const birthDate = c.data_nascita_cand || '';
+      const birthPlace = c.luogo_nascita_cand ? prettyCity(c.luogo_nascita_cand) : 'SBT';
+      const bgColor = isLeader ? COALITION_BG_LIGHT[c.nraggrup] || '' : '';
+      const bgStyle = bgColor ? `background:${bgColor};` : '';
+      const listPills = (c.arrListe || []).map(l =>
+        `<span class="list-pill" style="background:${COALITION_BG_LIGHT[c.nraggrup] || '#f5f5f5'};color:${c.color}">${escHtml(l.nome_breve || l.nome)}</span>`
+      ).join('');
+      const fullName = `${escHtml(c.cognome_cand || '')} ${escHtml(c.nome_cand || '')}`.trim() || escHtml(c.nome || '');
+      return `<div class="candidate-card${isLeader ? ' is-leader' : ''}" style="${bgStyle}">
+        <div class="card-top-stripe" style="background:${c.color}"></div>
+        <div class="card-body">
+          <div class="card-name">${fullName}</div>
+          <div class="card-subtitle">${birthDate ? escHtml(birthDate) + ' · ' : ''}nato/a a ${escHtml(birthPlace)}</div>
+          <div><span class="coalition-pill" style="background:${c.color}">${escHtml(COALITION_LABELS[c.nraggrup] || c.nome || '')}</span></div>
+          <div class="card-pct" style="color:${c.color}">${pctStr}</div>
+          <div class="card-bar-track">
+            <div class="card-bar-fill" style="background:${c.color};width:${barW}%"></div>
+          </div>
+          <div class="card-votes">${fmtNum(c.voti)} <span>voti</span></div>
+          <div class="card-lists">${listPills}</div>
+        </div>
+      </div>`;
+    }).join('')}
+  </div>`;
+
+  const panel = document.getElementById('tab-sindaco');
+  panel.innerHTML = html;
+}
+
+// ───────────────────────────────────────────────
+// LISTE TAB
+// ───────────────────────────────────────────────
+function renderListe() {
+  const { raggrup, liste } = state;
+  if (!raggrup || !liste) return;
+
+  const anagrafica = raggrup.anagrafica || [];
+  const votiRaggrup = raggrup.voti?.arrVotiRaggrup || {};
+  const tvotival = raggrup.voti?.tvotival || 0;
+
+  const listeAna = liste.anagrafica || [];
+  const votiListe = liste.voti?.arrVotiListe || {};
+
+  // Group lists by nraggrup
+  const byCoalition = {};
+  listeAna.forEach(l => {
+    const g = l.nraggrup;
+    if (!byCoalition[g]) byCoalition[g] = [];
+    byCoalition[g].push(l);
+  });
+
+  // Build HTML per coalition
+  const html = [1, 2, 3].map(nraggrup => {
+    const cand = anagrafica.find(a => a.nraggrup === nraggrup) || {};
+    const color = COALITION_COLORS[nraggrup] || '#555';
+    const vR = votiRaggrup[String(nraggrup)] || {};
+    const coalVoti = vR.voti || 0;
+    const pctStr = tvotival > 0 ? (coalVoti/tvotival*100).toFixed(1).replace('.', ',') + '%' : '0,0%';
+    const lists = byCoalition[nraggrup] || [];
+
+    // max voti among lists for bar scaling
+    const maxListVoti = lists.reduce((m, l) => {
+      const v = votiListe[String(l.nlista)] || {};
+      return Math.max(m, v.voti || 0);
+    }, 0);
+
+    const listRows = lists.map(l => {
+      const v = votiListe[String(l.nlista)] || {};
+      const lVoti = v.voti || 0;
+      const barW = maxListVoti > 0 ? (lVoti/maxListVoti*100).toFixed(1) : 0;
+      const lPct = coalVoti > 0 ? (lVoti/coalVoti*100).toFixed(1).replace('.', ',') + '%' : '0,0%';
+      return `<div class="lista-row">
+        <div class="lista-name">${escHtml(l.nome_breve || l.nome)}</div>
+        <div class="lista-bar-track">
+          <div class="lista-bar-fill" style="background:${color};width:${barW}%"></div>
+        </div>
+        <div class="lista-votes" style="color:${color}">${fmtNum(lVoti)}</div>
+        <div class="lista-pct">${lPct}</div>
+      </div>`;
+    }).join('');
+
+    const candName = `${cand.cognome_cand || ''} ${cand.nome_cand || ''}`.trim() || cand.nome || '';
+    const listCount = lists.length;
+    const eyebrow = `COALIZIONE ${nraggrup} · ${listCount} LIST${listCount === 1 ? 'A' : 'E'}`;
+
+    return `<div class="coalition-section">
+      <div class="coalition-header" style="background:${color}">
+        <div class="coalition-header-left">
+          <span class="coalition-header-name">${escHtml(eyebrow)}</span>
+          <span class="coalition-header-cand">${escHtml(candName)}</span>
+        </div>
+        <div class="coalition-header-right">
+          <div class="coalition-header-votes">${fmtNum(coalVoti)}</div>
+          <div class="coalition-header-pct">${pctStr} voti validi</div>
+        </div>
+      </div>
+      <div class="liste-table">${listRows}</div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('tab-liste').innerHTML = html;
+}
+
+// ───────────────────────────────────────────────
+// CONSIGLIERI TAB
+// ───────────────────────────────────────────────
+let openAccordions = new Set([1]); // first open by default
+
+function renderConsiglieri() {
+  const { liste, candidati } = state;
+  if (!liste || !candidati) return;
+
+  const listeAna = liste.anagrafica || [];
+
+  const html = listeAna.map((l, idx) => {
+    const nlista = l.nlista;
+    const color = COALITION_COLORS[l.nraggrup] || '#555';
+    const listData = candidati[String(nlista)];
+    const isOpen = openAccordions.has(nlista);
+
+    let innerHtml = '';
+
+    if (!listData) {
+      innerHtml = `<div class="waiting-message">In attesa dello scrutinio…</div>`;
+    } else {
+      const votiCand = listData.voti?.arrVotiCandidato || {};
+      const totVotiLista = listData.voti?.totVotiLista || 0;
+      const candAna = listData.anagrafica || [];
+
+      // Build candidate list with votes
+      let candList = candAna.map(c => ({
+        nrcandi: c.nrcandi,
+        nome: c.nome,
+        voti: (votiCand[String(c.nrcandi)] || {}).voti || 0,
+      }));
+
+      const allZero = candList.every(c => c.voti === 0);
+
+      if (allZero) {
+        innerHtml = `<div class="waiting-message">In attesa dello scrutinio…</div>`;
+      } else {
+        candList.sort((a, b) => b.voti - a.voti);
+        const rows = candList.map((c, i) => {
+          const pct = totVotiLista > 0
+            ? (c.voti/totVotiLista*100).toFixed(1).replace('.', ',') + '%'
+            : '0,0%';
+          return `<tr>
+            <td>${i+1}</td>
+            <td>${escHtml(c.nome)}</td>
+            <td>${fmtNum(c.voti)}</td>
+            <td>${pct}</td>
+          </tr>`;
+        }).join('');
+
+        innerHtml = `<table class="candi-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th>Voti</th>
+              <th>%</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>`;
+      }
+    }
+
+    const listVoti = listData?.voti?.totVotiLista || 0;
+    const listName = l.nome_breve || l.nome;
+
+    return `<div class="accordion-item ${isOpen ? 'open' : ''}" id="acc-${nlista}">
+      <div class="accordion-header" onclick="toggleAccordion(${nlista})" role="button" aria-expanded="${isOpen}" tabindex="0">
+        <div class="accordion-header-left">
+          <div class="coalition-dot" style="background:${color}"></div>
+          <span class="accordion-list-name">${escHtml(listName)}</span>
+        </div>
+        <div class="accordion-header-right">
+          <span class="accordion-votes">${fmtNum(listVoti)}</span>
+          <span class="accordion-chevron">▼</span>
+        </div>
+      </div>
+      <div class="accordion-body">${innerHtml}</div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('tab-consiglieri').innerHTML = html;
+
+  // Bind keyboard events
+  document.querySelectorAll('.accordion-header').forEach(el => {
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        el.click();
+      }
+    });
+  });
+}
+
+function toggleAccordion(nlista) {
+  if (openAccordions.has(nlista)) {
+    openAccordions.delete(nlista);
+  } else {
+    openAccordions.add(nlista);
+  }
+  const item = document.getElementById(`acc-${nlista}`);
+  if (!item) return;
+  if (openAccordions.has(nlista)) {
+    item.classList.add('open');
+    item.querySelector('.accordion-header').setAttribute('aria-expanded', 'true');
+  } else {
+    item.classList.remove('open');
+    item.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+  }
+}
+
+// ───────────────────────────────────────────────
+// TAB SWITCH
+// ───────────────────────────────────────────────
+let activeTab = 'sindaco';
+
+function switchTab(name) {
+  activeTab = name;
+  document.querySelectorAll('.tab-btn').forEach(b => {
+    const active = b.id === `btn-${name}`;
+    b.classList.toggle('active', active);
+    b.setAttribute('aria-selected', active);
+  });
+  document.querySelectorAll('.tab-panel').forEach(p => {
+    p.classList.toggle('active', p.id === `tab-${name}`);
+  });
+}
+
+// ───────────────────────────────────────────────
+// COUNTDOWN TIMER
+// ───────────────────────────────────────────────
+function startCountdown() {
+  if (countdownTimer) clearInterval(countdownTimer);
+  countdownTimer = setInterval(() => {
+    state.countdownSec = Math.max(0, state.countdownSec - 1);
+    const el = document.getElementById('s-countdown');
+    const wrap = document.getElementById('s-countdown-wrap');
+    if (el) {
+      el.textContent = fmtCountdown(state.countdownSec);
+      wrap.classList.toggle('urgent', state.countdownSec <= 30);
+    }
+  }, 1000);
+}
+
+// ───────────────────────────────────────────────
+// AUTO REFRESH
+// ───────────────────────────────────────────────
+function scheduleRefresh() {
+  if (refreshTimer) clearTimeout(refreshTimer);
+  refreshTimer = setTimeout(async () => {
+    try {
+      await fetchAll();
+    } finally {
+      // Re-arm even if fetch failed so auto-refresh never dies
+      scheduleRefresh();
+    }
+  }, REFRESH_INTERVAL * 1000);
+}
+
+// ───────────────────────────────────────────────
+// UTILS
+// ───────────────────────────────────────────────
+function escHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// ───────────────────────────────────────────────
+// INIT
+// ───────────────────────────────────────────────
+switchTab('sindaco');
+startCountdown();
+fetchAll().finally(scheduleRefresh);
+</script>
+</body>
+</html>
