@@ -258,24 +258,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
-    /* Leader card spans full width on desktop when 3 candidates */
-    @media (min-width: 601px) {
-      .candidates-grid .candidate-card:first-child {
-        grid-column: 1 / -1;
-      }
-      .candidates-grid .candidate-card:first-child .card-pct {
-        font-size: 8rem;
-      }
-      .candidates-grid .candidate-card:first-child .card-body {
-        padding: 32px 36px;
-      }
-      .candidates-grid .candidate-card:first-child .card-name {
-        font-size: 1.6rem;
-      }
-      .candidates-grid .candidate-card:first-child .card-top-stripe {
-        height: 16px;
-      }
-    }
+    /* All 3 cards equal — no spanning */
     @media (max-width: 600px) {
       .candidates-grid { grid-template-columns: 1fr; }
     }
@@ -289,9 +272,6 @@
     }
     .candidate-card:hover {
       box-shadow: 0 6px 24px rgba(0,0,0,0.12);
-    }
-    .candidate-card.is-leader {
-      border-color: transparent;
     }
 
     .card-top-stripe {
@@ -330,21 +310,15 @@
     }
 
     .card-pct {
-      font-size: clamp(3.5rem, 8vw, 5rem);
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
       font-weight: 800;
       line-height: 1;
       margin-bottom: 12px;
       letter-spacing: -0.03em;
       transition: color 0.3s;
     }
-    /* Leader card gets the larger size since it spans full width */
-    @media (min-width: 601px) {
-      .candidates-grid .candidate-card:first-child .card-pct {
-        font-size: 8rem;
-      }
-    }
     @media (max-width: 600px) {
-      .card-pct { font-size: 4rem; }
+      .card-pct { font-size: 3.5rem; }
     }
 
     .card-bar-track {
@@ -870,19 +844,18 @@ function renderSindaco() {
 
   const html = `<div class="candidates-grid">
     ${candidates.map((c, idx) => {
-      const isLeader = idx === 0;
       const pctNum = fmtRawPct(c.voti, tvotival);
       const pctStr = allZero ? '0,0%' : (pctNum.toFixed(1).replace('.', ',') + '%');
       const barW = maxVoti > 0 ? (c.voti / maxVoti * 100).toFixed(1) : 0;
       const birthDate = c.data_nascita_cand || '';
       const birthPlace = c.luogo_nascita_cand ? prettyCity(c.luogo_nascita_cand) : 'SBT';
-      const bgColor = isLeader ? COALITION_BG_LIGHT[c.nraggrup] || '' : '';
+      const bgColor = COALITION_BG_LIGHT[c.nraggrup] || '';
       const bgStyle = bgColor ? `background:${bgColor};` : '';
       const listPills = (c.arrListe || []).map(l =>
         `<span class="list-pill" style="background:${COALITION_BG_LIGHT[c.nraggrup] || '#f5f5f5'};color:${c.color}">${escHtml(l.nome_breve || l.nome)}</span>`
       ).join('');
       const fullName = `${escHtml(c.cognome_cand || '')} ${escHtml(c.nome_cand || '')}`.trim() || escHtml(c.nome || '');
-      return `<div class="candidate-card${isLeader ? ' is-leader' : ''}" style="${bgStyle}">
+      return `<div class="candidate-card" style="${bgStyle}">
         <div class="card-top-stripe" style="background:${c.color}"></div>
         <div class="card-body">
           <div class="card-name">${fullName}</div>
