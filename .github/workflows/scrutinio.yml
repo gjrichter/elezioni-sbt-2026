@@ -1,0 +1,62 @@
+name: Scrutinio elezioni SBT 2026
+
+on:
+  schedule:
+    # ogni 5 minuti — lo scrutinio inizia lunedì 25 maggio dopo le 15
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Forza fetch anche se scrutinio non ancora aperto'
+        required: false
+        default: 'false'
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    # evita run concorrenti se il job precedente è ancora in corso
+    concurrency:
+      group: scrutinio-sbt
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          # token con permesso di push
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch scrutinio
+        id: fetch
+        run: node fetch-scrutinio.js
+
+      - name: Leggi meta.json
+        id: meta
+        run: |
+          if [ -f data/meta.json ]; then
+            SCRUTINATE=$(jq '.sezioni_scrutinate // 0' data/meta.json)
+            VOTANTI=$(jq '.votanti // 0' data/meta.json)
+            echo "scrutinate=$SCRUTINATE" >> $GITHUB_OUTPUT
+            echo "votanti=$VOTANTI"       >> $GITHUB_OUTPUT
+          else
+            echo "scrutinate=0" >> $GITHUB_OUTPUT
+            echo "votanti=0"    >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit e push dati
+        run: |
+          git config user.name  "bot-scrutinio-sbt"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/
+          # commit solo se ci sono modifiche reali
+          if git diff --staged --quiet; then
+            echo "Nessuna modifica ai dati — skip commit"
+          else
+            git commit -m "scrutinio $(date -u '+%Y-%m-%dT%H:%M'Z) | sez=${{ steps.meta.outputs.scrutinate }} votanti=${{ steps.meta.outputs.votanti }}"
+            git push
+          fi
