@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sezioni Elettorali – San Benedetto del Tronto 2026</title>
+  <script src="https://cdn.jsdelivr.net/gh/gjrichter/ixmaps-flat@master/ixmaps.js"></script>
+  <style>
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden;
+                 font-family: sans-serif; }
+    #map { width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+
+var DATA_URL = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/sezioni_con_sede.geojson";
+
+// 5 colori per i 5 collegi
+var COLORS = ["#e74c3c","#3498db","#27ae60","#f39c12","#8e44ad"];
+
+fetch(DATA_URL)
+  .then(function(r) { return r.json(); })
+  .then(function(gj) {
+
+    // CATEGORICAL richiede stringhe
+    gj.features.forEach(function(f) {
+      f.properties.collegio_s = String(f.properties.collegio);
+    });
+
+    var myMap = ixmaps.Map("map", {
+      mapType: "VT_TONER_LITE",
+      mode:    "info",
+      legend:  "open",
+      tools:   true
+    })
+    .view({ center: { lat: 42.930, lng: 13.887 }, zoom: 13 })
+    .options({
+      objectscaling:   "dynamic",
+      normalSizeScale: "80000",
+      basemapopacity:  0.55,
+      flushChartDraw:  1000000
+    });
+
+    myMap.layer("sezioni")
+      .data({ obj: gj, type: "geojson" })
+      .binding({
+        geo:   "geometry",
+        value: "collegio_s",
+        title: "sezione"
+      })
+      .type("CHART|SYMBOL|CATEGORICAL|MULTIPLE")
+      .style({
+        colorscheme:     COLORS,
+        values:          ["1","2","3","4","5"],
+        normalsizevalue: "1",
+        scale:           1,
+        fillopacity:     0.85,
+        linecolor:       "#fff",
+        linewidth:       1,
+        showdata:        "true"
+      })
+      .meta({
+        name:    "sezioni-theme",
+        tooltip: "Sezione <b>{{sezione}}</b><br>" +
+                 "Collegio: <b>{{collegio_s}}</b><br>" +
+                 "{{sede}}<br>{{indirizzo}}"
+      })
+      .title("Collegio")
+      .define();
+
+  });
+
+</script>
+</body>
+</html>
