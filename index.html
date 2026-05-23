@@ -310,7 +310,7 @@
     }
 
     .card-pct {
-      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      font-size: clamp(2.8rem, 4.5vw, 4rem);
       font-weight: 800;
       line-height: 1;
       margin-bottom: 12px;
@@ -318,7 +318,7 @@
       transition: color 0.3s;
     }
     @media (max-width: 600px) {
-      .card-pct { font-size: 3.5rem; }
+      .card-pct { font-size: 2.8rem; }
     }
 
     .card-bar-track {
@@ -348,8 +348,9 @@
 
     .card-lists {
       display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 4px;
     }
     .list-pill {
       font-size: 0.65rem;
@@ -358,6 +359,9 @@
       border-radius: 4px;
       white-space: normal;
       word-break: break-word;
+      overflow-wrap: anywhere;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     /* ── LISTE TAB ── */
