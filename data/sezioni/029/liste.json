@@ -1,0 +1,293 @@
+{
+  "anagrafica": [
+    {
+      "idpartizione": 0,
+      "nlista": 1,
+      "nlistamacro": 1,
+      "idpartizione_r": 0,
+      "nraggrup": 1,
+      "nome": "ALLEANZA VERDI SINISTRA - PSI - RETI CIVICHE",
+      "nome_breve": "ALLEANZA VERDI SINISTRA - PSI",
+      "nome2": "ALLEANZA VERDI SINISTRA - PSI - RETI CIVICHE",
+      "nome_breve2": "ALLEANZA VERDI SINISTRA - PSI",
+      "immagine": "0_1.png",
+      "tipo_lista": "N",
+      "blocco_ins": "N"
+    },
+    {
+      "idpartizione": 0,
+      "nlista": 2,
+      "nlistamacro": 2,
+      "idpartizione_r": 0,
+      "nraggrup": 1,
+      "nome": "CAMBIA SAN BENEDETTO",
+      "nome_breve": "CAMBIA SAN BENEDETTO",
+      "nome2": "CAMBIA SAN BENEDETTO",
+      "nome_breve2": "CAMBIA SAN BENEDETTO",
+      "immagine": "0_2.png",
+      "tipo_lista": "N",
+      "blocco_ins": "N"
+    },
+    {
+      "idpartizione": 0,
+      "nlista": 3,
+      "nlistamacro": 3,
+      "idpartizione_r": 0,
+      "nraggrup": 1,
+      "nome": "MOVIMENTO 5 STELLE",
+      "nome_breve": "MOVIMENTO 5 STELLE",
+      "nome2": "MOVIMENTO 5 STELLE",
+      "nome_breve2": "MOVIMENTO 5 STELLE",
+      "immagine": "0_3.png",
+      "tipo_lista": "N",
+      "blocco_ins": "N"
+    },
+    {
+      "idpartizione": 0,
+      "nlista": 4,
+      "nlistamacro": 4,
+      "idpartizione_r": 0,
+      "nraggrup": 1,
+      "nome": "PARTITO DEMOCRATICO",
+      "nome_breve": "PARTITO DEMOCRATICO",
+      "nome2": "PARTITO DEMOCRATICO",
+      "nome_breve2": "PARTITO DEMOCRATICO",
+      "immagine": "0_4.png",
+      "tipo_lista": "N",
+      "blocco_ins": "N"
+    },
+    {
+      "idpartizione": 0,
+      "nlista": 5,
+      "nlistamacro": 5,
+      "idpartizione_r": 0,
+      "nraggrup": 1,
+      "nome": "PROGETTO CIVICO SAMBENEDETTESE - GIORGIO FEDE SINDACO",
+      "nome_breve": "PROGETTO CIVICO SAMBENEDETTESE",
+      "nome2": "PROGETTO CIVICO SAMBENEDETTESE - GIORGIO FEDE SINDACO",
+      "nome_breve2": "PROGETTO CIVICO SAMBENEDETTESE",
+      "immagine": "0_5.png",
+      "tipo_lista": "N",
+      "blocco_ins": "N"
+    },
+    {
+      "idpartizione": 0,
+      "nlista": 6,
+      "nlistamacro": 6,
+      "idpartizione_r": 0,
+      "nraggrup": 2,
+      "nome": "MERITO DI PIU'",
+      "nome_breve": "MERITO DI PIU'",
+      "nome2": "MERITO DI PIU'",
+      "nome_breve2": "MERITO DI PIU'",
+      "immagine": "0_6.png",
+      "tipo_lista": "N",
+      "blocco_ins": "N"
+    },
+    {
+      "idpartizione": 0,
+      "nlista": 7,
+      "nlistamacro": 7,
+      "idpartizione_r": 0,
+      "nraggrup": 3,
+      "nome": "VOCE NUOVA SAN BENEDETTO DEL TRONTO",
+      "nome_breve": "VOCE NUOVA SAN BENEDETTO DEL T",
+      "nome2": "VOCE NUOVA SAN BENEDETTO DEL TRONTO",
+      "nome_breve2": "VOCE NUOVA SAN BENEDETTO DEL T",
+      "immagine": "0_7.png",
+      "tipo_lista": "N",
+      "blocco_ins": "N"
+    },
+    {
+      "idpartizione": 0,
+      "nlista": 8,
+      "nlistamacro": 8,
+      "idpartizione_r": 0,
+      "nraggrup": 3,
+      "nome": "NOI MODERATI PARTITO POPOLARE EUROPEO - SCELGO SAN BENEDETTO",
+      "nome_breve": "NOI MODERATI PARTITO POPOLARE",
+      "nome2": "NOI MODERATI PARTITO POPOLARE EUROPEO - SCELGO SAN BENEDETTO",
+      "nome_breve2": "NOI MODERATI PARTITO POPOLARE",
+      "immagine": "0_8.png",
+      "tipo_lista": "N",
+      "blocco_ins": "N"
+    },
+    {
+      "idpartizione": 0,
+      "nlista": 9,
+      "nlistamacro": 9,
+      "idpartizione_r": 0,
+      "nraggrup": 3,
+      "nome": "LEGA - SAN BENEDETTO PROTAGONISTA PIUNTI",
+      "nome_breve": "LEGA - SAN BENEDETTO PROTAGONI",
+      "nome2": "LEGA - SAN BENEDETTO PROTAGONISTA PIUNTI",
+      "nome_breve2": "LEGA - SAN BENEDETTO PROTAGONI",
+      "immagine": "0_9.png",
+      "tipo_lista": "N",
+      "blocco_ins": "N"
+    },
+    {
+      "idpartizione": 0,
+      "nlista": 10,
+      "nlistamacro": 10,
+      "idpartizione_r": 0,
+      "nraggrup": 3,
+      "nome": "INSIEME PER SAN BENEDETTO - NICOLA MOZZONI SINDACO",
+      "nome_breve": "INSIEME PER SAN BENEDETTO - NI",
+      "nome2": "INSIEME PER SAN BENEDETTO - NICOLA MOZZONI SINDACO",
+      "nome_breve2": "INSIEME PER SAN BENEDETTO - NI",
+      "immagine": "0_10.png",
+      "tipo_lista": "N",
+      "blocco_ins": "N"
+    },
+    {
+      "idpartizione": 0,
+      "nlista": 11,
+      "nlistamacro": 11,
+      "idpartizione_r": 0,
+      "nraggrup": 3,
+      "nome": "FORZA ITALIA - BERLUSCONI - PARTITO POPOLARE EUROPEO",
+      "nome_breve": "FORZA ITALIA - BERLUSCONI - PA",
+      "nome2": "FORZA ITALIA - BERLUSCONI - PARTITO POPOLARE EUROPEO",
+      "nome_breve2": "FORZA ITALIA - BERLUSCONI - PA",
+      "immagine": "0_11.png",
+      "tipo_lista": "N",
+      "blocco_ins": "N"
+    },
+    {
+      "idpartizione": 0,
+      "nlista": 12,
+      "nlistamacro": 12,
+      "idpartizione_r": 0,
+      "nraggrup": 3,
+      "nome": "FRATELLI D'ITALIA - GIORGIA MELONI",
+      "nome_breve": "FRATELLI D'ITALIA - GIORGIA ME",
+      "nome2": "FRATELLI D'ITALIA - GIORGIA MELONI",
+      "nome_breve2": "FRATELLI D'ITALIA - GIORGIA ME",
+      "immagine": "0_12.png",
+      "tipo_lista": "N",
+      "blocco_ins": "N"
+    },
+    {
+      "idpartizione": 0,
+      "nlista": 13,
+      "nlistamacro": 13,
+      "idpartizione_r": 0,
+      "nraggrup": 3,
+      "nome": "CENTRO CIVICO POPOLARE - UNIONE DI CENTRO",
+      "nome_breve": "CENTRO CIVICO POPOLARE - UNION",
+      "nome2": "CENTRO CIVICO POPOLARE - UNIONE DI CENTRO",
+      "nome_breve2": "CENTRO CIVICO POPOLARE - UNION",
+      "immagine": "0_13.png",
+      "tipo_lista": "N",
+      "blocco_ins": "N"
+    },
+    {
+      "idpartizione": 0,
+      "nlista": 14,
+      "nlistamacro": 14,
+      "idpartizione_r": 0,
+      "nraggrup": 3,
+      "nome": "LA CITTA' CAMBIA VOLTO - OFFICINA SAMBENEDETTESE",
+      "nome_breve": "LA CITTA' CAMBIA VOLTO - OFFIC",
+      "nome2": "LA CITTA' CAMBIA VOLTO - OFFICINA SAMBENEDETTESE",
+      "nome_breve2": "LA CITTA' CAMBIA VOLTO - OFFIC",
+      "immagine": "0_14.png",
+      "tipo_lista": "N",
+      "blocco_ins": "N"
+    }
+  ],
+  "voti": {
+    "arrVotiListe": {
+      "1": {
+        "voti": 0,
+        "voti_nona": 0
+      },
+      "2": {
+        "voti": 0,
+        "voti_nona": 0
+      },
+      "3": {
+        "voti": 0,
+        "voti_nona": 0
+      },
+      "4": {
+        "voti": 0,
+        "voti_nona": 0
+      },
+      "5": {
+        "voti": 0,
+        "voti_nona": 0
+      },
+      "6": {
+        "voti": 0,
+        "voti_nona": 0
+      },
+      "7": {
+        "voti": 0,
+        "voti_nona": 0
+      },
+      "8": {
+        "voti": 0,
+        "voti_nona": 0
+      },
+      "9": {
+        "voti": 0,
+        "voti_nona": 0
+      },
+      "10": {
+        "voti": 0,
+        "voti_nona": 0
+      },
+      "11": {
+        "voti": 0,
+        "voti_nona": 0
+      },
+      "12": {
+        "voti": 0,
+        "voti_nona": 0
+      },
+      "13": {
+        "voti": 0,
+        "voti_nona": 0
+      },
+      "14": {
+        "voti": 0,
+        "voti_nona": 0
+      }
+    },
+    "tot_sezio": 0,
+    "iscri_maschi": 0,
+    "iscri_femm": 0,
+    "iscri_totali": 0,
+    "tvmas": 0,
+    "tvfem": 0,
+    "tvotanti": 0,
+    "tvotival": 0,
+    "tvnonass": 0,
+    "tbianche": 0,
+    "tnulle": 0,
+    "tvnulli": 0,
+    "sk_contestate": 0,
+    "solosindpres": 0,
+    "solosindpres_nona": 0,
+    "totale_parz": 0,
+    "totale_gen": 0
+  },
+  "ordinamento": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ]
+}

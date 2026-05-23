@@ -1,0 +1,4846 @@
+{
+  "1": {
+    "voti": {
+      "arrVotiCandidato": {
+        "1": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "2": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "3": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "4": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "5": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "6": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "7": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "8": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "9": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "10": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "11": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "12": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "13": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "14": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "15": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "16": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "17": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "18": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "19": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "20": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "21": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "22": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "23": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "24": {
+          "voti": 0,
+          "voti_nona": 0
+        }
+      },
+      "tot_sezio": 0,
+      "idpartizione": 0,
+      "nlista": 1,
+      "nlistamacro": 1,
+      "totVoti": 0,
+      "totVoti_nona": 0,
+      "totVotiLista": 0
+    },
+    "anagrafica": [
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 1,
+        "nome": "AGNELLI ALICE",
+        "nome2": "AGNELLI ALICE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 2,
+        "nome": "AMONO FRANCESCA",
+        "nome2": "AMONO FRANCESCA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 3,
+        "nome": "ANTONELLI PATRIZIA",
+        "nome2": "ANTONELLI PATRIZIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 4,
+        "nome": "BALDASSARRI MAURIZIO",
+        "nome2": "BALDASSARRI MAURIZIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 5,
+        "nome": "BIANCUCCI MARCO",
+        "nome2": "BIANCUCCI MARCO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 6,
+        "nome": "BOVARA ROBERTO",
+        "nome2": "BOVARA ROBERTO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 7,
+        "nome": "CAMELI ARIANNA",
+        "nome2": "CAMELI ARIANNA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 8,
+        "nome": "CAMELI ROBERTO",
+        "nome2": "CAMELI ROBERTO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 9,
+        "nome": "CANDUCCI PAOLO",
+        "nome2": "CANDUCCI PAOLO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 10,
+        "nome": "FEDELI CLAUDIO",
+        "nome2": "FEDELI CLAUDIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 11,
+        "nome": "FELIX FRANCESCO",
+        "nome2": "FELIX FRANCESCO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 12,
+        "nome": "ISOPI FRANCESCA",
+        "nome2": "ISOPI FRANCESCA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 13,
+        "nome": "LATTANZI MARINO",
+        "nome2": "LATTANZI MARINO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 14,
+        "nome": "LAVERSA RACHELE",
+        "nome2": "LAVERSA RACHELE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 15,
+        "nome": "MANCINI GIORGIO",
+        "nome2": "MANCINI GIORGIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 16,
+        "nome": "NORI SARA",
+        "nome2": "NORI SARA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 17,
+        "nome": "PALESTINI MARIA SOLE",
+        "nome2": "PALESTINI MARIA SOLE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 18,
+        "nome": "PISTONESI ALESSANDRA",
+        "nome2": "PISTONESI ALESSANDRA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 19,
+        "nome": "ROSETTI NICOLA",
+        "nome2": "ROSETTI NICOLA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 20,
+        "nome": "SPADONI LUCA",
+        "nome2": "SPADONI LUCA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 21,
+        "nome": "TAMBURRINI LUDOVICA",
+        "nome2": "TAMBURRINI LUDOVICA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 22,
+        "nome": "TORDINI GIORGIO",
+        "nome2": "TORDINI GIORGIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 23,
+        "nome": "UBALDI ENZO",
+        "nome2": "UBALDI ENZO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 1,
+        "nlistamacro": 1,
+        "nrcandi": 24,
+        "nome": "VOLTATTORNI DENIS",
+        "nome2": "VOLTATTORNI DENIS",
+        "blocco_ins": "N",
+        "note": null
+      }
+    ],
+    "ordinamento": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "2": {
+    "voti": {
+      "arrVotiCandidato": {
+        "1": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "2": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "3": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "4": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "5": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "6": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "7": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "8": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "9": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "10": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "11": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "12": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "13": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "14": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "15": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "16": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "17": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "18": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "19": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "20": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "21": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "22": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "23": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "24": {
+          "voti": 0,
+          "voti_nona": 0
+        }
+      },
+      "tot_sezio": 0,
+      "idpartizione": 0,
+      "nlista": 2,
+      "nlistamacro": 2,
+      "totVoti": 0,
+      "totVoti_nona": 0,
+      "totVotiLista": 0
+    },
+    "anagrafica": [
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 1,
+        "nome": "BADALINI PAOLA",
+        "nome2": "BADALINI PAOLA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 2,
+        "nome": "BOVARA FRANCESCO",
+        "nome2": "BOVARA FRANCESCO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 3,
+        "nome": "BRANDONI GIULIANO",
+        "nome2": "BRANDONI GIULIANO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 4,
+        "nome": "CECCARELLI ALESSIA",
+        "nome2": "CECCARELLI ALESSIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 5,
+        "nome": "CICCONI MATTEO detto CECCO",
+        "nome2": "CICCONI MATTEO detto CECCO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 6,
+        "nome": "CORRADETTI FEDERICA",
+        "nome2": "CORRADETTI FEDERICA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 7,
+        "nome": "DAMIANI ALBERTO",
+        "nome2": "DAMIANI ALBERTO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 8,
+        "nome": "DEL ZOMPO FRANCESCO",
+        "nome2": "DEL ZOMPO FRANCESCO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 9,
+        "nome": "D'EMIDIO KATIA",
+        "nome2": "D'EMIDIO KATIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 10,
+        "nome": "FALGIANI GIAN MARCO",
+        "nome2": "FALGIANI GIAN MARCO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 11,
+        "nome": "GALLOPPA MARTINA",
+        "nome2": "GALLOPPA MARTINA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 12,
+        "nome": "GASPARRINI PIERFRANCESCO",
+        "nome2": "GASPARRINI PIERFRANCESCO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 13,
+        "nome": "GRILLI GRAZIA LETIZIA",
+        "nome2": "GRILLI GRAZIA LETIZIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 14,
+        "nome": "LEONE FABRIZIO",
+        "nome2": "LEONE FABRIZIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 15,
+        "nome": "MARCONI MARCO detto MARCO",
+        "nome2": "MARCONI MARCO detto MARCO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 16,
+        "nome": "MARCOZZI  GABRIELE detto GABRIELE",
+        "nome2": "MARCOZZI  GABRIELE detto GABRIELE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 17,
+        "nome": "MARCOZZI  MIRCO detto MIRCO",
+        "nome2": "MARCOZZI  MIRCO detto MIRCO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 18,
+        "nome": "MARRA SAMUELE detto SANCHO",
+        "nome2": "MARRA SAMUELE detto SANCHO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 19,
+        "nome": "PETRUCCI PAOLA MARIA",
+        "nome2": "PETRUCCI PAOLA MARIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 20,
+        "nome": "SPINOZZI FERNANDO",
+        "nome2": "SPINOZZI FERNANDO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 21,
+        "nome": "STAZI STEFANIA",
+        "nome2": "STAZI STEFANIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 22,
+        "nome": "STOPPO GIACOMO",
+        "nome2": "STOPPO GIACOMO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 23,
+        "nome": "TRAVAGLINI FOSCO",
+        "nome2": "TRAVAGLINI FOSCO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 2,
+        "nlistamacro": 2,
+        "nrcandi": 24,
+        "nome": "VALERI  ALESSIA",
+        "nome2": "VALERI  ALESSIA",
+        "blocco_ins": "N",
+        "note": null
+      }
+    ],
+    "ordinamento": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "3": {
+    "voti": {
+      "arrVotiCandidato": {
+        "1": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "2": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "3": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "4": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "5": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "6": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "7": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "8": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "9": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "10": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "11": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "12": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "13": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "14": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "15": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "16": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "17": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "18": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "19": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "20": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "21": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "22": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "23": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "24": {
+          "voti": 0,
+          "voti_nona": 0
+        }
+      },
+      "tot_sezio": 0,
+      "idpartizione": 0,
+      "nlista": 3,
+      "nlistamacro": 3,
+      "totVoti": 0,
+      "totVoti_nona": 0,
+      "totVotiLista": 0
+    },
+    "anagrafica": [
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 1,
+        "nome": "ALFONSI ANTONIO SANTE",
+        "nome2": "ALFONSI ANTONIO SANTE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 2,
+        "nome": "ALMONTE LALLI SONIA",
+        "nome2": "ALMONTE LALLI SONIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 3,
+        "nome": "CAMPANELLI GIUSEPPE",
+        "nome2": "CAMPANELLI GIUSEPPE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 4,
+        "nome": "COCCI SANTE",
+        "nome2": "COCCI SANTE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 5,
+        "nome": "CUSANI EMANUELE",
+        "nome2": "CUSANI EMANUELE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 6,
+        "nome": "DAMIANI EDOARDO",
+        "nome2": "DAMIANI EDOARDO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 7,
+        "nome": "DE CAROLIS ANTONIO",
+        "nome2": "DE CAROLIS ANTONIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 8,
+        "nome": "DE MATTIA GELTRUDE",
+        "nome2": "DE MATTIA GELTRUDE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 9,
+        "nome": "DI EGIDIO ENZO PASQUALINO",
+        "nome2": "DI EGIDIO ENZO PASQUALINO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 10,
+        "nome": "FILIPPONI  GIUSEPPE",
+        "nome2": "FILIPPONI  GIUSEPPE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 11,
+        "nome": "FORMICA FLAVIO",
+        "nome2": "FORMICA FLAVIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 12,
+        "nome": "FULSI LOREDANA",
+        "nome2": "FULSI LOREDANA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 13,
+        "nome": "GIORDANO  ANTONIO",
+        "nome2": "GIORDANO  ANTONIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 14,
+        "nome": "MANIGRASSO ALESSANDRA",
+        "nome2": "MANIGRASSO ALESSANDRA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 15,
+        "nome": "MANNOCCHI EDOARDO",
+        "nome2": "MANNOCCHI EDOARDO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 16,
+        "nome": "MAZZOCCHI RICCARDO",
+        "nome2": "MAZZOCCHI RICCARDO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 17,
+        "nome": "NOVELLI ROBERTO",
+        "nome2": "NOVELLI ROBERTO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 18,
+        "nome": "PASQUALETTI MASSIMO",
+        "nome2": "PASQUALETTI MASSIMO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 19,
+        "nome": "PASQUALETTI RUTILIA",
+        "nome2": "PASQUALETTI RUTILIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 20,
+        "nome": "PRENIQI MAJLINDA",
+        "nome2": "PRENIQI MAJLINDA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 21,
+        "nome": "ROSELLI MARIA FRANCA",
+        "nome2": "ROSELLI MARIA FRANCA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 22,
+        "nome": "SCARPONI ROSITA",
+        "nome2": "SCARPONI ROSITA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 23,
+        "nome": "STRACCIA GIAN FILIPPO",
+        "nome2": "STRACCIA GIAN FILIPPO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 3,
+        "nlistamacro": 3,
+        "nrcandi": 24,
+        "nome": "UKA ZIMRAN",
+        "nome2": "UKA ZIMRAN",
+        "blocco_ins": "N",
+        "note": null
+      }
+    ],
+    "ordinamento": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "4": {
+    "voti": {
+      "arrVotiCandidato": {
+        "1": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "2": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "3": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "4": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "5": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "6": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "7": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "8": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "9": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "10": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "11": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "12": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "13": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "14": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "15": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "16": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "17": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "18": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "19": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "20": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "21": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "22": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "23": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "24": {
+          "voti": 0,
+          "voti_nona": 0
+        }
+      },
+      "tot_sezio": 0,
+      "idpartizione": 0,
+      "nlista": 4,
+      "nlistamacro": 4,
+      "totVoti": 0,
+      "totVoti_nona": 0,
+      "totVotiLista": 0
+    },
+    "anagrafica": [
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 1,
+        "nome": "BOTTIGLIERI AURORA",
+        "nome2": "BOTTIGLIERI AURORA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 2,
+        "nome": "CARASSI CLARICE",
+        "nome2": "CARASSI CLARICE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 3,
+        "nome": "CIANCI ANNA ROSA",
+        "nome2": "CIANCI ANNA ROSA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 4,
+        "nome": "CHIAPPINI MARIA DOMENICA",
+        "nome2": "CHIAPPINI MARIA DOMENICA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 5,
+        "nome": "GUIDI IDA",
+        "nome2": "GUIDI IDA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 6,
+        "nome": "IMBRESCIA ALESSANDRA",
+        "nome2": "IMBRESCIA ALESSANDRA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 7,
+        "nome": "LEONZI FEDERICA",
+        "nome2": "LEONZI FEDERICA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 8,
+        "nome": "LIODORI MARCELLA",
+        "nome2": "LIODORI MARCELLA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 9,
+        "nome": "PALESTINI DIANA",
+        "nome2": "PALESTINI DIANA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 10,
+        "nome": "SORGE MARGHERITA",
+        "nome2": "SORGE MARGHERITA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 11,
+        "nome": "TORRESI MARTINA",
+        "nome2": "TORRESI MARTINA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 12,
+        "nome": "VIRGILI ROSALBA",
+        "nome2": "VIRGILI ROSALBA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 13,
+        "nome": "BARSOUM MAMDOUH CHRISTIAN",
+        "nome2": "BARSOUM MAMDOUH CHRISTIAN",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 14,
+        "nome": "FIORAVANTI MATTEO detto MATTEO",
+        "nome2": "FIORAVANTI MATTEO detto MATTEO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 15,
+        "nome": "FIORAVANTI VALERIANO detto VALERIANO",
+        "nome2": "FIORAVANTI VALERIANO detto VALERIANO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 16,
+        "nome": "LORUSSO ENRICO GIACOMO",
+        "nome2": "LORUSSO ENRICO GIACOMO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 17,
+        "nome": "MARCONI GIANPIERO",
+        "nome2": "MARCONI GIANPIERO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 18,
+        "nome": "MARINI ALESSANDRO",
+        "nome2": "MARINI ALESSANDRO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 19,
+        "nome": "PEZZUOLI SERGIO",
+        "nome2": "PEZZUOLI SERGIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 20,
+        "nome": "PICARDI LORENZO",
+        "nome2": "PICARDI LORENZO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 21,
+        "nome": "SPINA GIUSEPPE",
+        "nome2": "SPINA GIUSEPPE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 22,
+        "nome": "TENTELLA SANDRO",
+        "nome2": "TENTELLA SANDRO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 23,
+        "nome": "URBINATI FABIO",
+        "nome2": "URBINATI FABIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 4,
+        "nlistamacro": 4,
+        "nrcandi": 24,
+        "nome": "ZAPPASODI IACOPO detto ZAPPA",
+        "nome2": "ZAPPASODI IACOPO detto ZAPPA",
+        "blocco_ins": "N",
+        "note": null
+      }
+    ],
+    "ordinamento": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "5": {
+    "voti": {
+      "arrVotiCandidato": {
+        "1": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "2": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "3": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "4": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "5": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "6": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "7": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "8": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "9": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "10": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "11": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "12": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "13": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "14": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "15": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "16": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "17": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "18": {
+          "voti": 0,
+          "voti_nona": 0
+        }
+      },
+      "tot_sezio": 0,
+      "idpartizione": 0,
+      "nlista": 5,
+      "nlistamacro": 5,
+      "totVoti": 0,
+      "totVoti_nona": 0,
+      "totVotiLista": 0
+    },
+    "anagrafica": [
+      {
+        "nlista": 5,
+        "nlistamacro": 5,
+        "nrcandi": 1,
+        "nome": "ALMONTE LALLI FRANCESCA",
+        "nome2": "ALMONTE LALLI FRANCESCA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 5,
+        "nlistamacro": 5,
+        "nrcandi": 2,
+        "nome": "BORRELLI DE ANDREIS RAFFAELLA",
+        "nome2": "BORRELLI DE ANDREIS RAFFAELLA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 5,
+        "nlistamacro": 5,
+        "nrcandi": 3,
+        "nome": "CATALINI DAVIDE",
+        "nome2": "CATALINI DAVIDE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 5,
+        "nlistamacro": 5,
+        "nrcandi": 4,
+        "nome": "CIABATTONI MIRKO",
+        "nome2": "CIABATTONI MIRKO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 5,
+        "nlistamacro": 5,
+        "nrcandi": 5,
+        "nome": "COLUCCI PIETRO",
+        "nome2": "COLUCCI PIETRO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 5,
+        "nlistamacro": 5,
+        "nrcandi": 6,
+        "nome": "CRUCIANI MASSIMO",
+        "nome2": "CRUCIANI MASSIMO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 5,
+        "nlistamacro": 5,
+        "nrcandi": 7,
+        "nome": "DE CAROLIS  MONICA",
+        "nome2": "DE CAROLIS  MONICA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 5,
+        "nlistamacro": 5,
+        "nrcandi": 8,
+        "nome": "LIODORI ANDREA",
+        "nome2": "LIODORI ANDREA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 5,
+        "nlistamacro": 5,
+        "nrcandi": 9,
+        "nome": "MARCHETTI DE CAROLIS ANNAMARIA",
+        "nome2": "MARCHETTI DE CAROLIS ANNAMARIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 5,
+        "nlistamacro": 5,
+        "nrcandi": 10,
+        "nome": "MAROZZI EMANUELE",
+        "nome2": "MAROZZI EMANUELE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 5,
+        "nlistamacro": 5,
+        "nrcandi": 11,
+        "nome": "MIGNINI PALMIRO",
+        "nome2": "MIGNINI PALMIRO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 5,
+        "nlistamacro": 5,
+        "nrcandi": 12,
+        "nome": "MORONI ANDREA",
+        "nome2": "MORONI ANDREA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 5,
+        "nlistamacro": 5,
+        "nrcandi": 13,
+        "nome": "QUAGLIARINI CINZIA",
+        "nome2": "QUAGLIARINI CINZIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 5,
+        "nlistamacro": 5,
+        "nrcandi": 14,
+        "nome": "ROMANDINI JOSE' GUIDO",
+        "nome2": "ROMANDINI JOSE' GUIDO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 5,
+        "nlistamacro": 5,
+        "nrcandi": 15,
+        "nome": "RUGGIERI ORLANDO",
+        "nome2": "RUGGIERI ORLANDO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 5,
+        "nlistamacro": 5,
+        "nrcandi": 16,
+        "nome": "UVA MARIA",
+        "nome2": "UVA MARIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 5,
+        "nlistamacro": 5,
+        "nrcandi": 17,
+        "nome": "VAGNONI ALESSIA",
+        "nome2": "VAGNONI ALESSIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 5,
+        "nlistamacro": 5,
+        "nrcandi": 18,
+        "nome": "VECCIA CHIARA",
+        "nome2": "VECCIA CHIARA",
+        "blocco_ins": "N",
+        "note": null
+      }
+    ],
+    "ordinamento": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ]
+  },
+  "6": {
+    "voti": {
+      "arrVotiCandidato": {
+        "1": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "2": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "3": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "4": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "5": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "6": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "7": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "8": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "9": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "10": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "11": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "12": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "13": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "14": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "15": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "16": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "17": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "18": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "19": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "20": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "21": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "22": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "23": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "24": {
+          "voti": 0,
+          "voti_nona": 0
+        }
+      },
+      "tot_sezio": 0,
+      "idpartizione": 0,
+      "nlista": 6,
+      "nlistamacro": 6,
+      "totVoti": 0,
+      "totVoti_nona": 0,
+      "totVotiLista": 0
+    },
+    "anagrafica": [
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 1,
+        "nome": "ALBERTINI ENRICO",
+        "nome2": "ALBERTINI ENRICO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 2,
+        "nome": "ASCOLANI ANNAFLAVIA",
+        "nome2": "ASCOLANI ANNAFLAVIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 3,
+        "nome": "BAIOCCHI MARIANO",
+        "nome2": "BAIOCCHI MARIANO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 4,
+        "nome": "BALDINI REBECCA",
+        "nome2": "BALDINI REBECCA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 5,
+        "nome": "BEDETTA ELISA",
+        "nome2": "BEDETTA ELISA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 6,
+        "nome": "BONIFACIO CARMEN",
+        "nome2": "BONIFACIO CARMEN",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 7,
+        "nome": "BUCCI SILVANA",
+        "nome2": "BUCCI SILVANA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 8,
+        "nome": "CAMELI VITTORIANO detto VITTORIANO",
+        "nome2": "CAMELI VITTORIANO detto VITTORIANO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 9,
+        "nome": "CAPECCI LAURA",
+        "nome2": "CAPECCI LAURA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 10,
+        "nome": "CIANCI GAETANO",
+        "nome2": "CIANCI GAETANO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 11,
+        "nome": "COCCIA ANDREA",
+        "nome2": "COCCIA ANDREA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 12,
+        "nome": "FARES BRUNO",
+        "nome2": "FARES BRUNO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 13,
+        "nome": "GRANNO' ILARIA",
+        "nome2": "GRANNO' ILARIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 14,
+        "nome": "GROSSI BETTINA",
+        "nome2": "GROSSI BETTINA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 15,
+        "nome": "LAURENZI  EMILIANO",
+        "nome2": "LAURENZI  EMILIANO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 16,
+        "nome": "MARUCCI SANDRO",
+        "nome2": "MARUCCI SANDRO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 17,
+        "nome": "MASSACCI GIANCARLO",
+        "nome2": "MASSACCI GIANCARLO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 18,
+        "nome": "PALESTINI NUNZIA",
+        "nome2": "PALESTINI NUNZIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 19,
+        "nome": "PELLICCIONI CLAUDIO",
+        "nome2": "PELLICCIONI CLAUDIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 20,
+        "nome": "PERAZZOLI LUCA",
+        "nome2": "PERAZZOLI LUCA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 21,
+        "nome": "RENZI ANTONELLA",
+        "nome2": "RENZI ANTONELLA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 22,
+        "nome": "SOLDANO AURELIO",
+        "nome2": "SOLDANO AURELIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 23,
+        "nome": "TAFFONI  GUENDALINA",
+        "nome2": "TAFFONI  GUENDALINA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 6,
+        "nlistamacro": 6,
+        "nrcandi": 24,
+        "nome": "VALLORANI MARCO",
+        "nome2": "VALLORANI MARCO",
+        "blocco_ins": "N",
+        "note": null
+      }
+    ],
+    "ordinamento": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "7": {
+    "voti": {
+      "arrVotiCandidato": {
+        "1": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "2": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "3": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "4": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "5": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "6": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "7": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "8": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "9": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "10": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "11": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "12": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "13": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "14": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "15": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "16": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "17": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "18": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "19": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "20": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "21": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "22": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "23": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "24": {
+          "voti": 0,
+          "voti_nona": 0
+        }
+      },
+      "tot_sezio": 0,
+      "idpartizione": 0,
+      "nlista": 7,
+      "nlistamacro": 7,
+      "totVoti": 0,
+      "totVoti_nona": 0,
+      "totVotiLista": 0
+    },
+    "anagrafica": [
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 1,
+        "nome": "ANELLI LUIGI",
+        "nome2": "ANELLI LUIGI",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 2,
+        "nome": "BERNABEI BRUNO",
+        "nome2": "BERNABEI BRUNO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 3,
+        "nome": "BONI ROSA",
+        "nome2": "BONI ROSA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 4,
+        "nome": "BRUTTI GIUSEPPE",
+        "nome2": "BRUTTI GIUSEPPE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 5,
+        "nome": "CAPPARUCCI FABIO",
+        "nome2": "CAPPARUCCI FABIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 6,
+        "nome": "CARBONARI DAJANA",
+        "nome2": "CARBONARI DAJANA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 7,
+        "nome": "CECERE MARIA DONATA",
+        "nome2": "CECERE MARIA DONATA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 8,
+        "nome": "CENERI GABRIELLA",
+        "nome2": "CENERI GABRIELLA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 9,
+        "nome": "CHIAPPINI PAOLO",
+        "nome2": "CHIAPPINI PAOLO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 10,
+        "nome": "COCCI STEFANO",
+        "nome2": "COCCI STEFANO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 11,
+        "nome": "COLANGELO LILLA ROSALIA detta LILLA",
+        "nome2": "COLANGELO LILLA ROSALIA detta LILLA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 12,
+        "nome": "DE ANGELIS ANNALISA",
+        "nome2": "DE ANGELIS ANNALISA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 13,
+        "nome": "DI PILLA STEFANO",
+        "nome2": "DI PILLA STEFANO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 14,
+        "nome": "DOS SANTOS MARLUCE detta MARLA",
+        "nome2": "DOS SANTOS MARLUCE detta MARLA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 15,
+        "nome": "FALCO ROSARIA",
+        "nome2": "FALCO ROSARIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 16,
+        "nome": "FONTANA SABRINA",
+        "nome2": "FONTANA SABRINA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 17,
+        "nome": "FORZIERI ANTONIO",
+        "nome2": "FORZIERI ANTONIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 18,
+        "nome": "LEORINI MARIA detta MERY",
+        "nome2": "LEORINI MARIA detta MERY",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 19,
+        "nome": "MANCINI ANNA",
+        "nome2": "MANCINI ANNA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 20,
+        "nome": "MASSETTI ANTONINO",
+        "nome2": "MASSETTI ANTONINO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 21,
+        "nome": "PISANO PAOLO",
+        "nome2": "PISANO PAOLO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 22,
+        "nome": "SPINA VITTORIO",
+        "nome2": "SPINA VITTORIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 23,
+        "nome": "SPINOZZI ALCEO",
+        "nome2": "SPINOZZI ALCEO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 7,
+        "nlistamacro": 7,
+        "nrcandi": 24,
+        "nome": "STROZZIERI STEFANO",
+        "nome2": "STROZZIERI STEFANO",
+        "blocco_ins": "N",
+        "note": null
+      }
+    ],
+    "ordinamento": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "8": {
+    "voti": {
+      "arrVotiCandidato": {
+        "1": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "2": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "3": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "4": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "5": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "6": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "7": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "8": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "9": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "10": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "11": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "12": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "13": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "14": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "15": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "16": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "17": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "18": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "19": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "20": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "21": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "22": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "23": {
+          "voti": 0,
+          "voti_nona": 0
+        }
+      },
+      "tot_sezio": 0,
+      "idpartizione": 0,
+      "nlista": 8,
+      "nlistamacro": 8,
+      "totVoti": 0,
+      "totVoti_nona": 0,
+      "totVotiLista": 0
+    },
+    "anagrafica": [
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 1,
+        "nome": "OLIVIERI LUIGI detto DOTTORE",
+        "nome2": "OLIVIERI LUIGI detto DOTTORE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 2,
+        "nome": "FIORAVANTI DANIELA",
+        "nome2": "FIORAVANTI DANIELA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 3,
+        "nome": "CAPOGRASSI LEONARDO",
+        "nome2": "CAPOGRASSI LEONARDO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 4,
+        "nome": "D'ANTONIO PAOLA",
+        "nome2": "D'ANTONIO PAOLA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 5,
+        "nome": "DI BIASE MARTINO DANILO",
+        "nome2": "DI BIASE MARTINO DANILO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 6,
+        "nome": "JAKUPI ROZANA",
+        "nome2": "JAKUPI ROZANA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 7,
+        "nome": "NALOCCA JOHN MARK",
+        "nome2": "NALOCCA JOHN MARK",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 8,
+        "nome": "GRASSI MICHELE",
+        "nome2": "GRASSI MICHELE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 9,
+        "nome": "SORA CARLA CECILIA",
+        "nome2": "SORA CARLA CECILIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 10,
+        "nome": "REA GENNARO",
+        "nome2": "REA GENNARO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 11,
+        "nome": "CENNINI LAURA",
+        "nome2": "CENNINI LAURA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 12,
+        "nome": "ALBERTINI MARIO",
+        "nome2": "ALBERTINI MARIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 13,
+        "nome": "DE BENEDICTIS FEDERICA",
+        "nome2": "DE BENEDICTIS FEDERICA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 14,
+        "nome": "PIUNTI RICCARDO",
+        "nome2": "PIUNTI RICCARDO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 15,
+        "nome": "CECCARANI CATERINA",
+        "nome2": "CECCARANI CATERINA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 16,
+        "nome": "MAURIELLO ANGELO",
+        "nome2": "MAURIELLO ANGELO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 17,
+        "nome": "ZYLLA SUSANNE",
+        "nome2": "ZYLLA SUSANNE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 18,
+        "nome": "GIUDICI MATTIA",
+        "nome2": "GIUDICI MATTIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 19,
+        "nome": "PIZII TIZIANA",
+        "nome2": "PIZII TIZIANA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 20,
+        "nome": "SAGGIOMO LUCIO",
+        "nome2": "SAGGIOMO LUCIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 21,
+        "nome": "ANGELINI ELIANA",
+        "nome2": "ANGELINI ELIANA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 22,
+        "nome": "HYKA EDLIRA",
+        "nome2": "HYKA EDLIRA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 8,
+        "nlistamacro": 8,
+        "nrcandi": 23,
+        "nome": "BAKAJ ANGELO",
+        "nome2": "BAKAJ ANGELO",
+        "blocco_ins": "N",
+        "note": null
+      }
+    ],
+    "ordinamento": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23
+    ]
+  },
+  "9": {
+    "voti": {
+      "arrVotiCandidato": {
+        "1": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "2": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "3": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "4": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "5": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "6": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "7": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "8": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "9": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "10": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "11": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "12": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "13": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "14": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "15": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "16": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "17": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "18": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "19": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "20": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "21": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "22": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "23": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "24": {
+          "voti": 0,
+          "voti_nona": 0
+        }
+      },
+      "tot_sezio": 0,
+      "idpartizione": 0,
+      "nlista": 9,
+      "nlistamacro": 9,
+      "totVoti": 0,
+      "totVoti_nona": 0,
+      "totVotiLista": 0
+    },
+    "anagrafica": [
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 1,
+        "nome": "OLIVIERI FILIPPO detto FILIPPO",
+        "nome2": "OLIVIERI FILIPPO detto FILIPPO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 2,
+        "nome": "PIUNTI PASQUALINO",
+        "nome2": "PIUNTI PASQUALINO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 3,
+        "nome": "AMABILI CHRISTIAN",
+        "nome2": "AMABILI CHRISTIAN",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 4,
+        "nome": "ANELLI LOREDANA ELENA",
+        "nome2": "ANELLI LOREDANA ELENA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 5,
+        "nome": "ANELLI PIETRO",
+        "nome2": "ANELLI PIETRO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 6,
+        "nome": "ARAPI FRANCESCA",
+        "nome2": "ARAPI FRANCESCA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 7,
+        "nome": "BAIOCCHI ANTONELLA",
+        "nome2": "BAIOCCHI ANTONELLA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 8,
+        "nome": "CARBONI EMANUELA",
+        "nome2": "CARBONI EMANUELA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 9,
+        "nome": "DE DONATIS MERCENESE",
+        "nome2": "DE DONATIS MERCENESE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 10,
+        "nome": "D'URSO ALFIO SALVATORE",
+        "nome2": "D'URSO ALFIO SALVATORE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 11,
+        "nome": "ESPOSITO MASSIMO",
+        "nome2": "ESPOSITO MASSIMO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 12,
+        "nome": "FAZIO GIUSEPPINA detta GIUSI",
+        "nome2": "FAZIO GIUSEPPINA detta GIUSI",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 13,
+        "nome": "FERRANTE GIUSEPPE",
+        "nome2": "FERRANTE GIUSEPPE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 14,
+        "nome": "LOGGI MARIA TERESA",
+        "nome2": "LOGGI MARIA TERESA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 15,
+        "nome": "PAOLETTI ROBERTO",
+        "nome2": "PAOLETTI ROBERTO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 16,
+        "nome": "PARADISO PIERLUIGI",
+        "nome2": "PARADISO PIERLUIGI",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 17,
+        "nome": "ROMANI VINCENZO",
+        "nome2": "ROMANI VINCENZO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 18,
+        "nome": "SALVATORI PATRIZIO",
+        "nome2": "SALVATORI PATRIZIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 19,
+        "nome": "SPACCASASSI LUCA",
+        "nome2": "SPACCASASSI LUCA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 20,
+        "nome": "SPAGNOLINI EMMANUEL",
+        "nome2": "SPAGNOLINI EMMANUEL",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 21,
+        "nome": "VIDILI TIZIANA",
+        "nome2": "VIDILI TIZIANA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 22,
+        "nome": "GUIDOTTI SAMUELE",
+        "nome2": "GUIDOTTI SAMUELE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 23,
+        "nome": "ALFANO GIULIA",
+        "nome2": "ALFANO GIULIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 9,
+        "nlistamacro": 9,
+        "nrcandi": 24,
+        "nome": "SALVI PASQUALINA",
+        "nome2": "SALVI PASQUALINA",
+        "blocco_ins": "N",
+        "note": null
+      }
+    ],
+    "ordinamento": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "10": {
+    "voti": {
+      "arrVotiCandidato": {
+        "1": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "2": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "3": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "4": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "5": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "6": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "7": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "8": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "9": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "10": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "11": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "12": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "13": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "14": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "15": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "16": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "17": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "18": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "19": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "20": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "21": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "22": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "23": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "24": {
+          "voti": 0,
+          "voti_nona": 0
+        }
+      },
+      "tot_sezio": 0,
+      "idpartizione": 0,
+      "nlista": 10,
+      "nlistamacro": 10,
+      "totVoti": 0,
+      "totVoti_nona": 0,
+      "totVotiLista": 0
+    },
+    "anagrafica": [
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 1,
+        "nome": "DI FRANCESCO ANTIMO",
+        "nome2": "DI FRANCESCO ANTIMO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 2,
+        "nome": "AMATUCCI ANTONIO",
+        "nome2": "AMATUCCI ANTONIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 3,
+        "nome": "ANTONELLI DANIEL",
+        "nome2": "ANTONELLI DANIEL",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 4,
+        "nome": "BACHETTI CARLO",
+        "nome2": "BACHETTI CARLO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 5,
+        "nome": "BROGLIA EDOARDO",
+        "nome2": "BROGLIA EDOARDO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 6,
+        "nome": "BRUNI RAFFAELE",
+        "nome2": "BRUNI RAFFAELE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 7,
+        "nome": "CAGGIANO VALERIO",
+        "nome2": "CAGGIANO VALERIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 8,
+        "nome": "CAPECCI AGNESE",
+        "nome2": "CAPECCI AGNESE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 9,
+        "nome": "CAPRIOTTI ANTONIO detto TONINO",
+        "nome2": "CAPRIOTTI ANTONIO detto TONINO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 10,
+        "nome": "CIUFICI ALDO",
+        "nome2": "CIUFICI ALDO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 11,
+        "nome": "CELESTE FRANCA",
+        "nome2": "CELESTE FRANCA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 12,
+        "nome": "COCCIA GIORGIA",
+        "nome2": "COCCIA GIORGIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 13,
+        "nome": "DE FULGENTIIS FABIOLA",
+        "nome2": "DE FULGENTIIS FABIOLA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 14,
+        "nome": "DIOMEDE DANIELE detto DIOMEDI",
+        "nome2": "DIOMEDE DANIELE detto DIOMEDI",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 15,
+        "nome": "ESPOSITO ALARICA",
+        "nome2": "ESPOSITO ALARICA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 16,
+        "nome": "GATTI GIANMARIA",
+        "nome2": "GATTI GIANMARIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 17,
+        "nome": "GIROLAMI ANDREA",
+        "nome2": "GIROLAMI ANDREA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 18,
+        "nome": "IAVARONE ALESSIA",
+        "nome2": "IAVARONE ALESSIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 19,
+        "nome": "MARINANGELI LORENZO",
+        "nome2": "MARINANGELI LORENZO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 20,
+        "nome": "PALAMIDESI PAOLA",
+        "nome2": "PALAMIDESI PAOLA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 21,
+        "nome": "RICCIARDI LUCIANO",
+        "nome2": "RICCIARDI LUCIANO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 22,
+        "nome": "RICCI GIORGIA",
+        "nome2": "RICCI GIORGIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 23,
+        "nome": "SANTORI MATTEO",
+        "nome2": "SANTORI MATTEO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 10,
+        "nlistamacro": 10,
+        "nrcandi": 24,
+        "nome": "ZANNI FABIO",
+        "nome2": "ZANNI FABIO",
+        "blocco_ins": "N",
+        "note": null
+      }
+    ],
+    "ordinamento": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "11": {
+    "voti": {
+      "arrVotiCandidato": {
+        "1": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "2": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "3": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "4": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "5": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "6": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "7": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "8": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "9": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "10": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "11": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "12": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "13": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "14": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "15": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "16": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "17": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "18": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "19": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "20": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "21": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "22": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "23": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "24": {
+          "voti": 0,
+          "voti_nona": 0
+        }
+      },
+      "tot_sezio": 0,
+      "idpartizione": 0,
+      "nlista": 11,
+      "nlistamacro": 11,
+      "totVoti": 0,
+      "totVoti_nona": 0,
+      "totVotiLista": 0
+    },
+    "anagrafica": [
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 1,
+        "nome": "ASSOLARI MARTINA",
+        "nome2": "ASSOLARI MARTINA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 2,
+        "nome": "CAMAIONI LAURA",
+        "nome2": "CAMAIONI LAURA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 3,
+        "nome": "CAMELA CATIUSCIA",
+        "nome2": "CAMELA CATIUSCIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 4,
+        "nome": "DEL ZOMPO FEDERICO",
+        "nome2": "DEL ZOMPO FEDERICO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 5,
+        "nome": "DE VECCHIS  SIMONE",
+        "nome2": "DE VECCHIS  SIMONE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 6,
+        "nome": "GIROLAMI MARIADELE",
+        "nome2": "GIROLAMI MARIADELE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 7,
+        "nome": "MASSI CLAUDIO",
+        "nome2": "MASSI CLAUDIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 8,
+        "nome": "MICALETTI LUDOVICA",
+        "nome2": "MICALETTI LUDOVICA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 9,
+        "nome": "MICOZZI GINO",
+        "nome2": "MICOZZI GINO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 10,
+        "nome": "MUZI STEFANO",
+        "nome2": "MUZI STEFANO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 11,
+        "nome": "NERONI LUIGI",
+        "nome2": "NERONI LUIGI",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 12,
+        "nome": "PAGLIA EMANUELE",
+        "nome2": "PAGLIA EMANUELE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 13,
+        "nome": "PAPPALARDO MARIO",
+        "nome2": "PAPPALARDO MARIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 14,
+        "nome": "PARRINELLO VINCENZO",
+        "nome2": "PARRINELLO VINCENZO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 15,
+        "nome": "PASQUALI UMBERTO",
+        "nome2": "PASQUALI UMBERTO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 16,
+        "nome": "PICCIUTO LOREDANA",
+        "nome2": "PICCIUTO LOREDANA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 17,
+        "nome": "PIGNOTTI VALERIO",
+        "nome2": "PIGNOTTI VALERIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 18,
+        "nome": "REMIA ALEX",
+        "nome2": "REMIA ALEX",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 19,
+        "nome": "ROSSI JOYS",
+        "nome2": "ROSSI JOYS",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 20,
+        "nome": "SCHIAVI MONICA",
+        "nome2": "SCHIAVI MONICA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 21,
+        "nome": "SOCCIO ANGELA",
+        "nome2": "SOCCIO ANGELA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 22,
+        "nome": "SPINOZZI PAOLO",
+        "nome2": "SPINOZZI PAOLO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 23,
+        "nome": "URRIANI ELLIS",
+        "nome2": "URRIANI ELLIS",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 11,
+        "nlistamacro": 11,
+        "nrcandi": 24,
+        "nome": "VESPERINI ROBERTO",
+        "nome2": "VESPERINI ROBERTO",
+        "blocco_ins": "N",
+        "note": null
+      }
+    ],
+    "ordinamento": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "12": {
+    "voti": {
+      "arrVotiCandidato": {
+        "1": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "2": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "3": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "4": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "5": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "6": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "7": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "8": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "9": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "10": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "11": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "12": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "13": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "14": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "15": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "16": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "17": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "18": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "19": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "20": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "21": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "22": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "23": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "24": {
+          "voti": 0,
+          "voti_nona": 0
+        }
+      },
+      "tot_sezio": 0,
+      "idpartizione": 0,
+      "nlista": 12,
+      "nlistamacro": 12,
+      "totVoti": 0,
+      "totVoti_nona": 0,
+      "totVotiLista": 0
+    },
+    "anagrafica": [
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 1,
+        "nome": "ALFONSI SIMONA detta VIGNOLI",
+        "nome2": "ALFONSI SIMONA detta VIGNOLI",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 2,
+        "nome": "ANGELINI MANUEL",
+        "nome2": "ANGELINI MANUEL",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 3,
+        "nome": "BACHETTI SPURIO GIOVANNI",
+        "nome2": "BACHETTI SPURIO GIOVANNI",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 4,
+        "nome": "BAGALINI NICOLO'",
+        "nome2": "BAGALINI NICOLO'",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 5,
+        "nome": "CAVA LUIGI",
+        "nome2": "CAVA LUIGI",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 6,
+        "nome": "CITERONI GAIA",
+        "nome2": "CITERONI GAIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 7,
+        "nome": "D'ERCOLE PATRIZIA",
+        "nome2": "D'ERCOLE PATRIZIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 8,
+        "nome": "DE ANGELIS CLAUDIA MARIA",
+        "nome2": "DE ANGELIS CLAUDIA MARIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 9,
+        "nome": "DI GIACINTO GIUSEPPINA",
+        "nome2": "DI GIACINTO GIUSEPPINA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 10,
+        "nome": "DI MURO GIUSTINO",
+        "nome2": "DI MURO GIUSTINO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 11,
+        "nome": "DI RENZO DAVIDE",
+        "nome2": "DI RENZO DAVIDE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 12,
+        "nome": "DI SALVATORE VERUSKA PATRIZIA",
+        "nome2": "DI SALVATORE VERUSKA PATRIZIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 13,
+        "nome": "FASCIANI GABRIELLA",
+        "nome2": "FASCIANI GABRIELLA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 14,
+        "nome": "FORMENTINI GIUSEPPE",
+        "nome2": "FORMENTINI GIUSEPPE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 15,
+        "nome": "GABRIELLI BRUNO",
+        "nome2": "GABRIELLI BRUNO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 16,
+        "nome": "GUARINI ANDREA",
+        "nome2": "GUARINI ANDREA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 17,
+        "nome": "ILLUMINATI  MONICA",
+        "nome2": "ILLUMINATI  MONICA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 18,
+        "nome": "MARCHEGIANI ANNALISA",
+        "nome2": "MARCHEGIANI ANNALISA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 19,
+        "nome": "MARZONETTI PASQUALINO",
+        "nome2": "MARZONETTI PASQUALINO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 20,
+        "nome": "PIUNTI NICOLINO",
+        "nome2": "PIUNTI NICOLINO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 21,
+        "nome": "RE LUCA",
+        "nome2": "RE LUCA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 22,
+        "nome": "TASSOTTI PIERLUIGI",
+        "nome2": "TASSOTTI PIERLUIGI",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 23,
+        "nome": "TRAINI ANDREA",
+        "nome2": "TRAINI ANDREA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 12,
+        "nlistamacro": 12,
+        "nrcandi": 24,
+        "nome": "TROLI PIERFRANCESCO",
+        "nome2": "TROLI PIERFRANCESCO",
+        "blocco_ins": "N",
+        "note": null
+      }
+    ],
+    "ordinamento": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "13": {
+    "voti": {
+      "arrVotiCandidato": {
+        "1": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "2": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "3": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "4": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "5": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "6": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "7": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "8": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "9": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "10": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "11": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "12": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "13": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "14": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "15": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "16": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "17": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "18": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "19": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "20": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "21": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "22": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "23": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "24": {
+          "voti": 0,
+          "voti_nona": 0
+        }
+      },
+      "tot_sezio": 0,
+      "idpartizione": 0,
+      "nlista": 13,
+      "nlistamacro": 13,
+      "totVoti": 0,
+      "totVoti_nona": 0,
+      "totVotiLista": 0
+    },
+    "anagrafica": [
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 1,
+        "nome": "BACHETTI CLAUDIA",
+        "nome2": "BACHETTI CLAUDIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 2,
+        "nome": "BELLEGGIA GABRIELE",
+        "nome2": "BELLEGGIA GABRIELE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 3,
+        "nome": "BIANCONI ELVEZIO",
+        "nome2": "BIANCONI ELVEZIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 4,
+        "nome": "BOLLETTINI MARCO",
+        "nome2": "BOLLETTINI MARCO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 5,
+        "nome": "CAMAIONI STEFANO",
+        "nome2": "CAMAIONI STEFANO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 6,
+        "nome": "CAMPANELLI CINZIA",
+        "nome2": "CAMPANELLI CINZIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 7,
+        "nome": "CAPRIOTTI FABRIZIO",
+        "nome2": "CAPRIOTTI FABRIZIO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 8,
+        "nome": "FACCHINI  LARA",
+        "nome2": "FACCHINI  LARA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 9,
+        "nome": "GENOVESE ALESSANDRO ZACCARIA",
+        "nome2": "GENOVESE ALESSANDRO ZACCARIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 10,
+        "nome": "GJINI RIGELSA",
+        "nome2": "GJINI RIGELSA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 11,
+        "nome": "LELLI MARILENA",
+        "nome2": "LELLI MARILENA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 12,
+        "nome": "LISA ANDREA",
+        "nome2": "LISA ANDREA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 13,
+        "nome": "NOVELLI DOMENICO",
+        "nome2": "NOVELLI DOMENICO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 14,
+        "nome": "ORLANDI LUIGI",
+        "nome2": "ORLANDI LUIGI",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 15,
+        "nome": "PASQUALINI GIANLUCA",
+        "nome2": "PASQUALINI GIANLUCA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 16,
+        "nome": "PELLEI DOMENICO",
+        "nome2": "PELLEI DOMENICO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 17,
+        "nome": "PIUNTI ELENA",
+        "nome2": "PIUNTI ELENA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 18,
+        "nome": "PULCINI ANNA",
+        "nome2": "PULCINI ANNA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 19,
+        "nome": "RELLA MARIKA",
+        "nome2": "RELLA MARIKA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 20,
+        "nome": "SAVINO ALESSANDRO",
+        "nome2": "SAVINO ALESSANDRO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 21,
+        "nome": "SICILIANO SARA MARIA",
+        "nome2": "SICILIANO SARA MARIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 22,
+        "nome": "SPINA FIORE",
+        "nome2": "SPINA FIORE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 23,
+        "nome": "URBANELLI PAOLO",
+        "nome2": "URBANELLI PAOLO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 13,
+        "nlistamacro": 13,
+        "nrcandi": 24,
+        "nome": "MANCINI SANDRA",
+        "nome2": "MANCINI SANDRA",
+        "blocco_ins": "N",
+        "note": null
+      }
+    ],
+    "ordinamento": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  },
+  "14": {
+    "voti": {
+      "arrVotiCandidato": {
+        "1": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "2": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "3": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "4": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "5": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "6": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "7": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "8": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "9": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "10": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "11": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "12": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "13": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "14": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "15": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "16": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "17": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "18": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "19": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "20": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "21": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "22": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "23": {
+          "voti": 0,
+          "voti_nona": 0
+        },
+        "24": {
+          "voti": 0,
+          "voti_nona": 0
+        }
+      },
+      "tot_sezio": 0,
+      "idpartizione": 0,
+      "nlista": 14,
+      "nlistamacro": 14,
+      "totVoti": 0,
+      "totVoti_nona": 0,
+      "totVotiLista": 0
+    },
+    "anagrafica": [
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 1,
+        "nome": "BOLLETTINI ALESSANDRO MARIA detto BOLLE",
+        "nome2": "BOLLETTINI ALESSANDRO MARIA detto BOLLE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 2,
+        "nome": "DE ASCANIIS BARBARA",
+        "nome2": "DE ASCANIIS BARBARA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 3,
+        "nome": "AMABILI MADDALENA detta MILENA",
+        "nome2": "AMABILI MADDALENA detta MILENA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 4,
+        "nome": "ARMILLOTTA DAVIDE",
+        "nome2": "ARMILLOTTA DAVIDE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 5,
+        "nome": "CHIRRA BRUNO",
+        "nome2": "CHIRRA BRUNO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 6,
+        "nome": "D'ANGELO PATRIZIA",
+        "nome2": "D'ANGELO PATRIZIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 7,
+        "nome": "DE ANGELIS CHRISTIAN",
+        "nome2": "DE ANGELIS CHRISTIAN",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 8,
+        "nome": "ESPOSITO RAFFAELE",
+        "nome2": "ESPOSITO RAFFAELE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 9,
+        "nome": "FLAIANI FEDERICA",
+        "nome2": "FLAIANI FEDERICA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 10,
+        "nome": "FLOREA GHEORGHE COSTIN",
+        "nome2": "FLOREA GHEORGHE COSTIN",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 11,
+        "nome": "GRILLI GIULIA",
+        "nome2": "GRILLI GIULIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 12,
+        "nome": "GUIDOTTI MARILENA",
+        "nome2": "GUIDOTTI MARILENA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 13,
+        "nome": "FOSCHI LEONARDO",
+        "nome2": "FOSCHI LEONARDO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 14,
+        "nome": "LUCIANI PAOLO",
+        "nome2": "LUCIANI PAOLO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 15,
+        "nome": "MARZI DANIELE",
+        "nome2": "MARZI DANIELE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 16,
+        "nome": "MASCITTI VIRGINIA",
+        "nome2": "MASCITTI VIRGINIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 17,
+        "nome": "OSTI ALBERTO",
+        "nome2": "OSTI ALBERTO",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 18,
+        "nome": "PETTINARI VALERIA",
+        "nome2": "PETTINARI VALERIA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 19,
+        "nome": "SCIARRA MICHELLE",
+        "nome2": "SCIARRA MICHELLE",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 20,
+        "nome": "SGHERZI SARA",
+        "nome2": "SGHERZI SARA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 21,
+        "nome": "SGRILLI SERENA",
+        "nome2": "SGRILLI SERENA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 22,
+        "nome": "PASQUALINI SERENA",
+        "nome2": "PASQUALINI SERENA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 23,
+        "nome": "TIMOFTI DOINA",
+        "nome2": "TIMOFTI DOINA",
+        "blocco_ins": "N",
+        "note": null
+      },
+      {
+        "nlista": 14,
+        "nlistamacro": 14,
+        "nrcandi": 24,
+        "nome": "TOLENTINO ANNA VALERIA",
+        "nome2": "TOLENTINO ANNA VALERIA",
+        "blocco_ins": "N",
+        "note": null
+      }
+    ],
+    "ordinamento": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24
+    ]
+  }
+}
