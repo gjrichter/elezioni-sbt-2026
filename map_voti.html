@@ -7,70 +7,120 @@
   <style>
     html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; font-family: sans-serif; }
     #map { width: 100%; height: 100%; }
+    #loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+               background: rgba(255,255,255,0.9); padding: 1em 2em; border-radius: 8px;
+               font-size: 1.1em; z-index: 9999; }
   </style>
 </head>
 <body>
+<div id="loading">⟳ Caricamento risultati…</div>
 <div id="map"></div>
 <script>
 
-var RAW = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/sedi_risultati.geojson";
+var SEDI_URL  = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/sedi_sezioni_elettorali.geojson";
+var DATA_BASE = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/sezioni/";
+var N_SEZ     = 43;
 
-// Fede=rosso, D'Andrea=giallo, Mozzoni=blu
 var COLORS = ["#e74c3c", "#f1c40f", "#2980b9"];
 
-fetch(RAW)
-  .then(function(r) { return r.json(); })
-  .then(function(gj) {
-
-    // normalsizevalue = valore che corrisponde alla dimensione "normale"
-    // lo settiamo al totale voti atteso per sede (~ 1000), aggiornabile post-scrutinio
-    var maxVoti = Math.max.apply(null,
-      gj.features.map(function(f) { return f.properties.tot_voti || 1; })
-    );
-
-    var myMap = ixmaps.Map("map", {
-      mapType: "VT_TONER_LITE",
-      mode:    "info",
-      legend:  "open",
-      tools:   true
-    })
-    .view({ center: { lat: 42.930, lng: 13.887 }, zoom: 13 })
-    .options({
-      objectscaling:   "dynamic",
-      normalSizeScale: "80000",
-      basemapopacity:  0.55,
-      flushChartDraw:  1000000
+function loadSezioneVoti(n) {
+  var pad = String(n).padStart(3, "0");
+  return fetch(DATA_BASE + pad + "/raggrup.json")
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      var arr = (d.voti || {}).arrVotiRaggrup || {};
+      return {
+        sezione: n,
+        v1: (arr["1"] || {}).voti || 0,
+        v2: (arr["2"] || {}).voti || 0,
+        v3: (arr["3"] || {}).voti || 0
+      };
     });
+}
 
-    myMap.layer("voti")
-      .data({ obj: gj, type: "geojson" })
-      .binding({
-        geo:   "geometry",
-        value: "voti_1|voti_2|voti_3",
-        title: "nome"
-      })
-      .type("CHART|BAR|STACKED|SIZE|GRID|BOX|VALUES")
-      .style({
-        colorscheme:     COLORS,
-        normalsizevalue: String(Math.max(maxVoti, 1000)),
-        scale:           1,
-        fillopacity:     0.88,
-        gridx:           3,
-        showdata:        "true"
-      })
-      .meta({
-        name:    "voti-theme",
-        tooltip: "<b>{{nome}}</b><br>{{indirizzo}}<br>" +
-                 "Sezioni: {{sezioni}}<br><br>" +
-                 "Fede: <b>{{voti_1}}</b> voti<br>" +
-                 "D'Andrea: <b>{{voti_2}}</b> voti<br>" +
-                 "Mozzoni: <b>{{voti_3}}</b> voti<br>" +
-                 "Totale: <b>{{tot_voti}}</b>"
-      })
-      .title("Voti per candidato")
-      .define();
+var promises = [fetch(SEDI_URL).then(function(r) { return r.json(); })];
+for (var i = 1; i <= N_SEZ; i++) promises.push(loadSezioneVoti(i));
 
+Promise.all(promises).then(function(results) {
+  var sediGj  = results[0];
+  var sezVoti = results.slice(1);
+
+  var votiIdx = {};
+  sezVoti.forEach(function(s) { votiIdx[s.sezione] = s; });
+
+  var sediData = sediGj.features.map(function(feat) {
+    var p   = feat.properties;
+    var v1 = 0, v2 = 0, v3 = 0;
+    for (var s = p.sez_da; s <= p.sez_a; s++) {
+      var v = votiIdx[s] || {};
+      v1 += v.v1 || 0;
+      v2 += v.v2 || 0;
+      v3 += v.v3 || 0;
+    }
+    return {
+      sez_da:   p.sez_da,
+      voti_1:   v1,
+      voti_2:   v2,
+      voti_3:   v3,
+      tot_voti: v1 + v2 + v3
+    };
   });
+
+  // normalsizevalue = max voti tra le sedi (scala dinamica)
+  var maxVoti = Math.max.apply(null, sediData.map(function(d) { return d.tot_voti || 1; }));
+
+  document.getElementById("loading").style.display = "none";
+
+  var myMap = ixmaps.Map("map", {
+    mapType: "VT_TONER_LITE",
+    mode:    "info",
+    legend:  "open",
+    tools:   true
+  })
+  .view({ center: { lat: 42.930, lng: 13.887 }, zoom: 13 })
+  .options({
+    objectscaling:   "dynamic",
+    normalSizeScale: "80000",
+    basemapopacity:  0.55,
+    flushChartDraw:  1000000
+  });
+
+  // FEATURE base: sedi GeoJSON, id = sez_da
+  myMap.layer("sedi")
+    .data({ obj: sediGj, type: "geojson" })
+    .binding({ geo: "geometry", id: "sez_da", title: "nome" })
+    .type("FEATURE|SILENT")
+    .style({ colorscheme: ["#ccc"], fillopacity: 0.1, showdata: "true" })
+    .define();
+
+  // Overlay voti assoluti: lookup su sez_da
+  myMap.layer("sedi")
+    .data({ obj: sediData, type: "json" })
+    .binding({ lookup: "sez_da", value: "voti_1|voti_2|voti_3", title: "nome" })
+    .type("CHART|BAR|STACKED|SIZE|GRID|BOX|VALUES")
+    .style({
+      colorscheme:     COLORS,
+      normalsizevalue: String(Math.max(maxVoti, 1000)),
+      scale:           1,
+      fillopacity:     0.88,
+      gridx:           3,
+      showdata:        "true"
+    })
+    .meta({
+      name:    "voti-theme",
+      tooltip: "<b>{{nome}}</b><br>{{indirizzo}}<br>" +
+               "Sezioni: {{sezioni}}<br>" +
+               "Fede: <b>{{voti_1}}</b><br>" +
+               "D'Andrea: <b>{{voti_2}}</b><br>" +
+               "Mozzoni: <b>{{voti_3}}</b><br>" +
+               "Totale: <b>{{tot_voti}}</b>"
+    })
+    .title("Voti per candidato")
+    .define();
+
+}).catch(function(e) {
+  document.getElementById("loading").textContent = "✗ Errore: " + e.message;
+});
 
 </script>
 </body>

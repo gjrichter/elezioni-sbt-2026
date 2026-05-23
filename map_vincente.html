@@ -7,66 +7,116 @@
   <style>
     html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; font-family: sans-serif; }
     #map { width: 100%; height: 100%; }
+    #loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+               background: rgba(255,255,255,0.9); padding: 1em 2em; border-radius: 8px;
+               font-size: 1.1em; z-index: 9999; }
   </style>
 </head>
 <body>
+<div id="loading">⟳ Caricamento risultati…</div>
 <div id="map"></div>
 <script>
 
-var RAW = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/sezioni_vincente.geojson";
+var GEO_URL  = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/sezioni_con_sede.geojson";
+var DATA_BASE = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/sezioni/";
+var N_SEZ    = 43;
 
-// Colori: Fede=rosso, D'Andrea=giallo, Mozzoni=blu, nessuno/parità=grigio
+// Colori: 1=Fede (rosso), 2=D'Andrea (giallo), 3=Mozzoni (blu), 0=nessuno (grigio)
 var COLORS = ["#e74c3c", "#f1c40f", "#2980b9", "#bdc3c7"];
+var NOMI   = { "1": "Fede", "2": "D'Andrea", "3": "Mozzoni", "0": "—" };
 
-fetch(RAW)
-  .then(function(r) { return r.json(); })
-  .then(function(gj) {
-
-    var myMap = ixmaps.Map("map", {
-      mapType: "VT_TONER_LITE",
-      mode:    "info",
-      legend:  "open",
-      tools:   true
-    })
-    .view({ center: { lat: 42.930, lng: 13.887 }, zoom: 13 })
-    .options({
-      objectscaling:   "dynamic",
-      normalSizeScale: "80000",
-      basemapopacity:  0.55,
-      flushChartDraw:  1000000
+// ─── 1. Carica tutti i file raggrup per sezione ────────────────────────────
+function loadSezioneRaggrup(n) {
+  var pad = String(n).padStart(3, "0");
+  return fetch(DATA_BASE + pad + "/raggrup.json")
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      var arr = (d.voti || {}).arrVotiRaggrup || {};
+      var v1 = (arr["1"] || {}).voti || 0;
+      var v2 = (arr["2"] || {}).voti || 0;
+      var v3 = (arr["3"] || {}).voti || 0;
+      var tot = v1 + v2 + v3;
+      var vs  = "0";
+      if (tot > 0) {
+        if      (v1 > v2 && v1 > v3) vs = "1";
+        else if (v2 > v1 && v2 > v3) vs = "2";
+        else if (v3 > v1 && v3 > v2) vs = "3";
+      }
+      return {
+        sezione:     n,
+        voti_1:      v1,
+        voti_2:      v2,
+        voti_3:      v3,
+        tot_voti:    tot,
+        vincente_s:  vs,
+        vincente_nome: NOMI[vs]
+      };
     });
+}
 
-    myMap.layer("vincente")
-      .data({ obj: gj, type: "geojson" })
-      .binding({
-        geo:   "geometry",
-        value: "vincente_s",
-        title: "sezione"
-      })
-      .type("CHART|SYMBOL|CATEGORICAL|MULTIQUAD|VALUES|INLINETEXT")
-      .style({
-        colorscheme:     COLORS,
-        values:          ["1", "2", "3", "0"],
-        normalsizevalue: "1",
-        scale:           0.4,
-        fillopacity:     0.88,
-        linecolor:       "#fff",
-        linewidth:       1,
-        titlefield:      "sezione",
-        valuefield:      "sezione",
-        showdata:        "true"
-      })
-      .meta({
-        name:    "vincente-theme",
-        tooltip: "Sezione <b>{{sezione}}</b><br>" +
-                 "Vincente: <b>{{vincente_nome}}</b><br>" +
-                 "Fede: {{voti_1}} &nbsp; D'Andrea: {{voti_2}} &nbsp; Mozzoni: {{voti_3}}<br>" +
-                 "Totale: {{tot_voti}}"
-      })
-      .title("Candidato vincente")
-      .define();
+// ─── 2. Carica geometria + risultati in parallelo ─────────────────────────
+var promises = [fetch(GEO_URL).then(function(r) { return r.json(); })];
+for (var i = 1; i <= N_SEZ; i++) promises.push(loadSezioneRaggrup(i));
 
+Promise.all(promises).then(function(results) {
+  var gj       = results[0];
+  var flatData = results.slice(1);   // array di {sezione, voti_1, …, vincente_s}
+
+  document.getElementById("loading").style.display = "none";
+
+  // ─── 3. Mappa ixMaps ────────────────────────────────────────────────────
+  var myMap = ixmaps.Map("map", {
+    mapType: "VT_TONER_LITE",
+    mode:    "info",
+    legend:  "open",
+    tools:   true
+  })
+  .view({ center: { lat: 42.930, lng: 13.887 }, zoom: 13 })
+  .options({
+    objectscaling:   "dynamic",
+    normalSizeScale: "80000",
+    basemapopacity:  0.55,
+    flushChartDraw:  1000000
   });
+
+  // Layer base FEATURE: geometria di riferimento, id = sezione
+  myMap.layer("sezioni")
+    .data({ obj: gj, type: "geojson" })
+    .binding({ geo: "geometry", id: "sezione", title: "sezione" })
+    .type("FEATURE|SILENT")
+    .style({ colorscheme: ["#ccc"], fillopacity: 0.15, showdata: "true" })
+    .define();
+
+  // Overlay risultati: stesso layer name → join su sezione
+  myMap.layer("sezioni")
+    .data({ obj: flatData, type: "json" })
+    .binding({ lookup: "sezione", value: "vincente_s", title: "sezione" })
+    .type("CHART|SYMBOL|CATEGORICAL|MULTIQUAD|VALUES|INLINETEXT")
+    .style({
+      colorscheme:     COLORS,
+      values:          ["1", "2", "3", "0"],
+      normalsizevalue: "1",
+      scale:           0.4,
+      fillopacity:     0.88,
+      linecolor:       "#fff",
+      linewidth:       1,
+      titlefield:      "sezione",
+      valuefield:      "sezione",
+      showdata:        "true"
+    })
+    .meta({
+      name:    "vincente-theme",
+      tooltip: "Sezione <b>{{sezione}}</b><br>" +
+               "Vincente: <b>{{vincente_nome}}</b><br>" +
+               "Fede: {{voti_1}} &nbsp; D'Andrea: {{voti_2}} &nbsp; Mozzoni: {{voti_3}}<br>" +
+               "Totale: {{tot_voti}}"
+    })
+    .title("Candidato vincente")
+    .define();
+
+}).catch(function(e) {
+  document.getElementById("loading").textContent = "✗ Errore: " + e.message;
+});
 
 </script>
 </body>
