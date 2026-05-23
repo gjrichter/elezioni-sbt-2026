@@ -14,6 +14,8 @@ on:
 jobs:
   fetch:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write   # necessario per git push dei dati
     # evita run concorrenti se il job precedente è ancora in corso
     concurrency:
       group: scrutinio-sbt
