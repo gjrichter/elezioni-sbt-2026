@@ -1,0 +1,1167 @@
+{
+  "type": "FeatureCollection",
+  "name": "Risultati per Sezione – SBdT 2026",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.87887,
+          42.95155
+        ]
+      },
+      "properties": {
+        "sezione": 1,
+        "collegio": 1,
+        "sede": "Scuola \"G. Sacconi\"",
+        "indirizzo": "Via Leopardi 25",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.87887,
+          42.95155
+        ]
+      },
+      "properties": {
+        "sezione": 2,
+        "collegio": 1,
+        "sede": "Scuola \"G. Sacconi\"",
+        "indirizzo": "Via Leopardi 25",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.87887,
+          42.95155
+        ]
+      },
+      "properties": {
+        "sezione": 3,
+        "collegio": 1,
+        "sede": "Scuola \"G. Sacconi\"",
+        "indirizzo": "Via Leopardi 25",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.87887,
+          42.95155
+        ]
+      },
+      "properties": {
+        "sezione": 4,
+        "collegio": 1,
+        "sede": "Scuola \"G. Sacconi\"",
+        "indirizzo": "Via Leopardi 25",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.87617,
+          42.95868
+        ]
+      },
+      "properties": {
+        "sezione": 5,
+        "collegio": 1,
+        "sede": "Scuola \"A. Manzoni\"",
+        "indirizzo": "Via Aleardi 12",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.87617,
+          42.95868
+        ]
+      },
+      "properties": {
+        "sezione": 6,
+        "collegio": 1,
+        "sede": "Scuola \"A. Manzoni\"",
+        "indirizzo": "Via Aleardi 12",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.87617,
+          42.95868
+        ]
+      },
+      "properties": {
+        "sezione": 7,
+        "collegio": 1,
+        "sede": "Scuola \"A. Manzoni\"",
+        "indirizzo": "Via Aleardi 12",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.87617,
+          42.95868
+        ]
+      },
+      "properties": {
+        "sezione": 8,
+        "collegio": 1,
+        "sede": "Scuola \"A. Manzoni\"",
+        "indirizzo": "Via Aleardi 12",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.87353,
+          42.95172
+        ]
+      },
+      "properties": {
+        "sezione": 9,
+        "collegio": 2,
+        "sede": "Scuola \"A. Marchegiani\"",
+        "indirizzo": "Via Impastato 12",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.87353,
+          42.95172
+        ]
+      },
+      "properties": {
+        "sezione": 10,
+        "collegio": 2,
+        "sede": "Scuola \"A. Marchegiani\"",
+        "indirizzo": "Via Impastato 12",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.87353,
+          42.95172
+        ]
+      },
+      "properties": {
+        "sezione": 11,
+        "collegio": 2,
+        "sede": "Scuola \"A. Marchegiani\"",
+        "indirizzo": "Via Impastato 12",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.87353,
+          42.95172
+        ]
+      },
+      "properties": {
+        "sezione": 12,
+        "collegio": 2,
+        "sede": "Scuola \"A. Marchegiani\"",
+        "indirizzo": "Via Impastato 12",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.87953,
+          42.94437
+        ]
+      },
+      "properties": {
+        "sezione": 13,
+        "collegio": 2,
+        "sede": "Ospedale Civile",
+        "indirizzo": "Via S. Pellico 36",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.88562,
+          42.94278
+        ]
+      },
+      "properties": {
+        "sezione": 14,
+        "collegio": 2,
+        "sede": "Scuola \"B. Piacentini\"",
+        "indirizzo": "Via Asiago 142",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.88562,
+          42.94278
+        ]
+      },
+      "properties": {
+        "sezione": 15,
+        "collegio": 2,
+        "sede": "Scuola \"B. Piacentini\"",
+        "indirizzo": "Via Asiago 142",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.88562,
+          42.94278
+        ]
+      },
+      "properties": {
+        "sezione": 16,
+        "collegio": 2,
+        "sede": "Scuola \"B. Piacentini\"",
+        "indirizzo": "Via Asiago 142",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.88562,
+          42.94278
+        ]
+      },
+      "properties": {
+        "sezione": 17,
+        "collegio": 2,
+        "sede": "Scuola \"B. Piacentini\"",
+        "indirizzo": "Via Asiago 142",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.88562,
+          42.94278
+        ]
+      },
+      "properties": {
+        "sezione": 18,
+        "collegio": 2,
+        "sede": "Scuola \"B. Piacentini\"",
+        "indirizzo": "Via Asiago 142",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.88562,
+          42.94278
+        ]
+      },
+      "properties": {
+        "sezione": 19,
+        "collegio": 2,
+        "sede": "Scuola \"B. Piacentini\"",
+        "indirizzo": "Via Asiago 142",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.88512,
+          42.94049
+        ]
+      },
+      "properties": {
+        "sezione": 20,
+        "collegio": 3,
+        "sede": "Scuola \"M. Curzi\" (ex Tribunale)",
+        "indirizzo": "Piazza C.A. Dalla Chiesa 2",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.88512,
+          42.94049
+        ]
+      },
+      "properties": {
+        "sezione": 21,
+        "collegio": 3,
+        "sede": "Scuola \"M. Curzi\" (ex Tribunale)",
+        "indirizzo": "Piazza C.A. Dalla Chiesa 2",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.88512,
+          42.94049
+        ]
+      },
+      "properties": {
+        "sezione": 22,
+        "collegio": 3,
+        "sede": "Scuola \"M. Curzi\" (ex Tribunale)",
+        "indirizzo": "Piazza C.A. Dalla Chiesa 2",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.88512,
+          42.94049
+        ]
+      },
+      "properties": {
+        "sezione": 23,
+        "collegio": 3,
+        "sede": "Scuola \"M. Curzi\" (ex Tribunale)",
+        "indirizzo": "Piazza C.A. Dalla Chiesa 2",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.88512,
+          42.94049
+        ]
+      },
+      "properties": {
+        "sezione": 24,
+        "collegio": 3,
+        "sede": "Scuola \"M. Curzi\" (ex Tribunale)",
+        "indirizzo": "Piazza C.A. Dalla Chiesa 2",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.88512,
+          42.94049
+        ]
+      },
+      "properties": {
+        "sezione": 25,
+        "collegio": 3,
+        "sede": "Scuola \"M. Curzi\" (ex Tribunale)",
+        "indirizzo": "Piazza C.A. Dalla Chiesa 2",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.88512,
+          42.94049
+        ]
+      },
+      "properties": {
+        "sezione": 26,
+        "collegio": 3,
+        "sede": "Scuola \"M. Curzi\" (ex Tribunale)",
+        "indirizzo": "Piazza C.A. Dalla Chiesa 1",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.88512,
+          42.94049
+        ]
+      },
+      "properties": {
+        "sezione": 27,
+        "collegio": 3,
+        "sede": "Scuola \"M. Curzi\" (ex Tribunale)",
+        "indirizzo": "Piazza C.A. Dalla Chiesa 1",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.88512,
+          42.94049
+        ]
+      },
+      "properties": {
+        "sezione": 28,
+        "collegio": 3,
+        "sede": "Scuola \"M. Curzi\" (ex Tribunale)",
+        "indirizzo": "Piazza C.A. Dalla Chiesa 1",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.887769857732765,
+          42.92247579426879
+        ]
+      },
+      "properties": {
+        "sezione": 29,
+        "collegio": 4,
+        "sede": "Scuola \"Ragnola\"",
+        "indirizzo": "Via Montevergine 11",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.887769857732765,
+          42.92247579426879
+        ]
+      },
+      "properties": {
+        "sezione": 30,
+        "collegio": 4,
+        "sede": "Scuola \"Ragnola\"",
+        "indirizzo": "Via Montevergine 11",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.887769857732765,
+          42.92247579426879
+        ]
+      },
+      "properties": {
+        "sezione": 31,
+        "collegio": 4,
+        "sede": "Scuola \"Ragnola\"",
+        "indirizzo": "Via Montevergine 11",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.90231,
+          42.91197
+        ]
+      },
+      "properties": {
+        "sezione": 32,
+        "collegio": 4,
+        "sede": "Scuola \"G. Spalvieri\"",
+        "indirizzo": "Via Colleoni 34",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.90231,
+          42.91197
+        ]
+      },
+      "properties": {
+        "sezione": 33,
+        "collegio": 4,
+        "sede": "Scuola \"G. Spalvieri\"",
+        "indirizzo": "Via Colleoni 34",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.90231,
+          42.91197
+        ]
+      },
+      "properties": {
+        "sezione": 34,
+        "collegio": 4,
+        "sede": "Scuola \"G. Spalvieri\"",
+        "indirizzo": "Via Colleoni 34",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.90231,
+          42.91197
+        ]
+      },
+      "properties": {
+        "sezione": 35,
+        "collegio": 4,
+        "sede": "Scuola \"G. Spalvieri\"",
+        "indirizzo": "Via Colleoni 34",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.90231,
+          42.91197
+        ]
+      },
+      "properties": {
+        "sezione": 36,
+        "collegio": 4,
+        "sede": "Scuola \"G. Spalvieri\"",
+        "indirizzo": "Via Colleoni 34",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.89303,
+          42.90984
+        ]
+      },
+      "properties": {
+        "sezione": 37,
+        "collegio": 5,
+        "sede": "Scuola \"L. Cappella\"",
+        "indirizzo": "Piazza E. Setti Carraro 5",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.89303,
+          42.90984
+        ]
+      },
+      "properties": {
+        "sezione": 38,
+        "collegio": 5,
+        "sede": "Scuola \"L. Cappella\"",
+        "indirizzo": "Piazza E. Setti Carraro 5",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.89303,
+          42.90984
+        ]
+      },
+      "properties": {
+        "sezione": 39,
+        "collegio": 5,
+        "sede": "Scuola \"L. Cappella\"",
+        "indirizzo": "Piazza E. Setti Carraro 5",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.89303,
+          42.90984
+        ]
+      },
+      "properties": {
+        "sezione": 40,
+        "collegio": 5,
+        "sede": "Scuola \"L. Cappella\"",
+        "indirizzo": "Piazza E. Setti Carraro 5",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.89303,
+          42.90984
+        ]
+      },
+      "properties": {
+        "sezione": 41,
+        "collegio": 5,
+        "sede": "Scuola \"L. Cappella\"",
+        "indirizzo": "Piazza E. Setti Carraro 5",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.89303,
+          42.90984
+        ]
+      },
+      "properties": {
+        "sezione": 42,
+        "collegio": 5,
+        "sede": "Scuola \"L. Cappella\"",
+        "indirizzo": "Piazza E. Setti Carraro 5",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.89303,
+          42.90984
+        ]
+      },
+      "properties": {
+        "sezione": 43,
+        "collegio": 5,
+        "sede": "Scuola \"L. Cappella\"",
+        "indirizzo": "Piazza E. Setti Carraro 5",
+        "citta": "San Benedetto del Tronto",
+        "geocoded": true,
+        "voti_1": 0,
+        "voti_2": 0,
+        "voti_3": 0,
+        "tot_voti": 0,
+        "vincente_s": "0",
+        "vincente_nome": "—",
+        "pct_1": 0,
+        "pct_2": 0,
+        "pct_3": 0
+      }
+    }
+  ]
+}

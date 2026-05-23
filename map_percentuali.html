@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Percentuali Candidati Sindaco per Sede – SBdT 2026</title>
+  <script src="https://cdn.jsdelivr.net/gh/gjrichter/ixmaps-flat@master/ixmaps.js"></script>
+  <style>
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; font-family: sans-serif; }
+    #map { width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+
+var RAW = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/sedi_risultati.geojson";
+
+// Fede=rosso, D'Andrea=giallo, Mozzoni=blu
+var COLORS = ["#e74c3c", "#f1c40f", "#2980b9"];
+
+fetch(RAW)
+  .then(function(r) { return r.json(); })
+  .then(function(gj) {
+
+    var myMap = ixmaps.Map("map", {
+      mapType: "VT_TONER_LITE",
+      mode:    "info",
+      legend:  "open",
+      tools:   true
+    })
+    .view({ center: { lat: 42.930, lng: 13.887 }, zoom: 13 })
+    .options({
+      objectscaling:   "dynamic",
+      normalSizeScale: "80000",
+      basemapopacity:  0.55,
+      flushChartDraw:  1000000
+    });
+
+    myMap.layer("percentuali")
+      .data({ obj: gj, type: "geojson" })
+      .binding({
+        geo:   "geometry",
+        value: "pct_1|pct_2|pct_3",
+        title: "nome"
+      })
+      .type("CHART|BAR|STACKED|SIZE|GRID|BOX|VALUES")
+      .style({
+        colorscheme:     COLORS,
+        normalsizevalue: "100",
+        scale:           1,
+        fillopacity:     0.88,
+        gridx:           3,
+        showdata:        "true"
+      })
+      .meta({
+        name:    "pct-theme",
+        tooltip: "<b>{{nome}}</b><br>{{indirizzo}}<br>" +
+                 "Sezioni: {{sezioni}}<br><br>" +
+                 "Fede: <b>{{pct_1}}%</b><br>" +
+                 "D'Andrea: <b>{{pct_2}}%</b><br>" +
+                 "Mozzoni: <b>{{pct_3}}%</b><br>" +
+                 "Totale voti: {{tot_voti}}"
+      })
+      .title("% voti per candidato")
+      .define();
+
+  });
+
+</script>
+</body>
+</html>

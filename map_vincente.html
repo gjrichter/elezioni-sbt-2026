@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Candidato Vincente per Sezione – SBdT 2026</title>
+  <script src="https://cdn.jsdelivr.net/gh/gjrichter/ixmaps-flat@master/ixmaps.js"></script>
+  <style>
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; font-family: sans-serif; }
+    #map { width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+
+var RAW = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/sezioni_vincente.geojson";
+
+// Colori: Fede=rosso, D'Andrea=giallo, Mozzoni=blu, nessuno/parità=grigio
+var COLORS = ["#e74c3c", "#f1c40f", "#2980b9", "#bdc3c7"];
+
+fetch(RAW)
+  .then(function(r) { return r.json(); })
+  .then(function(gj) {
+
+    var myMap = ixmaps.Map("map", {
+      mapType: "VT_TONER_LITE",
+      mode:    "info",
+      legend:  "open",
+      tools:   true
+    })
+    .view({ center: { lat: 42.930, lng: 13.887 }, zoom: 13 })
+    .options({
+      objectscaling:   "dynamic",
+      normalSizeScale: "80000",
+      basemapopacity:  0.55,
+      flushChartDraw:  1000000
+    });
+
+    myMap.layer("vincente")
+      .data({ obj: gj, type: "geojson" })
+      .binding({
+        geo:   "geometry",
+        value: "vincente_s",
+        title: "sezione"
+      })
+      .type("CHART|SYMBOL|CATEGORICAL|MULTIQUAD|VALUES|INLINETEXT")
+      .style({
+        colorscheme:     COLORS,
+        values:          ["1", "2", "3", "0"],
+        normalsizevalue: "1",
+        scale:           0.4,
+        fillopacity:     0.88,
+        linecolor:       "#fff",
+        linewidth:       1,
+        titlefield:      "sezione",
+        valuefield:      "sezione",
+        showdata:        "true"
+      })
+      .meta({
+        name:    "vincente-theme",
+        tooltip: "Sezione <b>{{sezione}}</b><br>" +
+                 "Vincente: <b>{{vincente_nome}}</b><br>" +
+                 "Fede: {{voti_1}} &nbsp; D'Andrea: {{voti_2}} &nbsp; Mozzoni: {{voti_3}}<br>" +
+                 "Totale: {{tot_voti}}"
+      })
+      .title("Candidato vincente")
+      .define();
+
+  });
+
+</script>
+</body>
+</html>
