@@ -49,7 +49,7 @@ fetch(DATA_URL)
         value: "collegio_s",
         title: "sezione"
       })
-      .type("CHART|SYMBOL|CATEGORICAL|MULTIQUAD")
+      .type("CHART|SYMBOL|CATEGORICAL|MULTIQUAD|VALUES")
       .style({
         colorscheme:     COLORS,
         values:          ["1","2","3","4","5"],
@@ -58,6 +58,7 @@ fetch(DATA_URL)
         fillopacity:     0.85,
         linecolor:       "#fff",
         linewidth:       1,
+        titlefield:      "sezione",
         showdata:        "true"
       })
       .meta({
