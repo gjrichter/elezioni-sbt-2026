@@ -278,12 +278,6 @@
       height: 12px;
     }
 
-    .card-header {
-      min-height: 118px;   /* locks height for 2-line names — % always aligned */
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
     .card-body {
       padding: 24px;
     }
@@ -292,6 +286,11 @@
       font-size: 1.25rem;
       font-weight: 800;
       line-height: 1.2;
+      height: calc(2 * 1.2 * 1.25rem); /* always 2 lines = 3rem */
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
       color: var(--text);
       margin-bottom: 4px;
       letter-spacing: -0.02em;
@@ -868,11 +867,9 @@ function renderSindaco() {
       return `<div class="candidate-card" style="${bgStyle}">
         <div class="card-top-stripe" style="background:${c.color}"></div>
         <div class="card-body">
-          <div class="card-header">
-            <div class="card-name">${fullName}</div>
-            <div class="card-subtitle">${birthDate ? escHtml(birthDate) + ' · ' : ''}nato/a a ${escHtml(birthPlace)}</div>
-            <div><span class="coalition-pill" style="background:${c.color}">${escHtml(COALITION_LABELS[c.nraggrup] || c.nome || '')}</span></div>
-          </div>
+          <div class="card-name">${fullName}</div>
+          <div class="card-subtitle">${birthDate ? escHtml(birthDate) + ' · ' : ''}nato/a a ${escHtml(birthPlace)}</div>
+          <div><span class="coalition-pill" style="background:${c.color}">${escHtml(COALITION_LABELS[c.nraggrup] || c.nome || '')}</span></div>
           <div class="card-pct" style="color:${c.color}">${pctStr}</div>
           <div class="card-bar-track">
             <div class="card-bar-fill" style="background:${c.color};width:${barW}%"></div>
