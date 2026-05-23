@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sedi Sezioni Elettorali – San Benedetto del Tronto 2026</title>
+  <script src="https://cdn.jsdelivr.net/gh/gjrichter/ixmaps-flat@master/ixmaps.js"></script>
+  <style>
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden;
+                 font-family: sans-serif; }
+    #map { width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+
+var DATA_URL = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/sedi_sezioni_elettorali.geojson";
+
+// 5 colori distinti per i 5 collegi
+var COLORS = ["#e74c3c","#3498db","#27ae60","#f39c12","#8e44ad"];
+
+fetch(DATA_URL)
+  .then(function(r) { return r.json(); })
+  .then(function(gj) {
+
+    // Aggiungi campo calcolato: n. sezioni per sede + collegio come stringa
+    gj.features.forEach(function(f) {
+      var p = f.properties;
+      p.n_sezioni  = p.sez_a - p.sez_da + 1;
+      p.collegio_s = String(p.collegio);   // CATEGORICAL vuole stringhe
+    });
+
+    var myMap = ixmaps.Map("map", {
+      mapType: "VT_TONER_LITE",
+      mode:    "info",
+      legend:  "open",
+      tools:   true
+    })
+    .view({ center: { lat: 42.930, lng: 13.887 }, zoom: 13 })
+    .options({
+      objectscaling:   "dynamic",
+      normalSizeScale: "80000",
+      basemapopacity:  0.55,
+      flushChartDraw:  1000000
+    });
+
+    myMap.layer("sedi")
+      .data({ obj: gj, type: "geojson" })
+      .binding({
+        geo:   "geometry",
+        value: "collegio_s",
+        title: "nome",
+        size:  "n_sezioni"
+      })
+      .type("CHART|BUBBLE|CATEGORICAL")
+      .style({
+        colorscheme:     COLORS,
+        values:          ["1","2","3","4","5"],
+        normalsizevalue: "7",
+        scale:           1,
+        fillopacity:     0.82,
+        linecolor:       "#fff",
+        linewidth:       1.5,
+        showdata:        "true"
+      })
+      .meta({
+        name:    "sedi-theme",
+        tooltip: "<b>{{nome}}</b><br>{{indirizzo}}<br>" +
+                 "Sezioni: <b>{{sezioni}}</b> &nbsp;({{n_sezioni}} sez.)<br>" +
+                 "Collegio: <b>{{collegio_s}}</b>"
+      })
+      .title("Collegio")
+      .define();
+
+  });
+
+</script>
+</body>
+</html>
