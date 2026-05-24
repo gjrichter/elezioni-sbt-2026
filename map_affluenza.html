@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Affluenza per Sede – SBdT 2026</title>
+  <script src="https://cdn.jsdelivr.net/gh/gjrichter/ixmaps-flat@master/ixmaps.js"></script>
+  <style>
+    html, body {
+      width: 100%; height: 100%; margin: 0; overflow: hidden;
+      font-family: sans-serif; display: flex; flex-direction: column;
+    }
+
+    /* ── CONTROLS BAR ── */
+    #controls {
+      flex-shrink: 0;
+      background: #1a3028;
+      color: #fff;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    #controls label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      opacity: 0.65;
+      white-space: nowrap;
+    }
+    .ctrl-select {
+      font-size: 0.85rem;
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      cursor: pointer;
+      min-width: 240px;
+    }
+    .ctrl-select option { background: #1a3028; color: #fff; }
+    #slot-info { font-size: 0.74rem; opacity: 0.55; white-space: nowrap; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 540px) {
+      #controls { flex-direction: column; align-items: stretch; padding: 8px 10px; gap: 6px; }
+      #controls label { display: none; }
+      .ctrl-select { font-size: 16px; width: 100%; min-width: 0; padding: 9px 10px; }
+      #slot-info { display: none; }
+    }
+
+    /* ── MAP ── */
+    #map-wrapper { flex: 1; position: relative; overflow: hidden; }
+    #map { width: 100%; height: 100%; }
+
+    /* Note: DO NOT use id="loading" or id="loading-div" — ixmaps reserves those */
+    #app-loading {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255,255,255,0.92);
+      padding: 1em 2.5em; border-radius: 8px;
+      font-size: 1em; z-index: 9999;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2px solid #ccc;
+      border-top-color: #27ae60;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+<div id="controls">
+  <label for="sel-slot">Rilevazione:</label>
+  <select id="sel-slot" class="ctrl-select" onchange="onSlotChange()"></select>
+  <span id="slot-info"></span>
+</div>
+
+<div id="map-wrapper">
+  <div id="app-loading">
+    <div class="spinner"></div>
+    Caricamento affluenza…
+  </div>
+  <div id="map"></div>
+</div>
+
+<script>
+
+var SEDI_URL  = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/sedi_sezioni_elettorali.geojson";
+var ELEWEB    = "https://elezioni.comunesbt.it/static_json/online";
+var N_SEZ     = 43;
+var CDELE     = "1";
+var PART      = "0";
+
+var sediGj   = null;
+var slots    = [];          // [{cdafflu, descrizione, pct_città}]
+var sezCache = {};          // [cdafflu][sezione] = {tvotanti, iscri_totale}
+
+// ixmaps: NEVER name var "map" — conflicts with internals
+var myMap               = null;
+var ACTIVE_THEME        = null;
+
+// ── 1. Risolvi snapshot da folder.js ─────────────────────────────────────────
+function resolveSnapshot() {
+  return fetch(ELEWEB + "/folder.js?_=" + Date.now())
+    .then(function(r) { return r.text(); })
+    .then(function(t) {
+      var m = t.match(/folderToRead\s*=\s*['"](\d{8}_\d{6})['"]/);
+      if (!m) throw new Error("Snapshot non trovato in folder.js");
+      return m[1];
+    });
+}
+
+// ── 2. Trova i slot affluenza disponibili (cdafflu 1‥10) ─────────────────────
+function findSlots(snapshot) {
+  var checks = [];
+  for (var cd = 1; cd <= 10; cd++) {
+    (function(cdafflu) {
+      var url = ELEWEB + "/" + snapshot + "/" + CDELE +
+                "/voti_afflu_" + PART + "_" + cdafflu + ".json?_=" + Date.now();
+      checks.push(
+        fetch(url)
+          .then(function(r) { return r.ok ? r.json() : null; })
+          .then(function(d) {
+            if (!d) return null;
+            var tot = d.iscri_totale || 0;
+            var vot = d.tvotanti    || 0;
+            var pct = tot > 0 ? (100 * vot / tot) : 0;
+            return {
+              cdafflu:    cdafflu,
+              snapshot:   snapshot,
+              descrizione: d.anagrafica ? d.anagrafica.descrizione : ("Rilevazione " + cdafflu),
+              tvotanti_città: vot,
+              iscri_città:    tot,
+              pct_città:      pct
+            };
+          })
+          .catch(function() { return null; })
+      );
+    })(cd);
+  }
+  return Promise.all(checks).then(function(results) {
+    return results.filter(Boolean);
+  });
+}
+
+// ── 3. Carica i dati per-sezione di uno slot ─────────────────────────────────
+function loadSlotSezioni(slot) {
+  if (sezCache[slot.cdafflu]) return Promise.resolve();
+  sezCache[slot.cdafflu] = {};
+  var promises = [];
+  for (var s = 1; s <= N_SEZ; s++) {
+    (function(sez) {
+      var url = ELEWEB + "/" + slot.snapshot + "/" + CDELE +
+                "/voti_afflu_" + PART + "_" + slot.cdafflu + "_" + sez + ".json?_=" + Date.now();
+      promises.push(
+        fetch(url)
+          .then(function(r) { return r.ok ? r.json() : null; })
+          .then(function(d) {
+            if (d) sezCache[slot.cdafflu][sez] = {
+              tvotanti:    d.tvotanti    || 0,
+              iscri_totale: d.iscri_totale || 0
+            };
+          })
+          .catch(function() {})
+      );
+    })(s);
+  }
+  return Promise.all(promises);
+}
+
+// ── 4. Aggrega per sede ───────────────────────────────────────────────────────
+function computeSediData(cdafflu) {
+  var cache = sezCache[cdafflu] || {};
+  return sediGj.features.map(function(feat) {
+    var p = feat.properties;
+    var votanti = 0, iscritti = 0;
+    for (var s = p.sez_da; s <= p.sez_a; s++) {
+      var d = cache[s] || {};
+      votanti  += d.tvotanti    || 0;
+      iscritti += d.iscri_totale || 0;
+    }
+    var pct = iscritti > 0 ? +(100 * votanti / iscritti).toFixed(1) : 0;
+    return { sez_da: p.sez_da, tvotanti: votanti, iscri_totale: iscritti, pct: pct };
+  });
+}
+
+// ── 5. Aggiorna il bubble overlay ─────────────────────────────────────────────
+function updateMap(slot) {
+  document.getElementById("app-loading").style.display = "flex";
+
+  loadSlotSezioni(slot).then(function() {
+    var sediData = computeSediData(slot.cdafflu);
+    var maxVot   = Math.max.apply(null, sediData.map(function(d) { return d.tvotanti || 0; }));
+    var fmt1     = function(n) { return n.toFixed(1).replace(".", ",") + "%"; };
+
+    document.getElementById("slot-info").textContent =
+      fmtNum(slot.tvotanti_città) + " votanti  ·  " + fmt1(slot.pct_città);
+
+    document.getElementById("app-loading").style.display = "none";
+
+    var themeName = "afflu_" + slot.cdafflu;
+    var prev = ACTIVE_THEME;
+
+    myMap.then(function(api) {
+      if (prev) { try { api.removeTheme(prev); } catch(e) {} }
+
+      myMap.layer("sedi")
+        .data({ obj: sediData, type: "json" })
+        .binding({ geo: "sez_da", value: "pct", size: "tvotanti" })
+        .type("CHART|BUBBLE|SIZE|VALUES|AGGREGATE")
+        .style({
+          colorscheme:     ["#27ae60"],
+          normalsizevalue: String(Math.max(maxVot, 1)),
+          scale:           1,
+          fillopacity:     0.75,
+          linecolor:       "#fff",
+          linewidth:       1,
+          showdata:        "true",
+          legendunits:     "votanti"
+        })
+        .meta({
+          name:    themeName,
+          title:   slot.descrizione,
+          tooltip: "<b>{{nome}}</b><br>{{indirizzo}}<br>" +
+                   "Sezioni: {{sezioni}}<br>" +
+                   "Votanti: <b>{{tvotanti}}</b> su {{iscri_totale}}<br>" +
+                   "Affluenza: <b>{{pct}}%</b>"
+        })
+        .define();
+
+      ACTIVE_THEME = themeName;
+    });
+  });
+}
+
+function fmtNum(n) {
+  return Number(n).toLocaleString("it-IT");
+}
+
+// ── HANDLER ───────────────────────────────────────────────────────────────────
+function onSlotChange() {
+  var idx = parseInt(document.getElementById("sel-slot").value, 10);
+  updateMap(slots[idx]);
+}
+
+// ── AVVIO ─────────────────────────────────────────────────────────────────────
+Promise.all([
+  fetch(SEDI_URL).then(function(r) { return r.json(); }),
+  resolveSnapshot().then(findSlots)
+]).then(function(results) {
+  sediGj = results[0];
+  slots  = results[1];
+
+  if (slots.length === 0) {
+    document.getElementById("app-loading").innerHTML = "Nessun dato di affluenza disponibile.";
+    return;
+  }
+
+  // popola select
+  var sel = document.getElementById("sel-slot");
+  slots.forEach(function(s, i) {
+    var opt = document.createElement("option");
+    opt.value = i;
+    var pct = s.pct_città > 0
+      ? "  (" + s.pct_città.toFixed(1).replace(".", ",") + "%)"
+      : "  (—)";
+    opt.textContent = s.descrizione + pct;
+    if (s.pct_città === 0) opt.style.opacity = "0.5";
+    sel.appendChild(opt);
+  });
+
+  // crea la mappa UNA SOLA VOLTA (mai "map" come nome variabile)
+  myMap = ixmaps.Map("map", {
+    mapType: "VT_TONER_LITE",
+    mode:    "pan",
+    legend:  "open",
+    tools:   true
+  })
+  .view({ center: { lat: 42.930, lng: 13.887 }, zoom: 13 })
+  .options({
+    objectscaling:   "dynamic",
+    normalSizeScale: "80000",
+    basemapopacity:  0.55,
+    flushChartDraw:  1000000
+  });
+
+  // layer base FEATURE – invisibile, solo geometria di riferimento
+  myMap.layer("sedi")
+    .data({ obj: sediGj, type: "geojson" })
+    .binding({ geo: "geometry", id: "sez_da", title: "nome" })
+    .type("FEATURE|SILENT")
+    .style({ colorscheme: ["none"], scale: 0, showdata: "true" })
+    .define();
+
+  // mostra il primo slot disponibile con dati (o il primo in assoluto)
+  var defaultIdx = 0;
+  for (var i = 0; i < slots.length; i++) {
+    if (slots[i].pct_città > 0) { defaultIdx = i; break; }
+  }
+  sel.value = defaultIdx;
+  updateMap(slots[defaultIdx]);
+
+}).catch(function(e) {
+  document.getElementById("app-loading").innerHTML = "✗ Errore: " + e.message;
+});
+
+</script>
+</body>
+</html>
