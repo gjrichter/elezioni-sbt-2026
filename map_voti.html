@@ -351,7 +351,7 @@ Promise.all(promises).then(function(results) {
     .data({ obj: sediGj, type: "geojson" })
     .binding({ geo: "geometry", id: "sez_da", title: "nome" })
     .type("FEATURE|SILENT")
-    .style({ colorscheme: ["none"], showdata: "true" })
+    .style({ colorscheme: ["none"], scale: 0, showdata: "true" })
     .define();
 
   // ── Popola i select e mostra il primo candidato ───────────────────────────
