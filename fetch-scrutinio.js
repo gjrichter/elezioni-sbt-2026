@@ -108,20 +108,38 @@ async function fetchCandidati(snapshot, sez) {
   catch (e) { if (e.message.startsWith('HTTP 404')) return null; throw e; }
 }
 
-// Affluenza intermedia: prova cdafflu 1‥10, raccoglie quelli che esistono
+// Affluenza intermedia: prova cdafflu 1‥10, raccoglie totali + per-sezione
 async function fetchAffluenza(snapshot) {
-  const slots = [];
+  const slots   = [];
+  const sezioni = {};   // { [cdafflu]: { [nrsez]: { tvotanti, iscri_totale } } }
+
   for (let cdafflu = 1; cdafflu <= 10; cdafflu++) {
-    const url = `${BASE_SITE}/static_json/online/${snapshot}/${CDELE_NUMERIC}/voti_afflu_${PARTIZIONE}_${cdafflu}.json`;
+    const urlTot = `${BASE_SITE}/static_json/online/${snapshot}/${CDELE_NUMERIC}/voti_afflu_${PARTIZIONE}_${cdafflu}.json`;
+    let dTot;
     try {
-      const d = await fetchJSON(url);
-      slots.push({ cdafflu, ...d });
+      dTot = await fetchJSON(urlTot);
     } catch (e) {
       if (e.message.startsWith('HTTP 404')) continue;
       throw e;
     }
+    slots.push({ cdafflu, ...dTot });
+
+    // scarica per-sezione in parallelo
+    sezioni[cdafflu] = {};
+    await Promise.all(
+      Array.from({ length: N_SEZIONI }, (_, i) => i + 1).map(async s => {
+        const urlSez = `${BASE_SITE}/static_json/online/${snapshot}/${CDELE_NUMERIC}/voti_afflu_${PARTIZIONE}_${cdafflu}_${s}.json`;
+        try {
+          const d = await fetchJSON(urlSez);
+          sezioni[cdafflu][s] = { tvotanti: d.tvotanti || 0, iscri_totale: d.iscri_totale || 0 };
+        } catch (e) {
+          if (!e.message.startsWith('HTTP 404')) throw e;
+        }
+      })
+    );
+    console.log(`  affluenza cdafflu=${cdafflu} (${dTot.anagrafica?.descrizione}): ${dTot.tvotanti} votanti`);
   }
-  return slots;
+  return { slots, sezioni };
 }
 
 // ─── main ─────────────────────────────────────────────────────────────────────
@@ -135,12 +153,13 @@ async function main() {
 
   // 2) scarica totali (sezione 0 = aggregato) + affluenza intermedia
   console.log('Fetching totals + affluenza...');
-  const [raggrupTot, listeTot, candidatiTot, affluenzaSlots] = await Promise.all([
+  const [raggrupTot, listeTot, candidatiTot, affluenza] = await Promise.all([
     fetchRaggrup(snapshot, null),
     fetchListe(snapshot, null),
     fetchCandidati(snapshot, null),
     fetchAffluenza(snapshot),
   ]);
+  const { slots: affluenzaSlots, sezioni: affluenzaSezioni } = affluenza;
 
   const timestamp = fetchedAt.replace(/[:.]/g, '-');
 
@@ -148,7 +167,8 @@ async function main() {
   if (raggrupTot)   saveJSON(path.join(DATA_DIR, 'totale_raggrup.json'),   { fetched_at: fetchedAt, snapshot, ...raggrupTot });
   if (listeTot)     saveJSON(path.join(DATA_DIR, 'totale_liste.json'),     { fetched_at: fetchedAt, snapshot, ...listeTot });
   if (candidatiTot) saveJSON(path.join(DATA_DIR, 'totale_candidati.json'), { fetched_at: fetchedAt, snapshot, ...candidatiTot });
-  saveJSON(path.join(DATA_DIR, 'affluenza.json'), { fetched_at: fetchedAt, snapshot, slots: affluenzaSlots });
+  saveJSON(path.join(DATA_DIR, 'affluenza.json'),         { fetched_at: fetchedAt, snapshot, slots: affluenzaSlots });
+  saveJSON(path.join(DATA_DIR, 'affluenza_sezioni.json'), { fetched_at: fetchedAt, snapshot, sezioni: affluenzaSezioni });
   console.log(`  affluenza slots trovati: ${affluenzaSlots.length}`);
 
   // salva history snapshot

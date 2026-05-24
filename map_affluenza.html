@@ -36,7 +36,7 @@
       background: rgba(255,255,255,0.1);
       color: #fff;
       cursor: pointer;
-      min-width: 240px;
+      min-width: 260px;
     }
     .ctrl-select option { background: #1a3028; color: #fff; }
     #slot-info { font-size: 0.74rem; opacity: 0.55; white-space: nowrap; }
@@ -90,97 +90,26 @@
 
 <script>
 
-var SEDI_URL  = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/sedi_sezioni_elettorali.geojson";
-var ELEWEB    = "https://elezioni.comunesbt.it/static_json/online";
-var N_SEZ     = 43;
-var CDELE     = "1";
-var PART      = "0";
+var BASE      = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/";
+var SEDI_URL  = BASE + "sedi_sezioni_elettorali.geojson";
 
-var sediGj   = null;
-var slots    = [];          // [{cdafflu, descrizione, pct_città}]
-var sezCache = {};          // [cdafflu][sezione] = {tvotanti, iscri_totale}
+// ── STATO GLOBALE ─────────────────────────────────────────────────────────────
+var sediGj        = null;
+var affSlots      = [];    // da affluenza.json → slots[]
+var affSezioni    = {};    // da affluenza_sezioni.json → sezioni[cdafflu][sez]
 
 // ixmaps: NEVER name var "map" — conflicts with internals
-var myMap               = null;
-var ACTIVE_THEME        = null;
+var myMap         = null;
+var ACTIVE_THEME  = null;
 
-// ── 1. Risolvi snapshot da folder.js ─────────────────────────────────────────
-function resolveSnapshot() {
-  return fetch(ELEWEB + "/folder.js?_=" + Date.now())
-    .then(function(r) { return r.text(); })
-    .then(function(t) {
-      var m = t.match(/folderToRead\s*=\s*['"](\d{8}_\d{6})['"]/);
-      if (!m) throw new Error("Snapshot non trovato in folder.js");
-      return m[1];
-    });
-}
-
-// ── 2. Trova i slot affluenza disponibili (cdafflu 1‥10) ─────────────────────
-function findSlots(snapshot) {
-  var checks = [];
-  for (var cd = 1; cd <= 10; cd++) {
-    (function(cdafflu) {
-      var url = ELEWEB + "/" + snapshot + "/" + CDELE +
-                "/voti_afflu_" + PART + "_" + cdafflu + ".json?_=" + Date.now();
-      checks.push(
-        fetch(url)
-          .then(function(r) { return r.ok ? r.json() : null; })
-          .then(function(d) {
-            if (!d) return null;
-            var tot = d.iscri_totale || 0;
-            var vot = d.tvotanti    || 0;
-            var pct = tot > 0 ? (100 * vot / tot) : 0;
-            return {
-              cdafflu:    cdafflu,
-              snapshot:   snapshot,
-              descrizione: d.anagrafica ? d.anagrafica.descrizione : ("Rilevazione " + cdafflu),
-              tvotanti_città: vot,
-              iscri_città:    tot,
-              pct_città:      pct
-            };
-          })
-          .catch(function() { return null; })
-      );
-    })(cd);
-  }
-  return Promise.all(checks).then(function(results) {
-    return results.filter(Boolean);
-  });
-}
-
-// ── 3. Carica i dati per-sezione di uno slot ─────────────────────────────────
-function loadSlotSezioni(slot) {
-  if (sezCache[slot.cdafflu]) return Promise.resolve();
-  sezCache[slot.cdafflu] = {};
-  var promises = [];
-  for (var s = 1; s <= N_SEZ; s++) {
-    (function(sez) {
-      var url = ELEWEB + "/" + slot.snapshot + "/" + CDELE +
-                "/voti_afflu_" + PART + "_" + slot.cdafflu + "_" + sez + ".json?_=" + Date.now();
-      promises.push(
-        fetch(url)
-          .then(function(r) { return r.ok ? r.json() : null; })
-          .then(function(d) {
-            if (d) sezCache[slot.cdafflu][sez] = {
-              tvotanti:    d.tvotanti    || 0,
-              iscri_totale: d.iscri_totale || 0
-            };
-          })
-          .catch(function() {})
-      );
-    })(s);
-  }
-  return Promise.all(promises);
-}
-
-// ── 4. Aggrega per sede ───────────────────────────────────────────────────────
+// ── AGGREGA PER SEDE ──────────────────────────────────────────────────────────
 function computeSediData(cdafflu) {
-  var cache = sezCache[cdafflu] || {};
+  var cache = affSezioni[String(cdafflu)] || {};
   return sediGj.features.map(function(feat) {
     var p = feat.properties;
     var votanti = 0, iscritti = 0;
     for (var s = p.sez_da; s <= p.sez_a; s++) {
-      var d = cache[s] || {};
+      var d = cache[String(s)] || {};
       votanti  += d.tvotanti    || 0;
       iscritti += d.iscri_totale || 0;
     }
@@ -189,92 +118,90 @@ function computeSediData(cdafflu) {
   });
 }
 
-// ── 5. Aggiorna il bubble overlay ─────────────────────────────────────────────
+// ── AGGIORNA OVERLAY ─────────────────────────────────────────────────────────
 function updateMap(slot) {
-  document.getElementById("app-loading").style.display = "flex";
+  var sediData = computeSediData(slot.cdafflu);
+  var maxVot   = Math.max.apply(null, sediData.map(function(d) { return d.tvotanti || 0; }));
+  var tot      = slot.tvotanti || 0;
+  var isc      = slot.iscri_totale || 0;
+  var pctC     = isc > 0 ? (100 * tot / isc).toFixed(1).replace(".", ",") + "%" : "—";
 
-  loadSlotSezioni(slot).then(function() {
-    var sediData = computeSediData(slot.cdafflu);
-    var maxVot   = Math.max.apply(null, sediData.map(function(d) { return d.tvotanti || 0; }));
-    var fmt1     = function(n) { return n.toFixed(1).replace(".", ",") + "%"; };
+  document.getElementById("slot-info").textContent =
+    Number(tot).toLocaleString("it-IT") + " votanti  ·  " + pctC;
 
-    document.getElementById("slot-info").textContent =
-      fmtNum(slot.tvotanti_città) + " votanti  ·  " + fmt1(slot.pct_città);
+  var themeName = "afflu_" + slot.cdafflu;
+  var prev      = ACTIVE_THEME;
 
-    document.getElementById("app-loading").style.display = "none";
+  myMap.then(function(api) {
+    if (prev) { try { api.removeTheme(prev); } catch(e) {} }
 
-    var themeName = "afflu_" + slot.cdafflu;
-    var prev = ACTIVE_THEME;
+    myMap.layer("sedi")
+      .data({ obj: sediData, type: "json" })
+      .binding({ geo: "sez_da", value: "pct", size: "tvotanti" })
+      .type("CHART|BUBBLE|SIZE|VALUES|AGGREGATE")
+      .style({
+        colorscheme:     ["#27ae60"],
+        normalsizevalue: String(Math.max(maxVot, 1)),
+        scale:           1,
+        fillopacity:     0.75,
+        linecolor:       "#fff",
+        linewidth:       1,
+        showdata:        "true",
+        legendunits:     "votanti"
+      })
+      .meta({
+        name:    themeName,
+        title:   slot.anagrafica ? slot.anagrafica.descrizione : "Affluenza",
+        tooltip: "<b>{{nome}}</b><br>{{indirizzo}}<br>" +
+                 "Sezioni: {{sezioni}}<br>" +
+                 "Votanti: <b>{{tvotanti}}</b> su {{iscri_totale}}<br>" +
+                 "Affluenza: <b>{{pct}}%</b>"
+      })
+      .define();
 
-    myMap.then(function(api) {
-      if (prev) { try { api.removeTheme(prev); } catch(e) {} }
-
-      myMap.layer("sedi")
-        .data({ obj: sediData, type: "json" })
-        .binding({ geo: "sez_da", value: "pct", size: "tvotanti" })
-        .type("CHART|BUBBLE|SIZE|VALUES|AGGREGATE")
-        .style({
-          colorscheme:     ["#27ae60"],
-          normalsizevalue: String(Math.max(maxVot, 1)),
-          scale:           1,
-          fillopacity:     0.75,
-          linecolor:       "#fff",
-          linewidth:       1,
-          showdata:        "true",
-          legendunits:     "votanti"
-        })
-        .meta({
-          name:    themeName,
-          title:   slot.descrizione,
-          tooltip: "<b>{{nome}}</b><br>{{indirizzo}}<br>" +
-                   "Sezioni: {{sezioni}}<br>" +
-                   "Votanti: <b>{{tvotanti}}</b> su {{iscri_totale}}<br>" +
-                   "Affluenza: <b>{{pct}}%</b>"
-        })
-        .define();
-
-      ACTIVE_THEME = themeName;
-    });
+    ACTIVE_THEME = themeName;
   });
-}
-
-function fmtNum(n) {
-  return Number(n).toLocaleString("it-IT");
 }
 
 // ── HANDLER ───────────────────────────────────────────────────────────────────
 function onSlotChange() {
   var idx = parseInt(document.getElementById("sel-slot").value, 10);
-  updateMap(slots[idx]);
+  updateMap(affSlots[idx]);
 }
 
 // ── AVVIO ─────────────────────────────────────────────────────────────────────
+var cb = "?_=" + Date.now();
 Promise.all([
-  fetch(SEDI_URL).then(function(r) { return r.json(); }),
-  resolveSnapshot().then(findSlots)
+  fetch(SEDI_URL        + cb).then(function(r) { return r.json(); }),
+  fetch(BASE + "affluenza.json"         + cb).then(function(r) { return r.json(); }),
+  fetch(BASE + "affluenza_sezioni.json" + cb).then(function(r) { return r.json(); })
 ]).then(function(results) {
-  sediGj = results[0];
-  slots  = results[1];
+  sediGj     = results[0];
+  affSlots   = results[1].slots  || [];
+  affSezioni = results[2].sezioni || {};
 
-  if (slots.length === 0) {
+  if (affSlots.length === 0) {
     document.getElementById("app-loading").innerHTML = "Nessun dato di affluenza disponibile.";
     return;
   }
 
   // popola select
   var sel = document.getElementById("sel-slot");
-  slots.forEach(function(s, i) {
-    var opt = document.createElement("option");
+  affSlots.forEach(function(s, i) {
+    var opt  = document.createElement("option");
     opt.value = i;
-    var pct = s.pct_città > 0
-      ? "  (" + s.pct_città.toFixed(1).replace(".", ",") + "%)"
-      : "  (—)";
-    opt.textContent = s.descrizione + pct;
-    if (s.pct_città === 0) opt.style.opacity = "0.5";
+    var isc  = s.iscri_totale || 0;
+    var vot  = s.tvotanti     || 0;
+    var pct  = isc > 0 ? "  (" + (100 * vot / isc).toFixed(1).replace(".", ",") + "%)" : "  (—)";
+    var desc = s.anagrafica ? s.anagrafica.descrizione : ("Rilevazione " + s.cdafflu);
+    opt.textContent  = desc + pct;
+    if (vot === 0) opt.style.opacity = "0.5";
     sel.appendChild(opt);
   });
 
-  // crea la mappa UNA SOLA VOLTA (mai "map" come nome variabile)
+  document.getElementById("app-loading").style.display = "none";
+
+  // crea la mappa UNA SOLA VOLTA
   myMap = ixmaps.Map("map", {
     mapType: "VT_TONER_LITE",
     mode:    "pan",
@@ -297,13 +224,13 @@ Promise.all([
     .style({ colorscheme: ["none"], scale: 0, showdata: "true" })
     .define();
 
-  // mostra il primo slot disponibile con dati (o il primo in assoluto)
+  // mostra il primo slot con dati reali (tvotanti > 0), altrimenti il primo
   var defaultIdx = 0;
-  for (var i = 0; i < slots.length; i++) {
-    if (slots[i].pct_città > 0) { defaultIdx = i; break; }
+  for (var i = 0; i < affSlots.length; i++) {
+    if ((affSlots[i].tvotanti || 0) > 0) { defaultIdx = i; break; }
   }
   sel.value = defaultIdx;
-  updateMap(slots[defaultIdx]);
+  updateMap(affSlots[defaultIdx]);
 
 }).catch(function(e) {
   document.getElementById("app-loading").innerHTML = "✗ Errore: " + e.message;
