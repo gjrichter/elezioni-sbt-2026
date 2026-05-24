@@ -124,10 +124,13 @@ async function fetchAffluenza(snapshot) {
     }
     slots.push({ cdafflu, ...dTot });
 
-    // scarica per-sezione in parallelo
+    // scarica per-sezione a blocchi di 5 (evita socket hang up per troppe richieste parallele)
     sezioni[cdafflu] = {};
-    await Promise.all(
-      Array.from({ length: N_SEZIONI }, (_, i) => i + 1).map(async s => {
+    const AFFLU_BATCH = 5;
+    for (let start = 1; start <= N_SEZIONI; start += AFFLU_BATCH) {
+      const end   = Math.min(start + AFFLU_BATCH - 1, N_SEZIONI);
+      const batch = Array.from({ length: end - start + 1 }, (_, i) => start + i);
+      await Promise.all(batch.map(async s => {
         const urlSez = `${BASE_SITE}/static_json/online/${snapshot}/${CDELE_NUMERIC}/voti_afflu_${PARTIZIONE}_${cdafflu}_${s}.json`;
         try {
           const d = await fetchJSON(urlSez);
@@ -135,8 +138,8 @@ async function fetchAffluenza(snapshot) {
         } catch (e) {
           if (!e.message.startsWith('HTTP 404')) throw e;
         }
-      })
-    );
+      }));
+    }
     console.log(`  affluenza cdafflu=${cdafflu} (${dTot.anagrafica?.descrizione}): ${dTot.tvotanti} votanti`);
   }
   return { slots, sezioni };
