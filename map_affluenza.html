@@ -186,8 +186,8 @@ function updateMap(slot) {
         textcolor:       "#008800",
         linewidth:       0.5,
         valuescale:      1,
-        valuedecimals:   1,
-        chartlower:      "10000"   // nasconde quando scala < 1:10000 (troppo zoom)
+        valuedecimals:   1
+        // chartlower: "10000" — rimosso per diagnosi
       })
       .meta({
         name:    themeName,
@@ -217,8 +217,8 @@ function updateMap(slot) {
         textcolor:       "#008800",
         linewidth:       0.5,
         valuescale:      1,
-        valuedecimals:   1,
-        chartupper:      "10000"   // nasconde quando scala > 1:10000 (troppo lontano)
+        valuedecimals:   1
+        // chartupper: "10000" — rimosso per diagnosi: il tema deve essere sempre visibile
       })
       .meta({
         name:    themeNameSez,
