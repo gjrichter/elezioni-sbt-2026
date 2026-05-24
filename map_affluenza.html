@@ -114,7 +114,8 @@ function computeSediData(cdafflu) {
       iscritti += d.iscri_totale || 0;
     }
     var pct = iscritti > 0 ? +(100 * votanti / iscritti).toFixed(1) : 0;
-    return { sez_da: p.sez_da, tvotanti: votanti, iscri_totale: iscritti, pct: pct };
+    return { sez_da: p.sez_da, nome: p.nome, indirizzo: p.indirizzo, sezioni: p.sezioni,
+             tvotanti: votanti, iscri_totale: iscritti, pct: pct };
   });
 }
 

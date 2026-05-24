@@ -64,7 +64,10 @@ Promise.all(promises).then(function(results) {
     }
     var tot = v1 + v2 + v3;
     return {
-      sez_da:   p.sez_da,
+      sez_da:    p.sez_da,
+      nome:      p.nome,
+      indirizzo: p.indirizzo,
+      sezioni:   p.sezioni,
       pct_1:    tot ? +(100*v1/tot).toFixed(1) : 0,
       pct_2:    tot ? +(100*v2/tot).toFixed(1) : 0,
       pct_3:    tot ? +(100*v3/tot).toFixed(1) : 0,

@@ -209,7 +209,8 @@ function computeSediData(nlista, nrcandi) {
     var p = feat.properties;
     var v = 0;
     for (var s = p.sez_da; s <= p.sez_a; s++) v += (sezCandVoti[s] || {})[key] || 0;
-    return { sez_da: p.sez_da, voti_cand: v };
+    return { sez_da: p.sez_da, nome: p.nome, indirizzo: p.indirizzo, sezioni: p.sezioni,
+             voti_cand: v };
   });
 }
 
