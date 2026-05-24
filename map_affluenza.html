@@ -200,7 +200,7 @@ function updateMap(slot) {
       .define();
 
     // ── Theme 2: per sezione (MULTIQUAD) — visibile zoomed in (scala < 1:10000) ──
-    myMap.layer("sedi")
+    myMap.layer("sedi2")
       .data({ obj: sezData, type: "json" })
       .binding({ geo: "sez_da", value: "pct", size: "tvotanti" })
       .type("CHART|MULTIQUAD|SIZE|VALUES")
@@ -288,7 +288,16 @@ Promise.all([
   });
 
   // layer base FEATURE – invisibile, solo geometria di riferimento
+  // "sedi"  → usato dal tema PIE aggregato
+  // "sedi2" → usato dal tema MULTIQUAD per-sezione (stesso GeoJSON, layer separato)
   myMap.layer("sedi")
+    .data({ obj: sediGj, type: "geojson" })
+    .binding({ geo: "geometry", id: "sez_da", title: "nome" })
+    .type("FEATURE|SILENT")
+    .style({ colorscheme: ["none"], scale: 0, showdata: "true" })
+    .define();
+
+  myMap.layer("sedi2")
     .data({ obj: sediGj, type: "geojson" })
     .binding({ geo: "geometry", id: "sez_da", title: "nome" })
     .type("FEATURE|SILENT")
