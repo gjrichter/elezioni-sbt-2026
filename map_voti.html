@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Voti Preferenza per Sede – SBdT 2026</title>
   <script src="https://cdn.jsdelivr.net/gh/gjrichter/ixmaps-flat@master/ixmaps.js"></script>
   <style>
@@ -41,6 +42,24 @@
     #sel-cand  { min-width: 220px; }
     #cand-dot  { width:10px; height:10px; border-radius:50%; flex-shrink:0; display:none; }
     #cand-info { font-size:0.74rem; opacity:0.55; white-space:nowrap; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 540px) {
+      #controls {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 8px 10px;
+        gap: 6px;
+      }
+      #controls label { display: none; }
+      .ctrl-select {
+        font-size: 16px;   /* prevents iOS auto-zoom on focus */
+        width: 100%;
+        padding: 9px 10px;
+        min-width: 0;
+      }
+      #cand-dot, #cand-info { display: none !important; }
+    }
 
     /* ── MAP ── */
     #map-wrapper { flex: 1; position: relative; overflow: hidden; }
