@@ -141,16 +141,13 @@ function updateMap(slot) {
       .type("CHART|BUBBLE|SIZE|VALUES|AGGREGATE")
       .style({
         colorscheme:     ["#27ae60"],
-        fillopacity:     0.88,
-        shadow:          false,
-        visible:         true,
-        showdata:        true,
-        units:           "%",
-        refreshtimeout:  0,
-        normalsizevalue: "1000",
+        normalsizevalue: String(Math.max(maxVot, 1)),
         scale:           1,
-        sizepow:         2,
-        valuescale:      1,
+        fillopacity:     0.75,
+        linecolor:       "#fff",
+        linewidth:       1,
+        showdata:        "true",
+        units:           "%",
         legendunits:     "votanti"
       })
       .meta({
