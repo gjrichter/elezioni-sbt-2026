@@ -296,10 +296,10 @@ Promise.all([
     .style({ colorscheme: ["none"], scale: 0, showdata: "true" })
     .define();
 
-  // mostra il primo slot con dati reali (tvotanti > 0), altrimenti il primo
+  // mostra l'ultimo slot con dati reali (tvotanti > 0), altrimenti il primo
   var defaultIdx = 0;
   for (var i = 0; i < affSlots.length; i++) {
-    if ((affSlots[i].tvotanti || 0) > 0) { defaultIdx = i; break; }
+    if ((affSlots[i].tvotanti || 0) > 0) defaultIdx = i;
   }
   sel.value = defaultIdx;
   updateMap(affSlots[defaultIdx]);
