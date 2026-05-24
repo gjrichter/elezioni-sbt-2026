@@ -4,12 +4,12 @@ on:
   schedule:
     # Sabato 24 maggio: ogni 30 minuti
     - cron: '*/30 * 24 5 *'
-    # Domenica 25 maggio mattina: ogni ora dalle 7 IT (05 UTC) per aggiornamenti affluenza
-    - cron: '0 5-12 25 5 *'
-    # Domenica 25 maggio dalle 15 IT (13 UTC): ogni 5 minuti per lo scrutinio
-    - cron: '*/5 13-23 25 5 *'
-    # Lunedì 26 maggio: ogni 5 minuti tutto il giorno
-    - cron: '*/5 * 26 5 *'
+    # Domenica 25 maggio: ogni ora (votazioni 07-23 IT, affluenza alle 12 e 19)
+    - cron: '0 5-23 25 5 *'
+    # Lunedì 26 maggio fino alle 15 IT (13 UTC): ogni ora (votazioni + affluenza ore 15)
+    - cron: '0 0-13 26 5 *'
+    # Lunedì 26 maggio dalle 15 IT (13 UTC): ogni 5 minuti per lo scrutinio
+    - cron: '*/5 13-23 26 5 *'
   workflow_dispatch:
     inputs:
       force:
