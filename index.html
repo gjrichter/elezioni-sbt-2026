@@ -1309,6 +1309,8 @@ function switchTab(name) {
   document.querySelectorAll('.tab-panel').forEach(p => {
     p.classList.toggle('active', p.id === `tab-${name}`);
   });
+  const ap = document.getElementById('affluenza-panel');
+  if (ap) ap.style.display = name === 'sindaco' ? '' : 'none';
 }
 
 // ───────────────────────────────────────────────
