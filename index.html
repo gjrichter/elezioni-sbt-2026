@@ -300,6 +300,44 @@
       border-radius: 5px;
       transition: width 0.4s ease;
     }
+    .afflu-slots-block {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+    }
+    .afflu-slot {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0.5;
+    }
+    .afflu-slot--data { opacity: 1; }
+    .afflu-slot-label {
+      font-size: 0.72rem;
+      color: var(--muted);
+      white-space: nowrap;
+      min-width: 160px;
+    }
+    .afflu-slot-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex: 1;
+      min-width: 0;
+    }
+    .afflu-slot-pct {
+      font-size: 0.82rem;
+      font-weight: 700;
+      min-width: 42px;
+      text-align: right;
+    }
+    .afflu-slot-num {
+      font-size: 0.72rem;
+      color: var(--muted);
+      min-width: 48px;
+    }
     .afflu-totals {
       font-size: 0.78rem;
       color: var(--muted);
@@ -797,7 +835,7 @@
 // CONFIG
 // ───────────────────────────────────────────────
 const BASE = 'https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/';
-const FILES = ['meta.json','totale_raggrup.json','totale_liste.json','totale_candidati.json'];
+const FILES = ['meta.json','totale_raggrup.json','totale_liste.json','totale_candidati.json','affluenza.json'];
 const REFRESH_INTERVAL = 300; // seconds
 
 const COALITION_COLORS = { 1: '#a52929', 2: '#4a148c', 3: '#0a3d7a' };
@@ -812,6 +850,7 @@ let state = {
   raggrup: null,
   liste: null,
   candidati: null,
+  affluenza: null,
   lastFetch: null,
   countdownSec: REFRESH_INTERVAL,
 };
@@ -865,7 +904,7 @@ function prettyCity(str) {
 async function fetchAll() {
   const cb = `?_=${Date.now()}`;
   try {
-    const [meta, raggrup, liste, candidati] = await Promise.all(
+    const [meta, raggrup, liste, candidati, affluenza] = await Promise.all(
       FILES.map(f => fetch(BASE + f + cb).then(r => {
         if (!r.ok) throw new Error(`HTTP ${r.status} for ${f}`);
         return r.json();
@@ -875,6 +914,7 @@ async function fetchAll() {
     state.raggrup = raggrup;
     state.liste = liste;
     state.candidati = candidati;
+    state.affluenza = affluenza;
     state.lastFetch = new Date();
     state.countdownSec = REFRESH_INTERVAL;
 
@@ -938,57 +978,42 @@ function renderStatus() {
 // AFFLUENZA PANEL
 // ───────────────────────────────────────────────
 function renderAffluenza() {
-  const { raggrup } = state;
+  const { affluenza } = state;
   const panel = document.getElementById('affluenza-panel');
-  if (!raggrup || !panel) return;
+  if (!panel) return;
 
-  const v = raggrup.voti || {};
-  const iscritti  = v.iscri_totali  || 0;
-  const votanti   = v.tvotanti      || 0;
-  const iscM      = v.iscri_maschi  || 0;
-  const iscF      = v.iscri_femm    || 0;
-  const votM      = v.tvmas         || 0;
-  const votF      = v.tvfem         || 0;
+  const fmt1 = n => n.toFixed(1).replace('.', ',') + '%';
+  const slots = (affluenza && affluenza.slots) ? affluenza.slots : [];
 
-  const pct    = iscritti > 0 ? (votanti / iscritti * 100) : 0;
-  const pctM   = iscM     > 0 ? (votM    / iscM     * 100) : 0;
-  const pctF   = iscF     > 0 ? (votF    / iscF     * 100) : 0;
-  const fmt1   = n => n.toFixed(1).replace('.', ',') + '%';
+  // ── build one row per slot ───────────────────────────────────────
+  const rows = slots.map(slot => {
+    const iscritti = slot.iscri_totale || 0;
+    const votanti  = slot.tvotanti     || 0;
+    const pct      = iscritti > 0 ? (votanti / iscritti * 100) : 0;
+    const hasData  = votanti > 0;
+    const label    = slot.anagrafica ? slot.anagrafica.descrizione : `Rilevazione ${slot.cdafflu}`;
+    return `
+      <div class="afflu-slot${hasData ? ' afflu-slot--data' : ''}">
+        <div class="afflu-slot-label">${label}</div>
+        <div class="afflu-slot-right">
+          <div class="afflu-bar-track" style="flex:1">
+            <div class="afflu-bar-fill" style="width:${hasData ? pct.toFixed(1) : 0}%"></div>
+          </div>
+          <span class="afflu-slot-pct">${hasData ? fmt1(pct) : '—'}</span>
+          <span class="afflu-slot-num">${hasData ? fmtNum(votanti) : ''}</span>
+        </div>
+      </div>`;
+  }).join('');
 
-  const noData = iscritti === 0;
+  const iscritti = slots.length > 0 ? (slots[0].iscri_totale || 0) : 0;
 
-  panel.innerHTML = `
+  panel.innerHTML = slots.length === 0 ? '' : `
     <div class="affluenza-panel">
       <div class="afflu-pct-block">
-        <div class="afflu-pct">${noData ? '—' : fmt1(pct)}</div>
-        <div class="afflu-label">Affluenza</div>
+        <div class="afflu-pct">Affluenza</div>
+        <div class="afflu-label">${fmtNum(iscritti)} iscritti</div>
       </div>
-      <div class="afflu-bar-block">
-        <div class="afflu-bar-track">
-          <div class="afflu-bar-fill" style="width:${noData ? 0 : pct.toFixed(1)}%"></div>
-        </div>
-        <div class="afflu-totals">
-          Votanti: <strong>${fmtNum(votanti)}</strong> su <strong>${fmtNum(iscritti)}</strong> iscritti
-        </div>
-      </div>
-      <div class="afflu-gender-block">
-        <div class="afflu-gender-row">
-          <div class="afflu-gender-dot" style="background:#1565c0"></div>
-          <span class="afflu-gender-label">M</span>
-          <div class="afflu-gender-bar-track">
-            <div class="afflu-gender-bar-fill" style="background:#1565c0;width:${noData ? 0 : pctM.toFixed(1)}%"></div>
-          </div>
-          <span class="afflu-gender-pct">${noData ? '—' : fmt1(pctM)}</span>
-        </div>
-        <div class="afflu-gender-row">
-          <div class="afflu-gender-dot" style="background:#c62828"></div>
-          <span class="afflu-gender-label">F</span>
-          <div class="afflu-gender-bar-track">
-            <div class="afflu-gender-bar-fill" style="background:#c62828;width:${noData ? 0 : pctF.toFixed(1)}%"></div>
-          </div>
-          <span class="afflu-gender-pct">${noData ? '—' : fmt1(pctF)}</span>
-        </div>
-      </div>
+      <div class="afflu-slots-block">${rows}</div>
     </div>`;
 }
 

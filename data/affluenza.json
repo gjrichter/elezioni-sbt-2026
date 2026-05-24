@@ -1,0 +1,78 @@
+{
+  "fetched_at": "2026-05-24T11:31:26Z",
+  "snapshot": "20260524_132820",
+  "slots": [
+    {
+      "cdafflu": 3,
+      "tot_sezio": 43,
+      "iscri_maschi": 0,
+      "iscri_femm": 0,
+      "iscri_totale": 41116,
+      "tvmaschi": 0,
+      "tvfemm": 0,
+      "tvotanti": 5489,
+      "anagrafica": {
+        "idente": 6,
+        "cdele": 1,
+        "cdafflu": 3,
+        "descrizione": "Affluenza domenica ore 12:00",
+        "ordine": 1,
+        "note": null
+      }
+    },
+    {
+      "cdafflu": 5,
+      "tot_sezio": 0,
+      "iscri_maschi": 0,
+      "iscri_femm": 0,
+      "iscri_totale": 0,
+      "tvmaschi": 0,
+      "tvfemm": 0,
+      "tvotanti": 0,
+      "anagrafica": {
+        "idente": 6,
+        "cdele": 1,
+        "cdafflu": 5,
+        "descrizione": "Affluenza domenica ore 19:00",
+        "ordine": 2,
+        "note": null
+      }
+    },
+    {
+      "cdafflu": 7,
+      "tot_sezio": 0,
+      "iscri_maschi": 0,
+      "iscri_femm": 0,
+      "iscri_totale": 0,
+      "tvmaschi": 0,
+      "tvfemm": 0,
+      "tvotanti": 0,
+      "anagrafica": {
+        "idente": 6,
+        "cdele": 1,
+        "cdafflu": 7,
+        "descrizione": "Affluenza domenica ore 23:00",
+        "ordine": 3,
+        "note": null
+      }
+    },
+    {
+      "cdafflu": 8,
+      "tot_sezio": 0,
+      "iscri_maschi": 0,
+      "iscri_femm": 0,
+      "iscri_totale": 0,
+      "tvmaschi": 0,
+      "tvfemm": 0,
+      "tvotanti": 0,
+      "anagrafica": {
+        "idente": 6,
+        "cdele": 1,
+        "cdafflu": 8,
+        "descrizione": "Affluenza lunedì ore 15:00",
+        "ordine": 4,
+        "note": null
+      }
+    }
+  ]
+}

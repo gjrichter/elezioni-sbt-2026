@@ -108,6 +108,22 @@ async function fetchCandidati(snapshot, sez) {
   catch (e) { if (e.message.startsWith('HTTP 404')) return null; throw e; }
 }
 
+// Affluenza intermedia: prova cdafflu 1‥10, raccoglie quelli che esistono
+async function fetchAffluenza(snapshot) {
+  const slots = [];
+  for (let cdafflu = 1; cdafflu <= 10; cdafflu++) {
+    const url = `${BASE_SITE}/static_json/online/${snapshot}/${CDELE_NUMERIC}/voti_afflu_${PARTIZIONE}_${cdafflu}.json`;
+    try {
+      const d = await fetchJSON(url);
+      slots.push({ cdafflu, ...d });
+    } catch (e) {
+      if (e.message.startsWith('HTTP 404')) continue;
+      throw e;
+    }
+  }
+  return slots;
+}
+
 // ─── main ─────────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -117,12 +133,13 @@ async function main() {
   // 1) risolvi snapshot path
   const snapshot = await resolveSnapshotPath();
 
-  // 2) scarica totali (sezione 0 = aggregato)
-  console.log('Fetching totals...');
-  const [raggrupTot, listeTot, candidatiTot] = await Promise.all([
+  // 2) scarica totali (sezione 0 = aggregato) + affluenza intermedia
+  console.log('Fetching totals + affluenza...');
+  const [raggrupTot, listeTot, candidatiTot, affluenzaSlots] = await Promise.all([
     fetchRaggrup(snapshot, null),
     fetchListe(snapshot, null),
     fetchCandidati(snapshot, null),
+    fetchAffluenza(snapshot),
   ]);
 
   const timestamp = fetchedAt.replace(/[:.]/g, '-');
@@ -131,6 +148,8 @@ async function main() {
   if (raggrupTot)   saveJSON(path.join(DATA_DIR, 'totale_raggrup.json'),   { fetched_at: fetchedAt, snapshot, ...raggrupTot });
   if (listeTot)     saveJSON(path.join(DATA_DIR, 'totale_liste.json'),     { fetched_at: fetchedAt, snapshot, ...listeTot });
   if (candidatiTot) saveJSON(path.join(DATA_DIR, 'totale_candidati.json'), { fetched_at: fetchedAt, snapshot, ...candidatiTot });
+  saveJSON(path.join(DATA_DIR, 'affluenza.json'), { fetched_at: fetchedAt, snapshot, slots: affluenzaSlots });
+  console.log(`  affluenza slots trovati: ${affluenzaSlots.length}`);
 
   // salva history snapshot
   const histDir = path.join(HISTORY_DIR, timestamp);
