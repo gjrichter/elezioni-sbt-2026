@@ -99,8 +99,9 @@ var affSlots      = [];    // da affluenza.json → slots[]
 var affSezioni    = {};    // da affluenza_sezioni.json → sezioni[cdafflu][sez]
 
 // ixmaps: NEVER name var "map" — conflicts with internals
-var myMap         = null;
-var ACTIVE_THEME  = null;
+var myMap            = null;
+var ACTIVE_THEME     = null;   // aggregato per sede (PIE)
+var ACTIVE_THEME_SEZ = null;   // per sezione (MULTIQUAD)
 
 // ── AGGREGA PER SEDE ──────────────────────────────────────────────────────────
 function computeSediData(cdafflu) {
@@ -119,9 +120,35 @@ function computeSediData(cdafflu) {
   });
 }
 
+// ── PER SEZIONE (una riga per sezione, stesso geo key sez_da) ────────────────
+function computeSezioniData(cdafflu) {
+  var cache = affSezioni[String(cdafflu)] || {};
+  var rows  = [];
+  sediGj.features.forEach(function(feat) {
+    var p = feat.properties;
+    for (var s = p.sez_da; s <= p.sez_a; s++) {
+      var d        = cache[String(s)] || {};
+      var iscritti = d.iscri_totale || 0;
+      var votanti  = d.tvotanti     || 0;
+      var pct      = iscritti > 0 ? +(100 * votanti / iscritti).toFixed(1) : 0;
+      rows.push({
+        sez_da:       p.sez_da,
+        nome:         p.nome,
+        indirizzo:    p.indirizzo,
+        sezione:      s,
+        tvotanti:     votanti,
+        iscri_totale: iscritti,
+        pct:          pct
+      });
+    }
+  });
+  return rows;
+}
+
 // ── AGGIORNA OVERLAY ─────────────────────────────────────────────────────────
 function updateMap(slot) {
   var sediData = computeSediData(slot.cdafflu);
+  var sezData  = computeSezioniData(slot.cdafflu);
   var tot      = slot.tvotanti || 0;
   var isc      = slot.iscri_totale || 0;
   var pctC     = isc > 0 ? (100 * tot / isc).toFixed(1).replace(".", ",") + "%" : "—";
@@ -129,12 +156,16 @@ function updateMap(slot) {
   document.getElementById("slot-info").textContent =
     Number(tot).toLocaleString("it-IT") + " votanti  ·  " + pctC;
 
-  var themeName = "afflu_" + slot.cdafflu;
-  var prev      = ACTIVE_THEME;
+  var themeName    = "afflu_"     + slot.cdafflu;
+  var themeNameSez = "afflu_sez_" + slot.cdafflu;
+  var prev         = ACTIVE_THEME;
+  var prevSez      = ACTIVE_THEME_SEZ;
 
   myMap.then(function(api) {
-    if (prev) { try { api.removeTheme(prev); } catch(e) {} }
+    if (prev)    { try { api.removeTheme(prev);    } catch(e) {} }
+    if (prevSez) { try { api.removeTheme(prevSez); } catch(e) {} }
 
+    // ── Theme 1: aggregato per sede (PIE) — nasconde quando scala < 1:10000 ──
     myMap.layer("sedi")
       .data({ obj: sediData, type: "json" })
       .binding({ geo: "sez_da", value: "pct" })
@@ -156,7 +187,8 @@ function updateMap(slot) {
         textcolor:       "#008800",
         linewidth:       0.5,
         valuescale:      1,
-        valuedecimals:   1
+        valuedecimals:   1,
+        chartlower:      "10000"
       })
       .meta({
         name:    themeName,
@@ -168,7 +200,38 @@ function updateMap(slot) {
       })
       .define();
 
-    ACTIVE_THEME = themeName;
+    // ── Theme 2: per sezione (MULTIQUAD) — visibile quando scala < 1:10000 ──
+    myMap.layer("sedi")
+      .data({ obj: sezData, type: "json" })
+      .binding({ geo: "sez_da", value: "pct", size: "tvotanti" })
+      .type("CHART|MULTIQUAD|SIZE|VALUES")
+      .style({
+        colorscheme:     ["#00aa00"],
+        fillopacity:     0.75,
+        shadow:          false,
+        showdata:        true,
+        units:           "%",
+        normalsizevalue: "400",
+        scale:           1,
+        sizepow:         1,
+        linecolor:       ["#008800"],
+        textcolor:       "#008800",
+        linewidth:       0.5,
+        valuescale:      1,
+        valuedecimals:   1,
+        chartupper:      "10000"
+      })
+      .meta({
+        name:    themeNameSez,
+        title:   "Affluenza per sezione",
+        tooltip: "Sezione <b>{{sezione}}</b> – <b>{{nome}}</b><br>{{indirizzo}}<br>" +
+                 "Votanti: <b>{{tvotanti}}</b> su {{iscri_totale}}<br>" +
+                 "Affluenza: <b>{{pct}}%</b><br>{{theme.item.chart}}"
+      })
+      .define();
+
+    ACTIVE_THEME     = themeName;
+    ACTIVE_THEME_SEZ = themeNameSez;
   });
 }
 
