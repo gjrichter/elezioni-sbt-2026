@@ -245,7 +245,7 @@ function updateBubble(nlista, nrcandi) {
     myMap.layer("sedi")
       .data({ obj: sediData, type: "json" })
       .binding({ geo: "sez_da", value: "voti_cand", size: "voti_cand" })
-      .type("CHART|BUBBLE|SIZE|VALUES")
+      .type("CHART|BUBBLE|SIZE|VALUES|AGGREGATE")
       .style({
         colorscheme:     [meta.color || "#888"],
         normalsizevalue: String(Math.max(maxVoti, 1)),

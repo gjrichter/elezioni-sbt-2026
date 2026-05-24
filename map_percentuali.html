@@ -100,7 +100,7 @@ Promise.all(promises).then(function(results) {
   myMap.layer("sedi")
     .data({ obj: sediData, type: "json" })
     .binding({ geo: "sez_da", value: "pct_1|pct_2|pct_3", size: "tot_voti" })
-    .type("CHART|PIE|DONUT|HALF|SIZE|SORT|SIMPLELEGEND")
+    .type("CHART|PIE|DONUT|HALF|SIZE|SORT|SIMPLELEGEND|AGGREGATE")
     .style({
       colorscheme:     COLORS,
       label:           ["Fede", "D'Andrea", "Mozzoni"],
