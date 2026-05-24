@@ -381,9 +381,25 @@
     }
     @media (max-width: 600px) {
       .affluenza-panel {
-        grid-template-columns: auto 1fr;
-        grid-template-rows: auto auto;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 14px 16px;
       }
+      .afflu-pct-block {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        text-align: left;
+      }
+      .afflu-pct { font-size: 1.1rem; font-weight: 700; }
+      .afflu-slot-label {
+        min-width: 0;
+        white-space: normal;
+        font-size: 0.68rem;
+        flex: 0 0 auto;
+        max-width: 50%;
+      }
+      .afflu-slot-num { display: none; }
       .afflu-gender-block {
         grid-column: 1 / -1;
         flex-direction: row;
