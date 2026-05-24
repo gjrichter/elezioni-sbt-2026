@@ -762,6 +762,7 @@
       <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="tab-sindaco"     id="btn-sindaco"     onclick="switchTab('sindaco')">SINDACO</button>
       <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-liste"       id="btn-liste"       onclick="switchTab('liste')">LISTE</button>
       <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-consiglieri" id="btn-consiglieri" onclick="switchTab('consiglieri')">CONSIGLIERI</button>
+      <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-mappe"        id="btn-mappe"        onclick="switchTab('mappe')">MAPPE</button>
     </div>
   </nav>
 </div>
@@ -776,6 +777,15 @@
   <div id="tab-sindaco"     class="tab-panel" role="tabpanel" aria-labelledby="btn-sindaco"></div>
   <div id="tab-liste"       class="tab-panel" role="tabpanel" aria-labelledby="btn-liste"></div>
   <div id="tab-consiglieri" class="tab-panel" role="tabpanel" aria-labelledby="btn-consiglieri"></div>
+  <div id="tab-mappe"       class="tab-panel" role="tabpanel" aria-labelledby="btn-mappe">
+    <ul style="line-height:2.2; font-size:0.95rem; padding-left:1.2em;">
+      <li><a href="map_vincente.html">Candidato vincente per sezione</a></li>
+      <li><a href="map_percentuali.html">Percentuali candidati per sede</a></li>
+      <li><a href="map_voti.html">Voti preferenza per candidato e sede</a></li>
+      <li><a href="map_sedi.html">Sedi elettorali</a></li>
+      <li><a href="map_sezioni.html">Sezioni per collegio</a></li>
+    </ul>
+  </div>
 </main>
 
 <footer>
