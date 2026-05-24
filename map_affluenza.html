@@ -138,7 +138,7 @@ function updateMap(slot) {
     myMap.layer("sedi")
       .data({ obj: sediData, type: "json" })
       .binding({ geo: "sez_da", value: "pct" })
-      .type("CHART|PIE|AUTOCOMPLETE|SIZE|VALUES|AGGREGATE|MEAN")
+      .type("CHART|PIE|AUTOCOMPLETE|SIZE|VALUES|AGGREGATE|MEAN|TEXTLEGEND")
       .style({
         colorscheme:     ["#00aa00"],
         fillopacity:     0.75,
@@ -146,7 +146,6 @@ function updateMap(slot) {
         visible:         true,
         showdata:        true,
         units:           "%",
-        legendunits:     " votanti",
         refreshtimeout:  0,
         normalsizevalue: "958",
         scale:           1,
