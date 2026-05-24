@@ -121,7 +121,6 @@ function computeSediData(cdafflu) {
 // ── AGGIORNA OVERLAY ─────────────────────────────────────────────────────────
 function updateMap(slot) {
   var sediData = computeSediData(slot.cdafflu);
-  var maxVot   = Math.max.apply(null, sediData.map(function(d) { return d.tvotanti || 0; }));
   var tot      = slot.tvotanti || 0;
   var isc      = slot.iscri_totale || 0;
   var pctC     = isc > 0 ? (100 * tot / isc).toFixed(1).replace(".", ",") + "%" : "—";
@@ -137,18 +136,25 @@ function updateMap(slot) {
 
     myMap.layer("sedi")
       .data({ obj: sediData, type: "json" })
-      .binding({ geo: "sez_da", value: "pct", size: "tvotanti" })
-      .type("CHART|BUBBLE|SIZE|VALUES|AGGREGATE")
+      .binding({ geo: "sez_da", value: "pct" })
+      .type("CHART|PIE|AUTOCOMPLETE|SIZE|VALUES|AGGREGATE|MEAN")
       .style({
-        colorscheme:     ["#27ae60"],
-        normalsizevalue: String(Math.max(maxVot, 1)),
-        scale:           1,
+        colorscheme:     ["#00aa00"],
         fillopacity:     0.75,
-        linecolor:       "#fff",
-        linewidth:       1,
-        showdata:        "true",
+        shadow:          false,
+        visible:         true,
+        showdata:        true,
         units:           "%",
-        legendunits:     "votanti"
+        legendunits:     " votanti",
+        refreshtimeout:  0,
+        normalsizevalue: "958",
+        scale:           1,
+        sizepow:         2,
+        sizefield:       "tvotanti",
+        linecolor:       ["#008800"],
+        textcolor:       "#008800",
+        linewidth:       0.5,
+        valuescale:      1
       })
       .meta({
         name:    themeName,
