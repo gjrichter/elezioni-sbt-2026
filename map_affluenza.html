@@ -204,16 +204,16 @@ function updateMap(slot) {
     myMap.layer("sedi")
       .data({ obj: sezData, type: "json" })
       .binding({ geo: "sez_da", value: "pct", size: "tvotanti" })
-      .type("CHART|PIE|AUTOCOMPLETE|MULTIQUAD|SIZE|VALUES")
+      .type("CHART|PIE|AUTOCOMPLETE|MULTIQUAD|GRIDSIZE|VALUES")
       .style({
         colorscheme:     ["#00aa00"],
         fillopacity:     0.75,
         shadow:          false,
         showdata:        true,
         units:           "%",
-        normalsizevalue: "400",
-        scale:           1,
+        scale:           3,
         sizepow:         1,
+        rangescale:      0.3,
         linecolor:       ["#008800"],
         textcolor:       "#008800",
         linewidth:       0.5,
