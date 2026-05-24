@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-05-24T20:48:43.214Z",
-  "snapshot": "20260524_224652",
+  "fetched_at": "2026-05-24T21:22:17.209Z",
+  "snapshot": "20260524_232019",
   "slots": [
     {
       "cdafflu": 3,
@@ -40,13 +40,13 @@
     },
     {
       "cdafflu": 7,
-      "tot_sezio": 0,
+      "tot_sezio": 43,
       "iscri_maschi": 0,
       "iscri_femm": 0,
-      "iscri_totale": 0,
+      "iscri_totale": 41116,
       "tvmaschi": 0,
       "tvfemm": 0,
-      "tvotanti": 0,
+      "tvotanti": 18161,
       "anagrafica": {
         "idente": 6,
         "cdele": 1,
