@@ -93,7 +93,7 @@ Promise.all(promises).then(function(results) {
     .data({ obj: sediGj, type: "geojson" })
     .binding({ geo: "geometry", id: "sez_da", title: "nome" })
     .type("FEATURE|SILENT")
-    .style({ colorscheme: ["#ccc"], fillopacity: 0.1, showdata: "true" })
+    .style({ colorscheme: ["none"], showdata: "true" })
     .define();
 
   // Overlay percentuali – DONUT PIE, dimensione proporzionale a tot_voti

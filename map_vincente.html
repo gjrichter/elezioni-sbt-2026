@@ -85,7 +85,7 @@ Promise.all(promises).then(function(results) {
     .data({ obj: gj, type: "geojson" })
     .binding({ geo: "geometry", id: "sezione", title: "sezione" })
     .type("FEATURE|SILENT")
-    .style({ colorscheme: ["#ccc"], fillopacity: 0.15, showdata: "true" })
+    .style({ colorscheme: ["none"], showdata: "true" })
     .define();
 
   // Overlay risultati: stesso layer name → join su sezione
