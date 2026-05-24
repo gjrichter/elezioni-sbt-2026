@@ -235,11 +235,23 @@
       color: var(--muted);
       cursor: pointer;
       transition: color 0.18s, border-color 0.18s;
+      white-space: nowrap;
     }
     .tab-btn:hover { color: var(--text); }
     .tab-btn.active {
       color: var(--text);
       border-bottom-color: var(--text);
+    }
+    @media (max-width: 600px) {
+      .tab-nav { padding: 0; }
+      .tab-nav-inner { justify-content: stretch; }
+      .tab-btn {
+        flex: 1;
+        padding: 11px 4px 9px;
+        font-size: 0.65rem;
+        letter-spacing: 0.3px;
+        text-align: center;
+      }
     }
 
     /* ── MAIN CONTENT ── */
