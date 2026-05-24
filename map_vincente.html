@@ -111,7 +111,7 @@ Promise.all(promises).then(function(results) {
       tooltip: "Sezione <b>{{sezione}}</b><br>" +
                "Vincente: <b>{{vincente_nome}}</b><br>" +
                "Fede: {{voti_1}} &nbsp; D'Andrea: {{voti_2}} &nbsp; Mozzoni: {{voti_3}}<br>" +
-               "Totale: {{tot_voti}}"
+               "Totale: {{tot_voti}}<br>{{theme.item.chart}}"
     })
     .title("Candidato vincente")
     .define();
