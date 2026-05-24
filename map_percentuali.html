@@ -7,13 +7,16 @@
   <style>
     html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; font-family: sans-serif; }
     #map { width: 100%; height: 100%; }
-    #loading { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-               background: rgba(255,255,255,0.9); padding: 1em 2em; border-radius: 8px;
-               font-size: 1.1em; z-index: 9999; }
+    /* Note: DO NOT use id="loading" or id="loading-div" — ixmaps reserves those */
+    #app-loading {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      background: rgba(255,255,255,0.9); padding: 1em 2em; border-radius: 8px;
+      font-size: 1.1em; z-index: 9999;
+    }
   </style>
 </head>
 <body>
-<div id="loading">⟳ Caricamento risultati…</div>
+<div id="app-loading">⟳ Caricamento risultati…</div>
 <div id="map"></div>
 <script>
 
@@ -21,6 +24,7 @@ var SEDI_URL  = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/m
 var DATA_BASE = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/sezioni/";
 var N_SEZ     = 43;
 
+// 1=Fede, 2=D'Andrea, 3=Mozzoni
 var COLORS = ["#e74c3c", "#f1c40f", "#2980b9"];
 
 function loadSezioneVoti(n) {
@@ -38,21 +42,18 @@ function loadSezioneVoti(n) {
     });
 }
 
-// Carica sedi + tutti i risultati per sezione
 var promises = [fetch(SEDI_URL).then(function(r) { return r.json(); })];
 for (var i = 1; i <= N_SEZ; i++) promises.push(loadSezioneVoti(i));
 
 Promise.all(promises).then(function(results) {
-  var sediGj   = results[0];
-  var sezVoti  = results.slice(1);   // [{sezione, v1, v2, v3}, …]
+  var sediGj  = results[0];
+  var sezVoti = results.slice(1);
 
-  // Indice voti per sezione
   var votiIdx = {};
   sezVoti.forEach(function(s) { votiIdx[s.sezione] = s; });
 
-  // Aggrega per sede usando sez_da come chiave di join
   var sediData = sediGj.features.map(function(feat) {
-    var p    = feat.properties;
+    var p = feat.properties;
     var v1 = 0, v2 = 0, v3 = 0;
     for (var s = p.sez_da; s <= p.sez_a; s++) {
       var v = votiIdx[s] || {};
@@ -60,17 +61,17 @@ Promise.all(promises).then(function(results) {
       v2 += v.v2 || 0;
       v3 += v.v3 || 0;
     }
-    var tot  = v1 + v2 + v3;
+    var tot = v1 + v2 + v3;
     return {
-      sez_da: p.sez_da,           // chiave di join con FEATURE base
-      pct_1:  tot ? +(100*v1/tot).toFixed(1) : 0,
-      pct_2:  tot ? +(100*v2/tot).toFixed(1) : 0,
-      pct_3:  tot ? +(100*v3/tot).toFixed(1) : 0,
+      sez_da:   p.sez_da,
+      pct_1:    tot ? +(100*v1/tot).toFixed(1) : 0,
+      pct_2:    tot ? +(100*v2/tot).toFixed(1) : 0,
+      pct_3:    tot ? +(100*v3/tot).toFixed(1) : 0,
       tot_voti: tot
     };
   });
 
-  document.getElementById("loading").style.display = "none";
+  document.getElementById("app-loading").style.display = "none";
 
   var myMap = ixmaps.Map("map", {
     mapType: "VT_TONER_LITE",
@@ -86,7 +87,7 @@ Promise.all(promises).then(function(results) {
     flushChartDraw:  1000000
   });
 
-  // FEATURE base: sedi GeoJSON, id = sez_da
+  // FEATURE base
   myMap.layer("sedi")
     .data({ obj: sediGj, type: "geojson" })
     .binding({ geo: "geometry", id: "sez_da", title: "nome" })
@@ -94,21 +95,28 @@ Promise.all(promises).then(function(results) {
     .style({ colorscheme: ["#ccc"], fillopacity: 0.1, showdata: "true" })
     .define();
 
-  // Overlay percentuali: lookup su sez_da
+  // Overlay percentuali – DONUT PIE, dimensione proporzionale a tot_voti
   myMap.layer("sedi")
     .data({ obj: sediData, type: "json" })
-    .binding({ lookup: "sez_da", value: "pct_1|pct_2|pct_3", title: "nome" })
-    .type("CHART|BAR|STACKED|SIZE|GRID|BOX|VALUES")
+    .binding({ geo: "sez_da", value: "pct_1|pct_2|pct_3", size: "tot_voti" })
+    .type("CHART|PIE|DONUT|HALF|SIZE|SORT|SIMPLELEGEND")
     .style({
       colorscheme:     COLORS,
-      normalsizevalue: "100",
-      scale:           1,
+      label:           ["Fede", "D'Andrea", "Mozzoni"],
       fillopacity:     0.88,
-      gridx:           3,
-      showdata:        "true"
+      shadow:          false,
+      visible:         true,
+      showdata:        true,
+      units:           "",
+      refreshtimeout:  0,
+      normalsizevalue: "1000",
+      scale:           1,
+      sizepow:         2,
+      valuescale:      1
     })
     .meta({
       name:    "pct-theme",
+      title:   "% voti per candidato 2026",
       tooltip: "<b>{{nome}}</b><br>{{indirizzo}}<br>" +
                "Sezioni: {{sezioni}}<br>" +
                "Fede: <b>{{pct_1}}%</b><br>" +
@@ -116,11 +124,10 @@ Promise.all(promises).then(function(results) {
                "Mozzoni: <b>{{pct_3}}%</b><br>" +
                "Totale voti: {{tot_voti}}"
     })
-    .title("% voti per candidato")
     .define();
 
 }).catch(function(e) {
-  document.getElementById("loading").textContent = "✗ Errore: " + e.message;
+  document.getElementById("app-loading").textContent = "✗ Errore: " + e.message;
 });
 
 </script>
