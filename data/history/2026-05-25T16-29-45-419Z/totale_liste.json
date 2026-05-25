@@ -200,94 +200,94 @@
   "voti": {
     "arrVotiListe": {
       "1": {
-        "voti": 49,
+        "voti": 196,
         "voti_nona": 0
       },
       "2": {
-        "voti": 10,
+        "voti": 83,
         "voti_nona": 0
       },
       "3": {
-        "voti": 37,
+        "voti": 157,
         "voti_nona": 0
       },
       "4": {
-        "voti": 81,
+        "voti": 366,
         "voti_nona": 0
       },
       "5": {
-        "voti": 20,
+        "voti": 74,
         "voti_nona": 0
       },
       "6": {
-        "voti": 62,
+        "voti": 172,
         "voti_nona": 0
       },
       "7": {
-        "voti": 24,
+        "voti": 96,
         "voti_nona": 0
       },
       "8": {
-        "voti": 44,
+        "voti": 198,
         "voti_nona": 0
       },
       "9": {
-        "voti": 27,
+        "voti": 256,
         "voti_nona": 0
       },
       "10": {
-        "voti": 35,
+        "voti": 227,
         "voti_nona": 0
       },
       "11": {
-        "voti": 40,
+        "voti": 189,
         "voti_nona": 0
       },
       "12": {
-        "voti": 122,
+        "voti": 494,
         "voti_nona": 0
       },
       "13": {
-        "voti": 7,
+        "voti": 107,
         "voti_nona": 0
       },
       "14": {
-        "voti": 25,
+        "voti": 102,
         "voti_nona": 0
       }
     },
-    "tot_sezio": 1,
+    "tot_sezio": 6,
     "iscri_maschi": 0,
     "iscri_femm": 0,
-    "iscri_totali": 1156,
+    "iscri_totali": 4861,
     "tvmas": 0,
     "tvfem": 0,
-    "tvotanti": 635,
-    "tvotival": 583,
+    "tvotanti": 2920,
+    "tvotival": 2717,
     "tvnonass": 0,
-    "tbianche": 1,
-    "tnulle": 9,
+    "tbianche": 12,
+    "tnulle": 39,
     "tvnulli": 0,
     "sk_contestate": 0,
-    "solosindpres": 42,
+    "solosindpres": 152,
     "solosindpres_nona": 0,
-    "totale_parz": 10,
-    "totale_gen": 635
+    "totale_parz": 51,
+    "totale_gen": 2920
   },
   "ordinamento": [
     12,
     4,
-    6,
-    1,
-    8,
-    11,
-    3,
-    10,
     9,
+    10,
+    8,
+    1,
+    11,
+    6,
+    3,
+    13,
     14,
     7,
-    5,
     2,
-    13
+    5
   ]
 }
