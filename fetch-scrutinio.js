@@ -38,17 +38,31 @@ const FOLDER_JS_URL  = `${BASE_SITE}/static_json/online/folder.js`;
 
 // ─── helpers ─────────────────────────────────────────────────────────────────
 
-function fetchText(url) {
-  return new Promise((resolve, reject) => {
-    https.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' } }, res => {
-      let body = '';
-      res.on('data', chunk => body += chunk);
-      res.on('end', () => {
-        if (res.statusCode >= 400) reject(new Error(`HTTP ${res.statusCode}: ${url}`));
-        else resolve(body);
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function fetchText(url, retries = 5, delayMs = 2000) {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      const body = await new Promise((resolve, reject) => {
+        https.get(url, { headers: { 'User-Agent': 'Mozilla/5.0' } }, res => {
+          let data = '';
+          res.on('data', chunk => data += chunk);
+          res.on('end', () => {
+            if (res.statusCode >= 400) reject(new Error(`HTTP ${res.statusCode}: ${url}`));
+            else resolve(data);
+          });
+        }).on('error', reject);
       });
-    }).on('error', reject);
-  });
+      return body;
+    } catch (e) {
+      if (attempt === retries) throw e;
+      const wait = delayMs * attempt;   // backoff: 2s, 4s, 6s, 8s…
+      console.log(`  [retry ${attempt}/${retries - 1}] ${e.message} — wait ${wait}ms`);
+      await sleep(wait);
+    }
+  }
 }
 
 async function fetchJSON(url) {
