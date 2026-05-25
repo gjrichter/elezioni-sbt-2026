@@ -216,6 +216,20 @@ function buildCandidatiTotali() {
 
 // ── AGGREGA PER SEDE ──────────────────────────────────────────────────────────
 function computeSediData(nlista, nrcandi) {
+  if (nlista < 0) {
+    // coalizione: somma voti lista (nlista_0) per tutte le liste della coalizione
+    var coalIdx = -nlista - 1;
+    var nlListe = COALIZIONI[coalIdx].liste.map(function(l) { return l.nlista; });
+    return sediGj.features.map(function(feat) {
+      var p = feat.properties;
+      var v = 0;
+      for (var s = p.sez_da; s <= p.sez_a; s++) {
+        nlListe.forEach(function(nl) { v += (sezCandVoti[s] || {})[nl + "_0"] || 0; });
+      }
+      return { sez_da: p.sez_da, nome: p.nome, indirizzo: p.indirizzo, sezioni: p.sezioni,
+               voti_cand: v };
+    });
+  }
   var key = nlista + "_" + nrcandi;
   return sediGj.features.map(function(feat) {
     var p = feat.properties;
@@ -233,12 +247,21 @@ function updateBubble(nlista, nrcandi) {
   var sediData = computeSediData(nlista, nrcandi);
   var maxVoti  = Math.max.apply(null, sediData.map(function(d) { return d.voti_cand || 0; }));
   var totalV   = sediData.reduce(function(s, d) { return s + (d.voti_cand || 0); }, 0);
-  var meta     = LISTA_META[nlista] || {};
-  var isLista  = (nrcandi === 0);
-  var candName = isLista ? "Totale lista"
-               : ((candidatiMeta[nlista] || {})[nrcandi]
-                  ? candidatiMeta[nlista][nrcandi].nome : "—");
-  var votoLabel = isLista ? "voti lista" : "preferenze";
+  var meta, candName, votoLabel;
+  if (nlista < 0) {
+    var coalIdx  = -nlista - 1;
+    var coal     = COALIZIONI[coalIdx];
+    meta         = { color: coal.color, nome: coal.label };
+    candName     = "Tutte le liste";
+    votoLabel    = "voti coalizione";
+  } else {
+    meta         = LISTA_META[nlista] || {};
+    var isLista  = (nrcandi === 0);
+    candName     = isLista ? "Totale lista"
+                 : ((candidatiMeta[nlista] || {})[nrcandi]
+                    ? candidatiMeta[nlista][nrcandi].nome : "—");
+    votoLabel    = isLista ? "voti lista" : "preferenze";
+  }
 
   // aggiorna barra info
   var dot = document.getElementById("cand-dot");
@@ -289,9 +312,14 @@ function updateBubble(nlista, nrcandi) {
 function populateListaSelect() {
   var sel = document.getElementById("sel-lista");
   sel.innerHTML = "";
-  COALIZIONI.forEach(function(coal) {
+  COALIZIONI.forEach(function(coal, i) {
     var grp = document.createElement("optgroup");
     grp.label = coal.label;
+    // voce aggregata in cima al gruppo
+    var coalOpt = document.createElement("option");
+    coalOpt.value       = -(i + 1);
+    coalOpt.textContent = "★ Tutte le liste";
+    grp.appendChild(coalOpt);
     coal.liste.forEach(function(l) {
       var opt = document.createElement("option");
       opt.value       = l.nlista;
@@ -304,10 +332,19 @@ function populateListaSelect() {
 
 // ── SELECT CANDIDATI (per lista selezionata) ──────────────────────────────────
 function populateCandSelect(nlista) {
-  var sel  = document.getElementById("sel-cand");
-  var meta = candidatiMeta[nlista] || {};
+  var sel = document.getElementById("sel-cand");
   sel.innerHTML = "";
 
+  if (nlista < 0) {
+    // coalizione: unica voce fissa, nessun candidato individuale
+    var opt = document.createElement("option");
+    opt.value       = 0;
+    opt.textContent = "★ Tutte le liste";
+    sel.appendChild(opt);
+    return;
+  }
+
+  var meta = candidatiMeta[nlista] || {};
   // voce fissa in cima: totale lista (nrcandi=0)
   var totVoti = (meta[0] || {}).votiTotali || 0;
   var totOpt  = document.createElement("option");
