@@ -166,28 +166,40 @@ var candidatiMeta   = {};   // [nlista][nrcandi] = { nome, votiTotali }
 var myMap                = null;
 var ACTIVE_BUBBLE_THEME  = null;   // meta.name del bubble layer corrente
 
-// ── CARICA CANDIDATI PER SEZIONE ─────────────────────────────────────────────
+// ── CARICA CANDIDATI E LISTE PER SEZIONE ─────────────────────────────────────
 function loadSezioneCandidati(n) {
   var pad = String(n).padStart(3, "0");
-  return fetch(DATA_BASE + pad + "/candidati.json")
-    .then(function(r) { return r.json(); })
-    .then(function(d) {
-      var row = { sezione: n };
-      Object.keys(d).forEach(function(nlista) {
-        var arrV = (d[nlista].voti || {}).arrVotiCandidato || {};
-        Object.keys(arrV).forEach(function(nrcandi) {
-          row[nlista + "_" + nrcandi] = arrV[nrcandi].voti || 0;
-        });
-        // registra anagrafica (solo al primo incontro)
-        if (!candidatiMeta[nlista]) {
-          candidatiMeta[nlista] = {};
-          (d[nlista].anagrafica || []).forEach(function(c) {
-            candidatiMeta[nlista][c.nrcandi] = { nome: c.nome, votiTotali: 0 };
-          });
-        }
+  return Promise.all([
+    fetch(DATA_BASE + pad + "/candidati.json").then(function(r) { return r.json(); }),
+    fetch(DATA_BASE + pad + "/liste.json").then(function(r) { return r.json(); })
+  ]).then(function(results) {
+    var dCand  = results[0];
+    var dListe = results[1];
+    var row = { sezione: n };
+
+    // voti preferenza candidati
+    Object.keys(dCand).forEach(function(nlista) {
+      var arrV = (dCand[nlista].voti || {}).arrVotiCandidato || {};
+      Object.keys(arrV).forEach(function(nrcandi) {
+        row[nlista + "_" + nrcandi] = arrV[nrcandi].voti || 0;
       });
-      return row;
+      // registra anagrafica (solo al primo incontro); nrcandi=0 = totale lista
+      if (!candidatiMeta[nlista]) {
+        candidatiMeta[nlista] = { 0: { nome: "Totale lista", votiTotali: 0 } };
+        (dCand[nlista].anagrafica || []).forEach(function(c) {
+          candidatiMeta[nlista][c.nrcandi] = { nome: c.nome, votiTotali: 0 };
+        });
+      }
     });
+
+    // voti lista totale → chiave nlista_0
+    var arrListe = (dListe.voti || {}).arrVotiListe || {};
+    Object.keys(arrListe).forEach(function(nlista) {
+      row[nlista + "_0"] = arrListe[nlista].voti || 0;
+    });
+
+    return row;
+  });
 }
 
 // ── TOTALI CITYWIDE ───────────────────────────────────────────────────────────
@@ -222,8 +234,11 @@ function updateBubble(nlista, nrcandi) {
   var maxVoti  = Math.max.apply(null, sediData.map(function(d) { return d.voti_cand || 0; }));
   var totalV   = sediData.reduce(function(s, d) { return s + (d.voti_cand || 0); }, 0);
   var meta     = LISTA_META[nlista] || {};
-  var candName = (candidatiMeta[nlista] || {})[nrcandi]
-               ? candidatiMeta[nlista][nrcandi].nome : "—";
+  var isLista  = (nrcandi === 0);
+  var candName = isLista ? "Totale lista"
+               : ((candidatiMeta[nlista] || {})[nrcandi]
+                  ? candidatiMeta[nlista][nrcandi].nome : "—");
+  var votoLabel = isLista ? "voti lista" : "preferenze";
 
   // aggiorna barra info
   var dot = document.getElementById("cand-dot");
@@ -262,7 +277,7 @@ function updateBubble(nlista, nrcandi) {
         title:   candName + " – " + meta.nome,
         tooltip: "<b>{{nome}}</b><br>{{indirizzo}}<br>" +
                  "Sezioni: {{sezioni}}<br>" +
-                 candName + ": <b>{{voti_cand}}</b> preferenze<br>{{theme.item.chart}}"
+                 candName + ": <b>{{voti_cand}}</b> " + votoLabel + "<br>{{theme.item.chart}}"
       })
       .define();
 
@@ -292,7 +307,17 @@ function populateCandSelect(nlista) {
   var sel  = document.getElementById("sel-cand");
   var meta = candidatiMeta[nlista] || {};
   sel.innerHTML = "";
+
+  // voce fissa in cima: totale lista (nrcandi=0)
+  var totVoti = (meta[0] || {}).votiTotali || 0;
+  var totOpt  = document.createElement("option");
+  totOpt.value       = 0;
+  totOpt.textContent = "★ Totale lista" + (totVoti > 0 ? "  (" + totVoti + ")" : "");
+  sel.appendChild(totOpt);
+
+  // candidati ordinati per voti decrescenti
   Object.keys(meta)
+    .filter(function(nrcandi) { return parseInt(nrcandi, 10) !== 0; })
     .map(function(nrcandi) {
       return { nrcandi: parseInt(nrcandi, 10),
                nome: meta[nrcandi].nome,
