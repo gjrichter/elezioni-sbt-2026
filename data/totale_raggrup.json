@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-05-25T22:28:58.248Z",
-  "snapshot": "20260526_002602",
+  "fetched_at": "2026-05-25T22:33:08.306Z",
+  "snapshot": "20260526_002945",
   "anagrafica": [
     {
       "idpartizione": 0,
@@ -253,38 +253,38 @@
   "voti": {
     "arrVotiRaggrup": {
       "1": {
-        "voti": 8319,
-        "voti_nona": 522,
+        "voti": 8083,
+        "voti_nona": 502,
         "voti_solosindpres": 0
       },
       "2": {
-        "voti": 1690,
-        "voti_nona": 118,
+        "voti": 1639,
+        "voti_nona": 109,
         "voti_solosindpres": 0
       },
       "3": {
-        "voti": 13401,
-        "voti_nona": 362,
+        "voti": 12986,
+        "voti_nona": 351,
         "voti_solosindpres": 0
       }
     },
-    "tot_sezio": 42,
+    "tot_sezio": 41,
     "iscri_maschi": 0,
     "iscri_femm": 0,
-    "iscri_totali": 40158,
+    "iscri_totali": 39051,
     "tvmas": 0,
     "tvfem": 0,
-    "tvotanti": 23835,
-    "tvotival": 23410,
-    "tvnonass": 1002,
-    "tbianche": 98,
-    "tnulle": 317,
+    "tvotanti": 23125,
+    "tvotival": 22708,
+    "tvnonass": 962,
+    "tbianche": 96,
+    "tnulle": 311,
     "tvnulli": 0,
     "sk_contestate": 10,
-    "solosindpres": 1002,
+    "solosindpres": 962,
     "solosindpres_nona": 0,
-    "totale_parz": 425,
-    "totale_gen": 23835
+    "totale_parz": 417,
+    "totale_gen": 23125
   },
   "ordinamento": [
     3,
