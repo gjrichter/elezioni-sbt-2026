@@ -2,12 +2,7 @@ name: Scrutinio elezioni SBT 2026
 
 on:
   schedule:
-    # Sabato 24 maggio: ogni 30 minuti
-    - cron: '*/30 * 24 5 *'
-    # Domenica 25 maggio: ogni 5 minuti
-    - cron: '*/5 * 25 5 *'
-    # Lunedì 26 maggio: ogni 5 minuti
-    - cron: '*/5 * 26 5 *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
     inputs:
       force:
