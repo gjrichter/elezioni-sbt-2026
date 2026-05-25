@@ -318,7 +318,7 @@ function populateListaSelect() {
     // voce aggregata in cima al gruppo
     var coalOpt = document.createElement("option");
     coalOpt.value       = -(i + 1);
-    coalOpt.textContent = "★ Tutte le liste";
+    coalOpt.textContent = "★ Tutte le liste – " + coal.label.split(" – ").pop();
     grp.appendChild(coalOpt);
     coal.liste.forEach(function(l) {
       var opt = document.createElement("option");
