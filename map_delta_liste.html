@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Variazione liste 2021→2026 – SBdT</title>
   <script src="https://cdn.jsdelivr.net/gh/gjrichter/ixmaps-flat@master/ixmaps.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/gjrichter/ixmaps_flat@master/usercharts/d3/arrow_chart.js"></script>
   <style>
     html, body {
       width: 100%; height: 100%; margin: 0; overflow: hidden;
@@ -120,9 +121,8 @@ var SEDI_URL = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/ma
 var sediGj    = null;
 var lData21   = {};   // [sezione] = { [nlista]: voti, _total: N }
 var lData26   = {};
-var myMap     = null;
-var ACTIVE_GAIN = null;
-var ACTIVE_LOSS = null;
+var myMap         = null;
+var ACTIVE_THEME  = null;
 
 // ── CARICA LISTE PER SEZIONE ──────────────────────────────────────────────────
 function loadListeSez(base, n) {
@@ -174,9 +174,6 @@ function computeDelta(partito) {
 // ── AGGIORNA MAPPA ────────────────────────────────────────────────────────────
 function updateMap(partito) {
   var sediData = computeDelta(partito);
-  var gainData = sediData.filter(function(d) { return d.delta > 0; });
-  var lossData = sediData.filter(function(d) { return d.delta < 0; });
-  var maxAbs   = Math.max.apply(null, sediData.map(function(d) { return d.absDelta || 0; })) || 1;
 
   // totale città
   var V21 = 0, T21 = 0, V26 = 0, T26 = 0;
@@ -194,76 +191,36 @@ function updateMap(partito) {
   badge.textContent = "Città: " + sign + cityDelta + " pp  (" + p21 + "% → " + p26 + "%)";
   badge.className   = cityDelta >= 0 ? "gain" : "loss";
 
-  var prevGain = ACTIVE_GAIN;
-  var prevLoss = ACTIVE_LOSS;
-  var gainName = "gain_" + partito.id;
-  var lossName = "loss_" + partito.id;
-  var normSize = String(maxAbs);
+  var prev      = ACTIVE_THEME;
+  var themeName = "delta_" + partito.id;
 
   myMap.then(function(api) {
-    if (prevGain) try { api.removeTheme(prevGain); } catch(e) {}
-    if (prevLoss) try { api.removeTheme(prevLoss); } catch(e) {}
+    if (prev) try { api.removeTheme(prev); } catch(e) {}
 
-    // ── ▲ GUADAGNO (verde) ──────────────────────────────────────────────────
-    if (gainData.length > 0) {
-      myMap.layer("sedi")
-        .data({ obj: gainData, type: "json" })
-        .binding({ geo: "sez_da", value: "delta" })
-        .type("CHART|BUBBLE|SIZE|VALUES|AGGREGATE")
-        .style({
-          colorscheme:     ["#27ae60"],
-          fillopacity:     0.82,
-          linecolor:       "#fff",
-          linewidth:       0.8,
-          showdata:        "true",
-          units:           " pp",
-          valuedecimals:   1,
-          normalsizevalue: normSize,
-          scale:           2,
-          sizepow:         1,
-          legendunits:     "pp guadagno"
-        })
-        .meta({
-          name:    gainName,
-          title:   "▲ " + partito.nome,
-          tooltip: "<b>{{nome}}</b><br>{{indirizzo}}<br>Sezioni: {{sezioni}}<br>" +
-                   "2021: <b>{{pct21}}%</b> → 2026: <b>{{pct26}}%</b><br>" +
-                   "Variazione: <b style='color:#27ae60'>+{{delta}} pp</b><br>{{theme.item.chart}}"
-        })
-        .define();
-    }
+    myMap.layer("sedi")
+      .data({ obj: sediData, type: "json" })
+      .binding({ geo: "sez_da", value: "delta" })
+      .type("CHART|USER|SIZE|VALUES")
+      .style({
+        userdraw:         "arrowChart",
+        colorscheme:      ["#e74c3c", "#27ae60"],  // negativo=rosso, positivo=verde
+        rangecentervalue: 0,
+        fillopacity:      0.85,
+        rangescale:       0.5,
+        showdata:         "true",
+        units:            " pp",
+        valuedecimals:    1
+      })
+      .meta({
+        name:    themeName,
+        title:   partito.nome + " 2021→2026",
+        tooltip: "<b>{{nome}}</b><br>{{indirizzo}}<br>Sezioni: {{sezioni}}<br>" +
+                 "2021: <b>{{pct21}}%</b> → 2026: <b>{{pct26}}%</b><br>" +
+                 "Variazione: <b>{{delta}} pp</b><br>{{theme.item.chart}}"
+      })
+      .define();
 
-    // ── ▼ PERDITA (rosso) ───────────────────────────────────────────────────
-    if (lossData.length > 0) {
-      myMap.layer("sedi")
-        .data({ obj: lossData, type: "json" })
-        .binding({ geo: "sez_da", value: "absDelta" })
-        .type("CHART|BUBBLE|SIZE|VALUES|AGGREGATE")
-        .style({
-          colorscheme:     ["#e74c3c"],
-          fillopacity:     0.82,
-          linecolor:       "#fff",
-          linewidth:       0.8,
-          showdata:        "true",
-          units:           " pp",
-          valuedecimals:   1,
-          normalsizevalue: normSize,
-          scale:           2,
-          sizepow:         1,
-          legendunits:     "pp perdita"
-        })
-        .meta({
-          name:    lossName,
-          title:   "▼ " + partito.nome,
-          tooltip: "<b>{{nome}}</b><br>{{indirizzo}}<br>Sezioni: {{sezioni}}<br>" +
-                   "2021: <b>{{pct21}}%</b> → 2026: <b>{{pct26}}%</b><br>" +
-                   "Variazione: <b style='color:#e74c3c'>{{delta}} pp</b><br>{{theme.item.chart}}"
-        })
-        .define();
-    }
-
-    ACTIVE_GAIN = gainData.length > 0 ? gainName : null;
-    ACTIVE_LOSS = lossData.length > 0 ? lossName : null;
+    ACTIVE_THEME = themeName;
   });
 }
 
