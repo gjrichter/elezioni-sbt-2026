@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-05-25T22:09:07.162Z",
-  "snapshot": "20260526_000537",
+  "fetched_at": "2026-05-25T22:28:58.248Z",
+  "snapshot": "20260526_002602",
   "anagrafica": [
     {
       "idpartizione": 0,
@@ -202,87 +202,87 @@
   "voti": {
     "arrVotiListe": {
       "1": {
-        "voti": 1781,
+        "voti": 1816,
         "voti_nona": 0
       },
       "2": {
-        "voti": 736,
+        "voti": 745,
         "voti_nona": 0
       },
       "3": {
-        "voti": 1215,
+        "voti": 1245,
         "voti_nona": 0
       },
       "4": {
-        "voti": 3101,
+        "voti": 3158,
         "voti_nona": 0
       },
       "5": {
-        "voti": 554,
+        "voti": 557,
         "voti_nona": 0
       },
       "6": {
-        "voti": 1468,
+        "voti": 1509,
         "voti_nona": 0
       },
       "7": {
-        "voti": 903,
+        "voti": 934,
         "voti_nona": 0
       },
       "8": {
-        "voti": 1604,
+        "voti": 1640,
         "voti_nona": 0
       },
       "9": {
-        "voti": 1615,
+        "voti": 1637,
         "voti_nona": 0
       },
       "10": {
-        "voti": 1656,
+        "voti": 1691,
         "voti_nona": 0
       },
       "11": {
-        "voti": 1592,
+        "voti": 1625,
         "voti_nona": 0
       },
       "12": {
-        "voti": 3946,
+        "voti": 4028,
         "voti_nona": 0
       },
       "13": {
-        "voti": 1097,
+        "voti": 1116,
         "voti_nona": 0
       },
       "14": {
-        "voti": 697,
+        "voti": 707,
         "voti_nona": 0
       }
     },
-    "tot_sezio": 41,
+    "tot_sezio": 42,
     "iscri_maschi": 0,
     "iscri_femm": 0,
-    "iscri_totali": 39273,
+    "iscri_totali": 40158,
     "tvmas": 0,
     "tvfem": 0,
-    "tvotanti": 23363,
-    "tvotival": 21965,
+    "tvotanti": 23835,
+    "tvotival": 22408,
     "tvnonass": 0,
-    "tbianche": 97,
-    "tnulle": 308,
+    "tbianche": 98,
+    "tnulle": 317,
     "tvnulli": 0,
     "sk_contestate": 10,
-    "solosindpres": 983,
+    "solosindpres": 1002,
     "solosindpres_nona": 0,
-    "totale_parz": 415,
-    "totale_gen": 23363
+    "totale_parz": 425,
+    "totale_gen": 23835
   },
   "ordinamento": [
     12,
     4,
     1,
     10,
-    9,
     8,
+    9,
     11,
     6,
     3,

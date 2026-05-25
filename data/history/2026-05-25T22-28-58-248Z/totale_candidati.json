@@ -3,109 +3,109 @@
     "voti": {
       "arrVotiCandidato": {
         "1": {
-          "voti": 1,
+          "voti": 65,
           "voti_nona": 0
         },
         "2": {
-          "voti": 3,
+          "voti": 90,
           "voti_nona": 0
         },
         "3": {
-          "voti": 5,
+          "voti": 84,
           "voti_nona": 0
         },
         "4": {
-          "voti": 1,
+          "voti": 44,
           "voti_nona": 0
         },
         "5": {
-          "voti": 0,
+          "voti": 22,
           "voti_nona": 0
         },
         "6": {
-          "voti": 0,
+          "voti": 170,
           "voti_nona": 0
         },
         "7": {
-          "voti": 2,
+          "voti": 167,
           "voti_nona": 0
         },
         "8": {
-          "voti": 1,
+          "voti": 86,
           "voti_nona": 0
         },
         "9": {
-          "voti": 11,
+          "voti": 365,
           "voti_nona": 0
         },
         "10": {
-          "voti": 2,
+          "voti": 38,
           "voti_nona": 0
         },
         "11": {
-          "voti": 0,
+          "voti": 37,
           "voti_nona": 0
         },
         "12": {
-          "voti": 2,
+          "voti": 40,
           "voti_nona": 0
         },
         "13": {
-          "voti": 0,
+          "voti": 30,
           "voti_nona": 0
         },
         "14": {
-          "voti": 1,
+          "voti": 162,
           "voti_nona": 0
         },
         "15": {
-          "voti": 3,
+          "voti": 59,
           "voti_nona": 0
         },
         "16": {
-          "voti": 1,
+          "voti": 48,
           "voti_nona": 0
         },
         "17": {
-          "voti": 3,
+          "voti": 126,
           "voti_nona": 0
         },
         "18": {
-          "voti": 0,
+          "voti": 27,
           "voti_nona": 0
         },
         "19": {
-          "voti": 1,
+          "voti": 39,
           "voti_nona": 0
         },
         "20": {
-          "voti": 0,
+          "voti": 112,
           "voti_nona": 0
         },
         "21": {
-          "voti": 0,
+          "voti": 6,
           "voti_nona": 0
         },
         "22": {
-          "voti": 4,
+          "voti": 75,
           "voti_nona": 0
         },
         "23": {
-          "voti": 0,
+          "voti": 92,
           "voti_nona": 0
         },
         "24": {
-          "voti": 0,
+          "voti": 92,
           "voti_nona": 0
         }
       },
-      "tot_sezio": 1,
+      "tot_sezio": 42,
       "idpartizione": 0,
       "nlista": 1,
       "nlistamacro": 1,
-      "totVoti": 41,
+      "totVoti": 2076,
       "totVoti_nona": 0,
-      "totVotiLista": 35
+      "totVotiLista": 1816
     },
     "anagrafica": [
       {
@@ -327,40 +327,40 @@
     ],
     "ordinamento": [
       9,
+      6,
+      7,
+      14,
+      17,
+      20,
+      23,
+      24,
+      2,
+      8,
       3,
       22,
-      2,
-      15,
-      17,
-      7,
-      10,
-      12,
       1,
-      4,
-      8,
-      14,
+      15,
       16,
+      4,
+      12,
       19,
-      5,
-      6,
+      10,
       11,
       13,
       18,
-      20,
-      21,
-      23,
-      24
+      5,
+      21
     ]
   },
   "2": {
     "voti": {
       "arrVotiCandidato": {
         "1": {
-          "voti": 0,
+          "voti": 3,
           "voti_nona": 0
         },
         "2": {
-          "voti": 1,
+          "voti": 91,
           "voti_nona": 0
         },
         "3": {
@@ -368,97 +368,97 @@
           "voti_nona": 0
         },
         "4": {
-          "voti": 0,
+          "voti": 30,
           "voti_nona": 0
         },
         "5": {
-          "voti": 0,
+          "voti": 16,
           "voti_nona": 0
         },
         "6": {
-          "voti": 0,
+          "voti": 40,
           "voti_nona": 0
         },
         "7": {
-          "voti": 0,
+          "voti": 17,
           "voti_nona": 0
         },
         "8": {
-          "voti": 0,
+          "voti": 25,
           "voti_nona": 0
         },
         "9": {
-          "voti": 0,
+          "voti": 10,
           "voti_nona": 0
         },
         "10": {
-          "voti": 0,
+          "voti": 12,
           "voti_nona": 0
         },
         "11": {
-          "voti": 0,
+          "voti": 40,
           "voti_nona": 0
         },
         "12": {
-          "voti": 0,
+          "voti": 15,
           "voti_nona": 0
         },
         "13": {
-          "voti": 1,
-          "voti_nona": 0
-        },
-        "14": {
           "voti": 3,
           "voti_nona": 0
         },
+        "14": {
+          "voti": 136,
+          "voti_nona": 0
+        },
         "15": {
-          "voti": 1,
+          "voti": 21,
           "voti_nona": 0
         },
         "16": {
-          "voti": 0,
+          "voti": 124,
           "voti_nona": 0
         },
         "17": {
-          "voti": 0,
+          "voti": 29,
           "voti_nona": 0
         },
         "18": {
-          "voti": 0,
+          "voti": 20,
           "voti_nona": 0
         },
         "19": {
-          "voti": 2,
+          "voti": 63,
           "voti_nona": 0
         },
         "20": {
-          "voti": 0,
+          "voti": 9,
           "voti_nona": 0
         },
         "21": {
-          "voti": 0,
+          "voti": 29,
           "voti_nona": 0
         },
         "22": {
-          "voti": 0,
-          "voti_nona": 0
-        },
-        "23": {
           "voti": 1,
           "voti_nona": 0
         },
+        "23": {
+          "voti": 61,
+          "voti_nona": 0
+        },
         "24": {
-          "voti": 0,
+          "voti": 21,
           "voti_nona": 0
         }
       },
-      "tot_sezio": 1,
+      "tot_sezio": 42,
       "idpartizione": 0,
       "nlista": 2,
       "nlistamacro": 2,
-      "totVoti": 9,
+      "totVoti": 816,
       "totVoti_nona": 0,
-      "totVotiLista": 9
+      "totVotiLista": 745
     },
     "anagrafica": [
       {
@@ -680,138 +680,138 @@
     ],
     "ordinamento": [
       14,
-      19,
-      2,
-      13,
-      15,
-      23,
-      1,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
       16,
+      2,
+      19,
+      23,
+      6,
+      11,
+      4,
       17,
-      18,
-      20,
       21,
+      8,
+      15,
+      24,
+      18,
+      7,
+      5,
+      12,
+      10,
+      9,
+      20,
+      1,
+      13,
       22,
-      24
+      3
     ]
   },
   "3": {
     "voti": {
       "arrVotiCandidato": {
         "1": {
-          "voti": 0,
+          "voti": 126,
           "voti_nona": 0
         },
         "2": {
-          "voti": 0,
+          "voti": 24,
           "voti_nona": 0
         },
         "3": {
-          "voti": 1,
+          "voti": 23,
           "voti_nona": 0
         },
         "4": {
-          "voti": 0,
+          "voti": 28,
           "voti_nona": 0
         },
         "5": {
-          "voti": 0,
+          "voti": 12,
           "voti_nona": 0
         },
         "6": {
-          "voti": 0,
+          "voti": 36,
           "voti_nona": 0
         },
         "7": {
-          "voti": 0,
+          "voti": 13,
           "voti_nona": 0
         },
         "8": {
-          "voti": 0,
+          "voti": 11,
           "voti_nona": 0
         },
         "9": {
-          "voti": 0,
+          "voti": 5,
           "voti_nona": 0
         },
         "10": {
-          "voti": 1,
+          "voti": 16,
           "voti_nona": 0
         },
         "11": {
-          "voti": 0,
+          "voti": 18,
           "voti_nona": 0
         },
         "12": {
-          "voti": 0,
+          "voti": 17,
           "voti_nona": 0
         },
         "13": {
-          "voti": 0,
+          "voti": 8,
           "voti_nona": 0
         },
         "14": {
-          "voti": 0,
+          "voti": 36,
           "voti_nona": 0
         },
         "15": {
-          "voti": 0,
+          "voti": 15,
           "voti_nona": 0
         },
         "16": {
-          "voti": 4,
+          "voti": 33,
           "voti_nona": 0
         },
         "17": {
-          "voti": 6,
+          "voti": 87,
           "voti_nona": 0
         },
         "18": {
-          "voti": 0,
+          "voti": 32,
           "voti_nona": 0
         },
         "19": {
-          "voti": 1,
+          "voti": 42,
           "voti_nona": 0
         },
         "20": {
-          "voti": 0,
+          "voti": 11,
           "voti_nona": 0
         },
         "21": {
-          "voti": 1,
+          "voti": 22,
           "voti_nona": 0
         },
         "22": {
-          "voti": 0,
+          "voti": 61,
           "voti_nona": 0
         },
         "23": {
-          "voti": 0,
+          "voti": 15,
           "voti_nona": 0
         },
         "24": {
-          "voti": 0,
+          "voti": 8,
           "voti_nona": 0
         }
       },
-      "tot_sezio": 1,
+      "tot_sezio": 42,
       "idpartizione": 0,
       "nlista": 3,
       "nlistamacro": 3,
-      "totVoti": 14,
+      "totVoti": 699,
       "totVoti_nona": 0,
-      "totVotiLista": 30
+      "totVotiLista": 1245
     },
     "anagrafica": [
       {
@@ -1032,139 +1032,139 @@
       }
     ],
     "ordinamento": [
-      17,
-      16,
-      3,
-      10,
-      19,
-      21,
       1,
-      2,
-      4,
-      5,
+      17,
+      22,
+      19,
       6,
-      7,
-      8,
-      9,
+      14,
+      16,
+      18,
+      4,
+      2,
+      3,
+      21,
       11,
       12,
-      13,
-      14,
+      10,
       15,
-      18,
-      20,
-      22,
       23,
-      24
+      7,
+      5,
+      8,
+      20,
+      13,
+      24,
+      9
     ]
   },
   "4": {
     "voti": {
       "arrVotiCandidato": {
         "1": {
-          "voti": 17,
+          "voti": 348,
           "voti_nona": 0
         },
         "2": {
-          "voti": 1,
+          "voti": 34,
           "voti_nona": 0
         },
         "3": {
-          "voti": 0,
+          "voti": 83,
           "voti_nona": 0
         },
         "4": {
-          "voti": 2,
+          "voti": 57,
           "voti_nona": 0
         },
         "5": {
-          "voti": 1,
+          "voti": 41,
           "voti_nona": 0
         },
         "6": {
-          "voti": 0,
+          "voti": 103,
           "voti_nona": 0
         },
         "7": {
-          "voti": 0,
+          "voti": 22,
           "voti_nona": 0
         },
         "8": {
-          "voti": 3,
+          "voti": 214,
           "voti_nona": 0
         },
         "9": {
-          "voti": 2,
+          "voti": 232,
           "voti_nona": 0
         },
         "10": {
-          "voti": 5,
+          "voti": 360,
           "voti_nona": 0
         },
         "11": {
-          "voti": 0,
+          "voti": 19,
           "voti_nona": 0
         },
         "12": {
-          "voti": 1,
+          "voti": 19,
           "voti_nona": 0
         },
         "13": {
-          "voti": 0,
+          "voti": 8,
           "voti_nona": 0
         },
         "14": {
-          "voti": 3,
+          "voti": 94,
           "voti_nona": 0
         },
         "15": {
-          "voti": 0,
+          "voti": 19,
           "voti_nona": 0
         },
         "16": {
-          "voti": 2,
+          "voti": 38,
           "voti_nona": 0
         },
         "17": {
-          "voti": 2,
+          "voti": 43,
           "voti_nona": 0
         },
         "18": {
-          "voti": 1,
+          "voti": 210,
           "voti_nona": 0
         },
         "19": {
-          "voti": 0,
+          "voti": 187,
           "voti_nona": 0
         },
         "20": {
-          "voti": 0,
+          "voti": 158,
           "voti_nona": 0
         },
         "21": {
-          "voti": 1,
+          "voti": 28,
           "voti_nona": 0
         },
         "22": {
-          "voti": 2,
+          "voti": 46,
           "voti_nona": 0
         },
         "23": {
-          "voti": 3,
+          "voti": 286,
           "voti_nona": 0
         },
         "24": {
-          "voti": 15,
+          "voti": 505,
           "voti_nona": 0
         }
       },
-      "tot_sezio": 1,
+      "tot_sezio": 42,
       "idpartizione": 0,
       "nlista": 4,
       "nlistamacro": 4,
-      "totVoti": 61,
+      "totVoti": 3154,
       "totVoti_nona": 0,
-      "totVotiLista": 57
+      "totVotiLista": 3158
     },
     "anagrafica": [
       {
@@ -1385,93 +1385,93 @@
       }
     ],
     "ordinamento": [
-      1,
       24,
       10,
-      8,
-      14,
+      1,
       23,
-      4,
       9,
-      16,
-      17,
-      22,
-      2,
-      5,
-      12,
+      8,
       18,
-      21,
-      3,
+      19,
+      20,
       6,
+      14,
+      3,
+      4,
+      22,
+      17,
+      5,
+      16,
+      2,
+      21,
       7,
       11,
-      13,
+      12,
       15,
-      19,
-      20
+      13
     ]
   },
   "5": {
     "voti": {
       "arrVotiCandidato": {
         "1": {
-          "voti": 0,
+          "voti": 10,
           "voti_nona": 0
         },
         "2": {
-          "voti": 0,
+          "voti": 12,
           "voti_nona": 0
         },
         "3": {
-          "voti": 0,
+          "voti": 9,
           "voti_nona": 0
         },
         "4": {
-          "voti": 0,
+          "voti": 15,
           "voti_nona": 0
         },
         "5": {
-          "voti": 0,
+          "voti": 26,
           "voti_nona": 0
         },
         "6": {
-          "voti": 0,
+          "voti": 38,
           "voti_nona": 0
         },
         "7": {
-          "voti": 0,
+          "voti": 2,
           "voti_nona": 0
         },
         "8": {
-          "voti": 0,
+          "voti": 72,
           "voti_nona": 0
         },
         "9": {
-          "voti": 0,
+          "voti": 2,
           "voti_nona": 0
         },
         "10": {
-          "voti": 0,
+          "voti": 53,
           "voti_nona": 0
         },
         "11": {
-          "voti": 0,
+          "voti": 10,
           "voti_nona": 0
         },
         "12": {
-          "voti": 0,
+          "voti": 3,
           "voti_nona": 0
         },
         "13": {
-          "voti": 0,
+          "voti": 32,
           "voti_nona": 0
         },
         "14": {
-          "voti": 1,
+          "voti": 34,
           "voti_nona": 0
         },
         "15": {
-          "voti": 0,
+          "voti": 79,
           "voti_nona": 0
         },
         "16": {
@@ -1479,21 +1479,21 @@
           "voti_nona": 0
         },
         "17": {
-          "voti": 0,
+          "voti": 4,
           "voti_nona": 0
         },
         "18": {
-          "voti": 0,
+          "voti": 75,
           "voti_nona": 0
         }
       },
-      "tot_sezio": 1,
+      "tot_sezio": 42,
       "idpartizione": 0,
       "nlista": 5,
       "nlistamacro": 5,
-      "totVoti": 1,
+      "totVoti": 476,
       "totVoti_nona": 0,
-      "totVotiLista": 3
+      "totVotiLista": 557
     },
     "anagrafica": [
       {
@@ -1660,133 +1660,133 @@
       }
     ],
     "ordinamento": [
-      14,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
       15,
-      16,
+      18,
+      8,
+      10,
+      6,
+      14,
+      13,
+      5,
+      4,
+      2,
+      1,
+      11,
+      3,
       17,
-      18
+      12,
+      7,
+      9,
+      16
     ]
   },
   "6": {
     "voti": {
       "arrVotiCandidato": {
         "1": {
-          "voti": 2,
+          "voti": 50,
           "voti_nona": 0
         },
         "2": {
-          "voti": 4,
+          "voti": 96,
           "voti_nona": 0
         },
         "3": {
-          "voti": 1,
+          "voti": 37,
           "voti_nona": 0
         },
         "4": {
-          "voti": 0,
+          "voti": 53,
           "voti_nona": 0
         },
         "5": {
-          "voti": 0,
+          "voti": 27,
           "voti_nona": 0
         },
         "6": {
-          "voti": 1,
-          "voti_nona": 0
-        },
-        "7": {
-          "voti": 0,
-          "voti_nona": 0
-        },
-        "8": {
-          "voti": 0,
-          "voti_nona": 0
-        },
-        "9": {
-          "voti": 5,
-          "voti_nona": 0
-        },
-        "10": {
-          "voti": 0,
-          "voti_nona": 0
-        },
-        "11": {
           "voti": 9,
           "voti_nona": 0
         },
+        "7": {
+          "voti": 5,
+          "voti_nona": 0
+        },
+        "8": {
+          "voti": 99,
+          "voti_nona": 0
+        },
+        "9": {
+          "voti": 209,
+          "voti_nona": 0
+        },
+        "10": {
+          "voti": 33,
+          "voti_nona": 0
+        },
+        "11": {
+          "voti": 70,
+          "voti_nona": 0
+        },
         "12": {
-          "voti": 1,
+          "voti": 55,
           "voti_nona": 0
         },
         "13": {
-          "voti": 0,
+          "voti": 19,
           "voti_nona": 0
         },
         "14": {
-          "voti": 1,
+          "voti": 45,
           "voti_nona": 0
         },
         "15": {
-          "voti": 1,
+          "voti": 101,
           "voti_nona": 0
         },
         "16": {
-          "voti": 0,
+          "voti": 18,
           "voti_nona": 0
         },
         "17": {
-          "voti": 2,
+          "voti": 30,
           "voti_nona": 0
         },
         "18": {
-          "voti": 0,
+          "voti": 35,
           "voti_nona": 0
         },
         "19": {
-          "voti": 1,
+          "voti": 31,
           "voti_nona": 0
         },
         "20": {
-          "voti": 4,
+          "voti": 158,
           "voti_nona": 0
         },
         "21": {
-          "voti": 0,
+          "voti": 2,
           "voti_nona": 0
         },
         "22": {
-          "voti": 0,
+          "voti": 59,
           "voti_nona": 0
         },
         "23": {
-          "voti": 0,
+          "voti": 19,
           "voti_nona": 0
         },
         "24": {
-          "voti": 2,
+          "voti": 39,
           "voti_nona": 0
         }
       },
-      "tot_sezio": 1,
+      "tot_sezio": 42,
       "idpartizione": 0,
       "nlista": 6,
       "nlistamacro": 6,
-      "totVoti": 34,
+      "totVoti": 1299,
       "totVoti_nona": 0,
-      "totVotiLista": 41
+      "totVotiLista": 1509
     },
     "anagrafica": [
       {
@@ -2007,53 +2007,53 @@
       }
     ],
     "ordinamento": [
-      11,
       9,
-      2,
       20,
+      15,
+      8,
+      2,
+      11,
+      22,
+      12,
+      4,
       1,
-      17,
+      14,
       24,
       3,
-      6,
-      12,
-      14,
-      15,
-      19,
-      4,
-      5,
-      7,
-      8,
-      10,
-      13,
-      16,
       18,
-      21,
-      22,
-      23
+      10,
+      19,
+      17,
+      5,
+      13,
+      23,
+      16,
+      6,
+      7,
+      21
     ]
   },
   "7": {
     "voti": {
       "arrVotiCandidato": {
         "1": {
-          "voti": 10,
+          "voti": 305,
           "voti_nona": 0
         },
         "2": {
-          "voti": 1,
+          "voti": 46,
           "voti_nona": 0
         },
         "3": {
-          "voti": 1,
+          "voti": 7,
           "voti_nona": 0
         },
         "4": {
-          "voti": 8,
+          "voti": 58,
           "voti_nona": 0
         },
         "5": {
-          "voti": 0,
+          "voti": 32,
           "voti_nona": 0
         },
         "6": {
@@ -2061,85 +2061,85 @@
           "voti_nona": 0
         },
         "7": {
-          "voti": 0,
+          "voti": 37,
           "voti_nona": 0
         },
         "8": {
-          "voti": 0,
+          "voti": 63,
           "voti_nona": 0
         },
         "9": {
-          "voti": 1,
+          "voti": 21,
           "voti_nona": 0
         },
         "10": {
-          "voti": 0,
+          "voti": 47,
           "voti_nona": 0
         },
         "11": {
-          "voti": 7,
+          "voti": 100,
           "voti_nona": 0
         },
         "12": {
-          "voti": 0,
+          "voti": 12,
           "voti_nona": 0
         },
         "13": {
-          "voti": 4,
+          "voti": 36,
           "voti_nona": 0
         },
         "14": {
-          "voti": 0,
+          "voti": 4,
           "voti_nona": 0
         },
         "15": {
-          "voti": 5,
+          "voti": 139,
           "voti_nona": 0
         },
         "16": {
-          "voti": 0,
+          "voti": 26,
           "voti_nona": 0
         },
         "17": {
-          "voti": 0,
+          "voti": 3,
           "voti_nona": 0
         },
         "18": {
-          "voti": 2,
+          "voti": 36,
           "voti_nona": 0
         },
         "19": {
-          "voti": 0,
+          "voti": 41,
           "voti_nona": 0
         },
         "20": {
-          "voti": 0,
+          "voti": 26,
           "voti_nona": 0
         },
         "21": {
-          "voti": 5,
+          "voti": 120,
           "voti_nona": 0
         },
         "22": {
-          "voti": 0,
+          "voti": 21,
           "voti_nona": 0
         },
         "23": {
-          "voti": 0,
+          "voti": 45,
           "voti_nona": 0
         },
         "24": {
-          "voti": 0,
+          "voti": 23,
           "voti_nona": 0
         }
       },
-      "tot_sezio": 1,
+      "tot_sezio": 42,
       "idpartizione": 0,
       "nlista": 7,
       "nlistamacro": 7,
-      "totVoti": 44,
+      "totVoti": 1248,
       "totVoti_nona": 0,
-      "totVotiLista": 31
+      "totVotiLista": 934
     },
     "anagrafica": [
       {
@@ -2361,134 +2361,134 @@
     ],
     "ordinamento": [
       1,
-      4,
-      11,
       15,
       21,
+      11,
+      8,
+      4,
+      10,
+      2,
+      23,
+      19,
+      7,
       13,
       18,
-      2,
-      3,
-      9,
       5,
-      6,
-      7,
-      8,
-      10,
-      12,
-      14,
       16,
-      17,
-      19,
       20,
+      24,
+      9,
       22,
-      23,
-      24
+      12,
+      3,
+      14,
+      17,
+      6
     ]
   },
   "8": {
     "voti": {
       "arrVotiCandidato": {
         "1": {
-          "voti": 4,
+          "voti": 115,
           "voti_nona": 0
         },
         "2": {
-          "voti": 3,
+          "voti": 166,
           "voti_nona": 0
         },
         "3": {
-          "voti": 7,
+          "voti": 144,
           "voti_nona": 0
         },
         "4": {
-          "voti": 0,
+          "voti": 77,
           "voti_nona": 0
         },
         "5": {
-          "voti": 3,
+          "voti": 170,
           "voti_nona": 0
         },
         "6": {
-          "voti": 0,
+          "voti": 16,
           "voti_nona": 0
         },
         "7": {
-          "voti": 0,
+          "voti": 73,
           "voti_nona": 0
         },
         "8": {
-          "voti": 0,
+          "voti": 27,
           "voti_nona": 0
         },
         "9": {
-          "voti": 5,
+          "voti": 94,
           "voti_nona": 0
         },
         "10": {
-          "voti": 0,
+          "voti": 44,
           "voti_nona": 0
         },
         "11": {
-          "voti": 1,
+          "voti": 34,
           "voti_nona": 0
         },
         "12": {
-          "voti": 0,
+          "voti": 24,
           "voti_nona": 0
         },
         "13": {
-          "voti": 0,
+          "voti": 19,
           "voti_nona": 0
         },
         "14": {
-          "voti": 1,
+          "voti": 46,
           "voti_nona": 0
         },
         "15": {
-          "voti": 0,
+          "voti": 13,
           "voti_nona": 0
         },
         "16": {
-          "voti": 0,
+          "voti": 21,
           "voti_nona": 0
         },
         "17": {
-          "voti": 2,
+          "voti": 10,
           "voti_nona": 0
         },
         "18": {
-          "voti": 0,
+          "voti": 4,
           "voti_nona": 0
         },
         "19": {
-          "voti": 0,
+          "voti": 26,
           "voti_nona": 0
         },
         "20": {
-          "voti": 0,
+          "voti": 16,
           "voti_nona": 0
         },
         "21": {
-          "voti": 5,
+          "voti": 50,
           "voti_nona": 0
         },
         "22": {
-          "voti": 1,
+          "voti": 25,
           "voti_nona": 0
         },
         "23": {
-          "voti": 1,
+          "voti": 19,
           "voti_nona": 0
         }
       },
-      "tot_sezio": 1,
+      "tot_sezio": 42,
       "idpartizione": 0,
       "nlista": 8,
       "nlistamacro": 8,
-      "totVoti": 33,
+      "totVoti": 1233,
       "totVoti_nona": 0,
-      "totVotiLista": 36
+      "totVotiLista": 1640
     },
     "anagrafica": [
       {
@@ -2700,40 +2700,40 @@
       }
     ],
     "ordinamento": [
-      3,
-      9,
-      21,
-      1,
-      2,
       5,
-      17,
-      11,
-      14,
-      22,
-      23,
+      2,
+      3,
+      1,
+      9,
       4,
-      6,
       7,
-      8,
+      21,
+      14,
       10,
-      12,
-      13,
-      15,
-      16,
-      18,
+      11,
+      8,
       19,
-      20
+      22,
+      12,
+      16,
+      13,
+      23,
+      6,
+      20,
+      15,
+      17,
+      18
     ]
   },
   "9": {
     "voti": {
       "arrVotiCandidato": {
         "1": {
-          "voti": 1,
+          "voti": 156,
           "voti_nona": 0
         },
         "2": {
-          "voti": 11,
+          "voti": 668,
           "voti_nona": 0
         },
         "3": {
@@ -2741,39 +2741,39 @@
           "voti_nona": 0
         },
         "4": {
-          "voti": 0,
-          "voti_nona": 0
-        },
-        "5": {
-          "voti": 0,
-          "voti_nona": 0
-        },
-        "6": {
-          "voti": 0,
-          "voti_nona": 0
-        },
-        "7": {
           "voti": 3,
           "voti_nona": 0
         },
+        "5": {
+          "voti": 4,
+          "voti_nona": 0
+        },
+        "6": {
+          "voti": 5,
+          "voti_nona": 0
+        },
+        "7": {
+          "voti": 44,
+          "voti_nona": 0
+        },
         "8": {
-          "voti": 1,
+          "voti": 323,
           "voti_nona": 0
         },
         "9": {
-          "voti": 0,
+          "voti": 11,
           "voti_nona": 0
         },
         "10": {
-          "voti": 2,
+          "voti": 120,
           "voti_nona": 0
         },
         "11": {
-          "voti": 0,
+          "voti": 22,
           "voti_nona": 0
         },
         "12": {
-          "voti": 0,
+          "voti": 17,
           "voti_nona": 0
         },
         "13": {
@@ -2781,31 +2781,31 @@
           "voti_nona": 0
         },
         "14": {
-          "voti": 0,
+          "voti": 20,
           "voti_nona": 0
         },
         "15": {
-          "voti": 0,
+          "voti": 10,
           "voti_nona": 0
         },
         "16": {
-          "voti": 0,
+          "voti": 11,
           "voti_nona": 0
         },
         "17": {
-          "voti": 0,
+          "voti": 37,
           "voti_nona": 0
         },
         "18": {
-          "voti": 2,
+          "voti": 39,
           "voti_nona": 0
         },
         "19": {
-          "voti": 0,
+          "voti": 8,
           "voti_nona": 0
         },
         "20": {
-          "voti": 2,
+          "voti": 153,
           "voti_nona": 0
         },
         "21": {
@@ -2817,21 +2817,21 @@
           "voti_nona": 0
         },
         "23": {
-          "voti": 0,
+          "voti": 10,
           "voti_nona": 0
         },
         "24": {
-          "voti": 0,
+          "voti": 8,
           "voti_nona": 0
         }
       },
-      "tot_sezio": 1,
+      "tot_sezio": 42,
       "idpartizione": 0,
       "nlista": 9,
       "nlistamacro": 9,
-      "totVoti": 22,
+      "totVoti": 1669,
       "totVoti_nona": 0,
-      "totVotiLista": 22
+      "totVotiLista": 1637
     },
     "anagrafica": [
       {
@@ -3053,36 +3053,36 @@
     ],
     "ordinamento": [
       2,
-      7,
-      10,
-      18,
-      20,
-      1,
       8,
-      3,
-      4,
-      5,
-      6,
-      9,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
+      1,
+      20,
+      10,
+      7,
+      18,
       17,
-      19,
-      21,
-      22,
+      11,
+      14,
+      12,
+      9,
+      16,
+      15,
       23,
-      24
+      19,
+      24,
+      6,
+      5,
+      4,
+      3,
+      13,
+      21,
+      22
     ]
   },
   "10": {
     "voti": {
       "arrVotiCandidato": {
         "1": {
-          "voti": 9,
+          "voti": 350,
           "voti_nona": 0
         },
         "2": {
@@ -3090,101 +3090,101 @@
           "voti_nona": 0
         },
         "3": {
-          "voti": 1,
+          "voti": 14,
           "voti_nona": 0
         },
         "4": {
-          "voti": 1,
+          "voti": 51,
           "voti_nona": 0
         },
         "5": {
-          "voti": 0,
+          "voti": 7,
           "voti_nona": 0
         },
         "6": {
-          "voti": 0,
+          "voti": 7,
           "voti_nona": 0
         },
         "7": {
-          "voti": 0,
+          "voti": 15,
           "voti_nona": 0
         },
         "8": {
-          "voti": 6,
+          "voti": 391,
           "voti_nona": 0
         },
         "9": {
-          "voti": 2,
+          "voti": 121,
           "voti_nona": 0
         },
         "10": {
-          "voti": 0,
+          "voti": 7,
           "voti_nona": 0
         },
         "11": {
-          "voti": 0,
+          "voti": 22,
           "voti_nona": 0
         },
         "12": {
-          "voti": 0,
+          "voti": 18,
           "voti_nona": 0
         },
         "13": {
-          "voti": 0,
+          "voti": 11,
           "voti_nona": 0
         },
         "14": {
-          "voti": 2,
+          "voti": 38,
           "voti_nona": 0
         },
         "15": {
-          "voti": 0,
+          "voti": 25,
           "voti_nona": 0
         },
         "16": {
-          "voti": 1,
+          "voti": 12,
           "voti_nona": 0
         },
         "17": {
-          "voti": 0,
-          "voti_nona": 0
-        },
-        "18": {
-          "voti": 0,
-          "voti_nona": 0
-        },
-        "19": {
-          "voti": 5,
-          "voti_nona": 0
-        },
-        "20": {
           "voti": 3,
           "voti_nona": 0
         },
-        "21": {
-          "voti": 0,
-          "voti_nona": 0
-        },
-        "22": {
-          "voti": 0,
-          "voti_nona": 0
-        },
-        "23": {
+        "18": {
           "voti": 1,
           "voti_nona": 0
         },
+        "19": {
+          "voti": 314,
+          "voti_nona": 0
+        },
+        "20": {
+          "voti": 22,
+          "voti_nona": 0
+        },
+        "21": {
+          "voti": 38,
+          "voti_nona": 0
+        },
+        "22": {
+          "voti": 18,
+          "voti_nona": 0
+        },
+        "23": {
+          "voti": 104,
+          "voti_nona": 0
+        },
         "24": {
-          "voti": 2,
+          "voti": 35,
           "voti_nona": 0
         }
       },
-      "tot_sezio": 1,
+      "tot_sezio": 42,
       "idpartizione": 0,
       "nlista": 10,
       "nlistamacro": 10,
-      "totVoti": 33,
+      "totVoti": 1624,
       "totVoti_nona": 0,
-      "totVotiLista": 35
+      "totVotiLista": 1691
     },
     "anagrafica": [
       {
@@ -3405,139 +3405,139 @@
       }
     ],
     "ordinamento": [
-      1,
       8,
+      1,
       19,
-      20,
       9,
-      14,
-      24,
-      3,
-      4,
-      16,
       23,
-      2,
+      4,
+      14,
+      21,
+      24,
+      15,
+      11,
+      20,
+      12,
+      22,
+      7,
+      3,
+      16,
+      13,
       5,
       6,
-      7,
       10,
-      11,
-      12,
-      13,
-      15,
       17,
       18,
-      21,
-      22
+      2
     ]
   },
   "11": {
     "voti": {
       "arrVotiCandidato": {
         "1": {
-          "voti": 0,
+          "voti": 6,
           "voti_nona": 0
         },
         "2": {
-          "voti": 1,
+          "voti": 151,
           "voti_nona": 0
         },
         "3": {
-          "voti": 0,
+          "voti": 6,
           "voti_nona": 0
         },
         "4": {
-          "voti": 0,
+          "voti": 17,
           "voti_nona": 0
         },
         "5": {
-          "voti": 2,
+          "voti": 108,
           "voti_nona": 0
         },
         "6": {
-          "voti": 1,
+          "voti": 142,
           "voti_nona": 0
         },
         "7": {
-          "voti": 1,
+          "voti": 11,
           "voti_nona": 0
         },
         "8": {
-          "voti": 0,
-          "voti_nona": 0
-        },
-        "9": {
-          "voti": 1,
-          "voti_nona": 0
-        },
-        "10": {
-          "voti": 7,
-          "voti_nona": 0
-        },
-        "11": {
-          "voti": 0,
-          "voti_nona": 0
-        },
-        "12": {
-          "voti": 0,
-          "voti_nona": 0
-        },
-        "13": {
-          "voti": 0,
-          "voti_nona": 0
-        },
-        "14": {
-          "voti": 0,
-          "voti_nona": 0
-        },
-        "15": {
-          "voti": 1,
-          "voti_nona": 0
-        },
-        "16": {
-          "voti": 0,
-          "voti_nona": 0
-        },
-        "17": {
           "voti": 3,
           "voti_nona": 0
         },
+        "9": {
+          "voti": 130,
+          "voti_nona": 0
+        },
+        "10": {
+          "voti": 422,
+          "voti_nona": 0
+        },
+        "11": {
+          "voti": 11,
+          "voti_nona": 0
+        },
+        "12": {
+          "voti": 26,
+          "voti_nona": 0
+        },
+        "13": {
+          "voti": 6,
+          "voti_nona": 0
+        },
+        "14": {
+          "voti": 4,
+          "voti_nona": 0
+        },
+        "15": {
+          "voti": 66,
+          "voti_nona": 0
+        },
+        "16": {
+          "voti": 17,
+          "voti_nona": 0
+        },
+        "17": {
+          "voti": 100,
+          "voti_nona": 0
+        },
         "18": {
-          "voti": 5,
+          "voti": 87,
           "voti_nona": 0
         },
         "19": {
-          "voti": 0,
+          "voti": 4,
           "voti_nona": 0
         },
         "20": {
-          "voti": 0,
+          "voti": 43,
           "voti_nona": 0
         },
         "21": {
-          "voti": 2,
+          "voti": 50,
           "voti_nona": 0
         },
         "22": {
-          "voti": 0,
+          "voti": 6,
           "voti_nona": 0
         },
         "23": {
-          "voti": 0,
+          "voti": 11,
           "voti_nona": 0
         },
         "24": {
-          "voti": 5,
+          "voti": 272,
           "voti_nona": 0
         }
       },
-      "tot_sezio": 1,
+      "tot_sezio": 42,
       "idpartizione": 0,
       "nlista": 11,
       "nlistamacro": 11,
-      "totVoti": 29,
+      "totVoti": 1699,
       "totVoti_nona": 0,
-      "totVotiLista": 33
+      "totVotiLista": 1625
     },
     "anagrafica": [
       {
@@ -3759,68 +3759,68 @@
     ],
     "ordinamento": [
       10,
-      18,
       24,
-      17,
-      5,
-      21,
       2,
       6,
-      7,
       9,
+      5,
+      17,
+      18,
       15,
+      21,
+      20,
+      12,
+      4,
+      16,
+      7,
+      11,
+      23,
       1,
       3,
-      4,
-      8,
-      11,
-      12,
       13,
-      14,
-      16,
-      19,
-      20,
       22,
-      23
+      14,
+      19,
+      8
     ]
   },
   "12": {
     "voti": {
       "arrVotiCandidato": {
         "1": {
-          "voti": 11,
+          "voti": 640,
           "voti_nona": 0
         },
         "2": {
-          "voti": 0,
+          "voti": 7,
           "voti_nona": 0
         },
         "3": {
-          "voti": 0,
+          "voti": 3,
           "voti_nona": 0
         },
         "4": {
-          "voti": 9,
+          "voti": 532,
           "voti_nona": 0
         },
         "5": {
-          "voti": 10,
+          "voti": 238,
           "voti_nona": 0
         },
         "6": {
-          "voti": 1,
+          "voti": 67,
           "voti_nona": 0
         },
         "7": {
-          "voti": 0,
+          "voti": 17,
           "voti_nona": 0
         },
         "8": {
-          "voti": 6,
+          "voti": 162,
           "voti_nona": 0
         },
         "9": {
-          "voti": 0,
+          "voti": 18,
           "voti_nona": 0
         },
         "10": {
@@ -3828,69 +3828,69 @@
           "voti_nona": 0
         },
         "11": {
-          "voti": 0,
+          "voti": 13,
           "voti_nona": 0
         },
         "12": {
-          "voti": 0,
+          "voti": 39,
           "voti_nona": 0
         },
         "13": {
-          "voti": 0,
+          "voti": 11,
           "voti_nona": 0
         },
         "14": {
-          "voti": 12,
+          "voti": 286,
           "voti_nona": 0
         },
         "15": {
-          "voti": 1,
+          "voti": 104,
           "voti_nona": 0
         },
         "16": {
-          "voti": 0,
+          "voti": 32,
           "voti_nona": 0
         },
         "17": {
-          "voti": 0,
+          "voti": 111,
           "voti_nona": 0
         },
         "18": {
-          "voti": 8,
+          "voti": 603,
           "voti_nona": 0
         },
         "19": {
-          "voti": 1,
+          "voti": 289,
           "voti_nona": 0
         },
         "20": {
-          "voti": 1,
+          "voti": 55,
           "voti_nona": 0
         },
         "21": {
-          "voti": 2,
+          "voti": 58,
           "voti_nona": 0
         },
         "22": {
-          "voti": 19,
+          "voti": 369,
           "voti_nona": 0
         },
         "23": {
-          "voti": 4,
+          "voti": 868,
           "voti_nona": 0
         },
         "24": {
-          "voti": 13,
+          "voti": 254,
           "voti_nona": 0
         }
       },
-      "tot_sezio": 1,
+      "tot_sezio": 42,
       "idpartizione": 0,
       "nlista": 12,
       "nlistamacro": 12,
-      "totVoti": 98,
+      "totVoti": 4776,
       "totVoti_nona": 0,
-      "totVotiLista": 82
+      "totVotiLista": 4028
     },
     "anagrafica": [
       {
@@ -4111,139 +4111,139 @@
       }
     ],
     "ordinamento": [
-      22,
-      24,
-      14,
-      1,
-      5,
-      4,
-      18,
-      8,
       23,
-      21,
-      6,
-      15,
+      1,
+      18,
+      4,
+      22,
       19,
+      14,
+      24,
+      5,
+      8,
+      17,
+      15,
+      6,
+      21,
       20,
+      12,
+      16,
+      9,
+      7,
+      11,
+      13,
       2,
       3,
-      7,
-      9,
-      10,
-      11,
-      12,
-      13,
-      16,
-      17
+      10
     ]
   },
   "13": {
     "voti": {
       "arrVotiCandidato": {
         "1": {
-          "voti": 0,
+          "voti": 16,
           "voti_nona": 0
         },
         "2": {
-          "voti": 0,
+          "voti": 1,
           "voti_nona": 0
         },
         "3": {
-          "voti": 1,
+          "voti": 44,
           "voti_nona": 0
         },
         "4": {
-          "voti": 0,
+          "voti": 65,
           "voti_nona": 0
         },
         "5": {
-          "voti": 0,
+          "voti": 32,
           "voti_nona": 0
         },
         "6": {
-          "voti": 10,
+          "voti": 331,
           "voti_nona": 0
         },
         "7": {
-          "voti": 5,
+          "voti": 116,
           "voti_nona": 0
         },
         "8": {
-          "voti": 0,
+          "voti": 5,
           "voti_nona": 0
         },
         "9": {
-          "voti": 0,
+          "voti": 2,
           "voti_nona": 0
         },
         "10": {
-          "voti": 0,
+          "voti": 5,
           "voti_nona": 0
         },
         "11": {
-          "voti": 0,
+          "voti": 11,
           "voti_nona": 0
         },
         "12": {
-          "voti": 0,
+          "voti": 4,
           "voti_nona": 0
         },
         "13": {
-          "voti": 1,
+          "voti": 139,
           "voti_nona": 0
         },
         "14": {
-          "voti": 0,
+          "voti": 33,
           "voti_nona": 0
         },
         "15": {
-          "voti": 0,
+          "voti": 75,
           "voti_nona": 0
         },
         "16": {
-          "voti": 3,
+          "voti": 231,
           "voti_nona": 0
         },
         "17": {
-          "voti": 0,
+          "voti": 99,
           "voti_nona": 0
         },
         "18": {
-          "voti": 1,
+          "voti": 18,
           "voti_nona": 0
         },
         "19": {
-          "voti": 0,
+          "voti": 4,
           "voti_nona": 0
         },
         "20": {
-          "voti": 3,
+          "voti": 46,
           "voti_nona": 0
         },
         "21": {
-          "voti": 0,
+          "voti": 24,
           "voti_nona": 0
         },
         "22": {
-          "voti": 0,
+          "voti": 13,
           "voti_nona": 0
         },
         "23": {
-          "voti": 0,
+          "voti": 20,
           "voti_nona": 0
         },
         "24": {
-          "voti": 0,
+          "voti": 20,
           "voti_nona": 0
         }
       },
-      "tot_sezio": 1,
+      "tot_sezio": 42,
       "idpartizione": 0,
       "nlista": 13,
       "nlistamacro": 13,
-      "totVoti": 24,
+      "totVoti": 1354,
       "totVoti_nona": 0,
-      "totVotiLista": 19
+      "totVotiLista": 1116
     },
     "anagrafica": [
       {
@@ -4465,138 +4465,138 @@
     ],
     "ordinamento": [
       6,
-      7,
       16,
+      13,
+      7,
+      17,
+      15,
+      4,
       20,
       3,
-      13,
+      14,
+      5,
+      21,
+      23,
+      24,
       18,
       1,
-      2,
-      4,
-      5,
-      8,
-      9,
-      10,
-      11,
-      12,
-      14,
-      15,
-      17,
-      19,
-      21,
       22,
-      23,
-      24
+      11,
+      8,
+      10,
+      12,
+      19,
+      9,
+      2
     ]
   },
   "14": {
     "voti": {
       "arrVotiCandidato": {
         "1": {
-          "voti": 2,
+          "voti": 232,
           "voti_nona": 0
         },
         "2": {
-          "voti": 0,
+          "voti": 120,
           "voti_nona": 0
         },
         "3": {
-          "voti": 1,
+          "voti": 23,
           "voti_nona": 0
         },
         "4": {
-          "voti": 0,
+          "voti": 47,
           "voti_nona": 0
         },
         "5": {
-          "voti": 1,
+          "voti": 14,
           "voti_nona": 0
         },
         "6": {
-          "voti": 0,
+          "voti": 6,
           "voti_nona": 0
         },
         "7": {
-          "voti": 0,
+          "voti": 12,
           "voti_nona": 0
         },
         "8": {
-          "voti": 1,
+          "voti": 27,
           "voti_nona": 0
         },
         "9": {
-          "voti": 0,
+          "voti": 1,
           "voti_nona": 0
         },
         "10": {
-          "voti": 0,
+          "voti": 1,
           "voti_nona": 0
         },
         "11": {
-          "voti": 0,
+          "voti": 22,
           "voti_nona": 0
         },
         "12": {
-          "voti": 1,
+          "voti": 5,
           "voti_nona": 0
         },
         "13": {
-          "voti": 0,
+          "voti": 2,
           "voti_nona": 0
         },
         "14": {
-          "voti": 0,
+          "voti": 20,
           "voti_nona": 0
         },
         "15": {
-          "voti": 0,
+          "voti": 5,
           "voti_nona": 0
         },
         "16": {
-          "voti": 1,
+          "voti": 88,
           "voti_nona": 0
         },
         "17": {
-          "voti": 0,
+          "voti": 20,
           "voti_nona": 0
         },
         "18": {
-          "voti": 0,
+          "voti": 4,
           "voti_nona": 0
         },
         "19": {
-          "voti": 0,
+          "voti": 7,
           "voti_nona": 0
         },
         "20": {
-          "voti": 0,
+          "voti": 5,
           "voti_nona": 0
         },
         "21": {
-          "voti": 0,
+          "voti": 23,
           "voti_nona": 0
         },
         "22": {
-          "voti": 0,
+          "voti": 26,
           "voti_nona": 0
         },
         "23": {
-          "voti": 0,
+          "voti": 14,
           "voti_nona": 0
         },
         "24": {
-          "voti": 1,
+          "voti": 34,
           "voti_nona": 0
         }
       },
-      "tot_sezio": 1,
+      "tot_sezio": 42,
       "idpartizione": 0,
       "nlista": 14,
       "nlistamacro": 14,
-      "totVoti": 8,
+      "totVoti": 758,
       "totVoti_nona": 0,
-      "totVotiLista": 10
+      "totVotiLista": 707
     },
     "anagrafica": [
       {
@@ -4818,29 +4818,29 @@
     ],
     "ordinamento": [
       1,
-      3,
-      5,
-      8,
-      12,
-      16,
-      24,
       2,
+      16,
       4,
-      6,
-      7,
-      9,
-      10,
-      11,
-      13,
-      14,
-      15,
-      17,
-      18,
-      19,
-      20,
-      21,
+      24,
+      8,
       22,
-      23
+      3,
+      21,
+      11,
+      14,
+      17,
+      5,
+      23,
+      7,
+      19,
+      6,
+      12,
+      15,
+      20,
+      18,
+      13,
+      9,
+      10
     ]
   }
 }
