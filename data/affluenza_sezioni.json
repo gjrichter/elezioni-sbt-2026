@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-05-25T18:45:04.492Z",
-  "snapshot": "20260525_204141",
+  "fetched_at": "2026-05-25T19:47:50.114Z",
+  "snapshot": "20260525_212422",
   "sezioni": {
     "3": {
       "1": {
@@ -570,8 +570,8 @@
         "iscri_totale": 969
       },
       "12": {
-        "tvotanti": 0,
-        "iscri_totale": 0
+        "tvotanti": 554,
+        "iscri_totale": 958
       },
       "13": {
         "tvotanti": 22,
