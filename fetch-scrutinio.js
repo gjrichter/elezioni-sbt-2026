@@ -29,7 +29,7 @@ const https = require('https');
 const BASE_SITE      = 'https://elezioni.comunesbt.it';
 const CDELE_NUMERIC  = '1';    // parte numerica di macro_cdele "N1"
 const PARTIZIONE     = '0';    // idpartizione (SBT usa 0)
-const N_SEZIONI      = 70;     // SBT ha ~70 sezioni — Eleweb restituisce 404 per quelle inesistenti
+const N_SEZIONI      = 43;     // SBT ha 43 sezioni
 const DATA_DIR       = path.join(__dirname, 'data');
 const HISTORY_DIR    = path.join(DATA_DIR, 'history');
 
@@ -57,6 +57,9 @@ async function fetchText(url, retries = 5, delayMs = 2000) {
       });
       return body;
     } catch (e) {
+      // HTTP errors (404, 500…) are definitive — never retry
+      if (e.message.startsWith('HTTP ')) throw e;
+      // network errors (socket hang up, ECONNRESET…) → retry with backoff
       if (attempt === retries) throw e;
       const wait = delayMs * attempt;   // backoff: 2s, 4s, 6s, 8s…
       console.log(`  [retry ${attempt}/${retries - 1}] ${e.message} — wait ${wait}ms`);
