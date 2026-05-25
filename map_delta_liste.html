@@ -113,7 +113,8 @@ var PARTITI = [
     coaliz21: "Angelini",       coaliz26: "CS Fede"     },
 ];
 
-var N_SEZ    = 43;
+var N_SEZ         = 43;
+var MIN_VOTI_SEDE = 50;   // esclude sedi con pochi voti (es. Ospedale Civile)
 var BASE21   = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2021/main/data/sezioni/";
 var BASE26   = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/sezioni/";
 var SEDI_URL = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/sedi_sezioni_elettorali.geojson";
@@ -156,8 +157,11 @@ function computeDelta(partito) {
       v26 += d26[partito.nlista26] || 0;
       t26 += d26._total || 0;
     }
-    var pct21  = t21 > 0 ? +(100 * v21 / t21).toFixed(1) : 0;
-    var pct26  = t26 > 0 ? +(100 * v26 / t26).toFixed(1) : 0;
+    // escludi sedi con troppo pochi voti (Ospedale Civile e simili)
+    if (t21 < MIN_VOTI_SEDE || t26 < MIN_VOTI_SEDE) return null;
+
+    var pct21  = +(100 * v21 / t21).toFixed(1);
+    var pct26  = +(100 * v26 / t26).toFixed(1);
     var delta  = +(pct26 - pct21).toFixed(1);
     return {
       sez_da:   p.sez_da,
@@ -169,7 +173,7 @@ function computeDelta(partito) {
       delta:    delta,
       absDelta: Math.abs(delta)
     };
-  });
+  }).filter(function(d) { return d !== null; });
 }
 
 // ── AGGIORNA MAPPA ────────────────────────────────────────────────────────────
