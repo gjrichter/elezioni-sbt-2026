@@ -252,17 +252,17 @@
     "arrVotiRaggrup": {
       "1": {
         "voti": 222,
-        "voti_nona": 3,
+        "voti_nona": 11,
         "voti_solosindpres": 0
       },
       "2": {
         "voti": 73,
-        "voti_nona": 10,
+        "voti_nona": 3,
         "voti_solosindpres": 0
       },
       "3": {
         "voti": 296,
-        "voti_nona": 11,
+        "voti_nona": 10,
         "voti_solosindpres": 0
       }
     },
