@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Variazione liste 2021→2026 – SBdT</title>
+  <script src="https://cdn.jsdelivr.net/gh/gjrichter/ixmaps-flat@master/ixmaps.js"></script>
+  <style>
+    html, body {
+      width: 100%; height: 100%; margin: 0; overflow: hidden;
+      font-family: sans-serif; display: flex; flex-direction: column;
+    }
+
+    /* ── CONTROLS BAR ── */
+    #controls {
+      flex-shrink: 0;
+      background: #1a2030;
+      color: #fff;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    #controls label {
+      font-size: 0.78rem; font-weight: 600; opacity: 0.65; white-space: nowrap;
+    }
+    .ctrl-select {
+      font-size: 0.85rem; padding: 5px 10px; border-radius: 5px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.1); color: #fff;
+      cursor: pointer; min-width: 320px;
+    }
+    .ctrl-select option { background: #1a2030; color: #fff; }
+
+    #delta-badge {
+      font-size: 0.82rem; font-weight: 700; white-space: nowrap;
+      padding: 4px 12px; border-radius: 20px;
+    }
+    .gain { background: rgba(39,174,96,0.25); color: #2ecc71; }
+    .loss { background: rgba(231,76,60,0.25);  color: #e74c3c; }
+
+    #legend-note {
+      font-size: 0.72rem; opacity: 0.45; white-space: nowrap;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 540px) {
+      #controls { flex-direction: column; align-items: stretch; padding: 8px 10px; gap: 6px; }
+      #controls label { display: none; }
+      .ctrl-select { font-size: 16px; width: 100%; min-width: 0; padding: 9px 10px; }
+      #delta-badge, #legend-note { display: none; }
+    }
+
+    /* ── MAP ── */
+    #map-wrapper { flex: 1; position: relative; overflow: hidden; }
+    #map { width: 100%; height: 100%; }
+
+    #app-loading {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255,255,255,0.92);
+      padding: 1em 2.5em; border-radius: 8px;
+      font-size: 1em; z-index: 9999;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2px solid #ccc; border-top-color: #2980b9;
+      border-radius: 50%; animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+<div id="controls">
+  <label for="sel-partito">Lista:</label>
+  <select id="sel-partito" class="ctrl-select" onchange="onPartitoChange()"></select>
+  <span id="delta-badge"></span>
+  <span id="legend-note">● verde = guadagno &nbsp;·&nbsp; ● rosso = perdita &nbsp;·&nbsp; dimensione = entità (pp)</span>
+</div>
+
+<div id="map-wrapper">
+  <div id="app-loading">
+    <div class="spinner"></div>
+    Caricamento dati 2021–2026…
+  </div>
+  <div id="map"></div>
+</div>
+
+<script>
+
+// ── MAPPING PARTITI 2021 → 2026 ───────────────────────────────────────────────
+var PARTITI = [
+  { id:"FdI",  nome:"Fratelli d'Italia",                   nlista21: 17, nlista26: 12,
+    coaliz21: "CD Piunti",      coaliz26: "CD Mozzoni"  },
+  { id:"PD",   nome:"Partito Democratico",                  nlista21:  8, nlista26:  4,
+    coaliz21: "CS Bottiglieri", coaliz26: "CS Fede"     },
+  { id:"Lega", nome:"Lega",                                 nlista21: 15, nlista26:  9,
+    coaliz21: "CD Piunti",      coaliz26: "CD Mozzoni"  },
+  { id:"FI",   nome:"Forza Italia",                         nlista21: 16, nlista26: 11,
+    coaliz21: "CD Piunti",      coaliz26: "CD Mozzoni"  },
+  { id:"AVS",  nome:"AVS + PSI  /  Europa Verde",           nlista21:  9, nlista26:  1,
+    coaliz21: "Canducci",       coaliz26: "CS Fede"     },
+  { id:"M5S",  nome:"Movimento 5 Stelle",                   nlista21: 19, nlista26:  3,
+    coaliz21: "Angelini",       coaliz26: "CS Fede"     },
+  { id:"CCP",  nome:"Centro Civico Pop. ★ (cambia campo)",  nlista21:  1, nlista26: 13,
+    coaliz21: "CS Spazzafumo",  coaliz26: "CD Mozzoni"  },
+  { id:"CSbt", nome:"Cambia SBT",                           nlista21: 18, nlista26:  2,
+    coaliz21: "Angelini",       coaliz26: "CS Fede"     },
+];
+
+var N_SEZ    = 43;
+var BASE21   = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2021/main/data/sezioni/";
+var BASE26   = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/sezioni/";
+var SEDI_URL = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/sedi_sezioni_elettorali.geojson";
+
+// ── STATO GLOBALE ─────────────────────────────────────────────────────────────
+var sediGj    = null;
+var lData21   = {};   // [sezione] = { [nlista]: voti, _total: N }
+var lData26   = {};
+var myMap     = null;
+var ACTIVE_GAIN = null;
+var ACTIVE_LOSS = null;
+
+// ── CARICA LISTE PER SEZIONE ──────────────────────────────────────────────────
+function loadListeSez(base, n) {
+  var pad = String(n).padStart(3, "0");
+  return fetch(base + pad + "/liste.json?_=" + Date.now())
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      var arr = (d.voti || {}).arrVotiListe || {};
+      var row = { _total: 0 };
+      Object.keys(arr).forEach(function(nl) {
+        var v = arr[nl].voti || 0;
+        row[nl] = v;
+        row._total += v;
+      });
+      return { sezione: n, data: row };
+    })
+    .catch(function() { return { sezione: n, data: { _total: 0 } }; });
+}
+
+// ── CALCOLA DELTA PER SEDE (aggregato) ────────────────────────────────────────
+function computeDelta(partito) {
+  return sediGj.features.map(function(feat) {
+    var p = feat.properties;
+    var v21 = 0, t21 = 0, v26 = 0, t26 = 0;
+    for (var s = p.sez_da; s <= p.sez_a; s++) {
+      var d21 = lData21[s] || {};
+      var d26 = lData26[s] || {};
+      v21 += d21[partito.nlista21] || 0;
+      t21 += d21._total || 0;
+      v26 += d26[partito.nlista26] || 0;
+      t26 += d26._total || 0;
+    }
+    var pct21  = t21 > 0 ? +(100 * v21 / t21).toFixed(1) : 0;
+    var pct26  = t26 > 0 ? +(100 * v26 / t26).toFixed(1) : 0;
+    var delta  = +(pct26 - pct21).toFixed(1);
+    return {
+      sez_da:   p.sez_da,
+      nome:     p.nome,
+      indirizzo:p.indirizzo,
+      sezioni:  p.sezioni,
+      pct21:    pct21,
+      pct26:    pct26,
+      delta:    delta,
+      absDelta: Math.abs(delta)
+    };
+  });
+}
+
+// ── AGGIORNA MAPPA ────────────────────────────────────────────────────────────
+function updateMap(partito) {
+  var sediData = computeDelta(partito);
+  var gainData = sediData.filter(function(d) { return d.delta > 0; });
+  var lossData = sediData.filter(function(d) { return d.delta < 0; });
+  var maxAbs   = Math.max.apply(null, sediData.map(function(d) { return d.absDelta || 0; })) || 1;
+
+  // totale città
+  var V21 = 0, T21 = 0, V26 = 0, T26 = 0;
+  for (var s = 1; s <= N_SEZ; s++) {
+    var d21 = lData21[s] || {};
+    var d26 = lData26[s] || {};
+    V21 += d21[partito.nlista21] || 0; T21 += d21._total || 0;
+    V26 += d26[partito.nlista26] || 0; T26 += d26._total || 0;
+  }
+  var p21       = T21 > 0 ? (100 * V21 / T21).toFixed(1) : "—";
+  var p26       = T26 > 0 ? (100 * V26 / T26).toFixed(1) : "—";
+  var cityDelta = (T21 > 0 && T26 > 0) ? +((100 * V26 / T26) - (100 * V21 / T21)).toFixed(1) : 0;
+  var sign      = cityDelta >= 0 ? "+" : "";
+  var badge     = document.getElementById("delta-badge");
+  badge.textContent = "Città: " + sign + cityDelta + " pp  (" + p21 + "% → " + p26 + "%)";
+  badge.className   = cityDelta >= 0 ? "gain" : "loss";
+
+  var prevGain = ACTIVE_GAIN;
+  var prevLoss = ACTIVE_LOSS;
+  var gainName = "gain_" + partito.id;
+  var lossName = "loss_" + partito.id;
+  var normSize = String(maxAbs);
+
+  myMap.then(function(api) {
+    if (prevGain) try { api.removeTheme(prevGain); } catch(e) {}
+    if (prevLoss) try { api.removeTheme(prevLoss); } catch(e) {}
+
+    // ── ▲ GUADAGNO (verde) ──────────────────────────────────────────────────
+    if (gainData.length > 0) {
+      myMap.layer("sedi")
+        .data({ obj: gainData, type: "json" })
+        .binding({ geo: "sez_da", value: "delta" })
+        .type("CHART|BUBBLE|SIZE|VALUES|AGGREGATE")
+        .style({
+          colorscheme:     ["#27ae60"],
+          fillopacity:     0.82,
+          linecolor:       "#fff",
+          linewidth:       0.8,
+          showdata:        "true",
+          units:           " pp",
+          valuedecimals:   1,
+          normalsizevalue: normSize,
+          scale:           2,
+          sizepow:         1,
+          legendunits:     "pp guadagno"
+        })
+        .meta({
+          name:    gainName,
+          title:   "▲ " + partito.nome,
+          tooltip: "<b>{{nome}}</b><br>{{indirizzo}}<br>Sezioni: {{sezioni}}<br>" +
+                   "2021: <b>{{pct21}}%</b> → 2026: <b>{{pct26}}%</b><br>" +
+                   "Variazione: <b style='color:#27ae60'>+{{delta}} pp</b><br>{{theme.item.chart}}"
+        })
+        .define();
+    }
+
+    // ── ▼ PERDITA (rosso) ───────────────────────────────────────────────────
+    if (lossData.length > 0) {
+      myMap.layer("sedi")
+        .data({ obj: lossData, type: "json" })
+        .binding({ geo: "sez_da", value: "absDelta" })
+        .type("CHART|BUBBLE|SIZE|VALUES|AGGREGATE")
+        .style({
+          colorscheme:     ["#e74c3c"],
+          fillopacity:     0.82,
+          linecolor:       "#fff",
+          linewidth:       0.8,
+          showdata:        "true",
+          units:           " pp",
+          valuedecimals:   1,
+          normalsizevalue: normSize,
+          scale:           2,
+          sizepow:         1,
+          legendunits:     "pp perdita"
+        })
+        .meta({
+          name:    lossName,
+          title:   "▼ " + partito.nome,
+          tooltip: "<b>{{nome}}</b><br>{{indirizzo}}<br>Sezioni: {{sezioni}}<br>" +
+                   "2021: <b>{{pct21}}%</b> → 2026: <b>{{pct26}}%</b><br>" +
+                   "Variazione: <b style='color:#e74c3c'>{{delta}} pp</b><br>{{theme.item.chart}}"
+        })
+        .define();
+    }
+
+    ACTIVE_GAIN = gainData.length > 0 ? gainName : null;
+    ACTIVE_LOSS = lossData.length > 0 ? lossName : null;
+  });
+}
+
+// ── HANDLER ───────────────────────────────────────────────────────────────────
+function onPartitoChange() {
+  var idx = parseInt(document.getElementById("sel-partito").value, 10);
+  updateMap(PARTITI[idx]);
+}
+
+// ── AVVIO ─────────────────────────────────────────────────────────────────────
+var sezNums = Array.from({ length: N_SEZ }, function(_, i) { return i + 1; });
+
+Promise.all([
+  fetch(SEDI_URL + "?_=" + Date.now()).then(function(r) { return r.json(); }),
+  Promise.all(sezNums.map(function(n) { return loadListeSez(BASE21, n); })),
+  Promise.all(sezNums.map(function(n) { return loadListeSez(BASE26, n); }))
+]).then(function(results) {
+  sediGj = results[0];
+  results[1].forEach(function(r) { lData21[r.sezione] = r.data; });
+  results[2].forEach(function(r) { lData26[r.sezione] = r.data; });
+
+  document.getElementById("app-loading").style.display = "none";
+
+  // popola select
+  var sel = document.getElementById("sel-partito");
+  PARTITI.forEach(function(p, i) {
+    var opt = document.createElement("option");
+    opt.value       = i;
+    opt.textContent = p.nome + "  (" + p.coaliz21 + " → " + p.coaliz26 + ")";
+    sel.appendChild(opt);
+  });
+
+  // crea mappa UNA SOLA VOLTA
+  myMap = ixmaps.Map("map", {
+    mapType: "VT_TONER_LITE",
+    mode:    "pan",
+    legend:  "open",
+    tools:   true
+  })
+  .view({ center: { lat: 42.930, lng: 13.887 }, zoom: 13 })
+  .options({
+    objectscaling:   "dynamic",
+    normalSizeScale: "80000",
+    basemapopacity:  0.55,
+    flushChartDraw:  1000000
+  });
+
+  // layer base FEATURE – geometria di riferimento
+  myMap.layer("sedi")
+    .data({ obj: sediGj, type: "geojson" })
+    .binding({ geo: "geometry", id: "sez_da", title: "nome" })
+    .type("FEATURE|SILENT")
+    .style({ colorscheme: ["none"], scale: 0, showdata: "true" })
+    .define();
+
+  // default: FdI
+  updateMap(PARTITI[0]);
+
+}).catch(function(e) {
+  document.getElementById("app-loading").innerHTML = "✗ Errore: " + e.message;
+});
+
+</script>
+</body>
+</html>
