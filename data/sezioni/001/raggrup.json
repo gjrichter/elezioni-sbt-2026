@@ -251,42 +251,42 @@
   "voti": {
     "arrVotiRaggrup": {
       "1": {
-        "voti": 0,
-        "voti_nona": 0,
+        "voti": 233,
+        "voti_nona": 15,
         "voti_solosindpres": 0
       },
       "2": {
-        "voti": 0,
+        "voti": 34,
         "voti_nona": 0,
         "voti_solosindpres": 0
       },
       "3": {
-        "voti": 0,
-        "voti_nona": 0,
+        "voti": 397,
+        "voti_nona": 5,
         "voti_solosindpres": 0
       }
     },
-    "tot_sezio": 0,
+    "tot_sezio": 1,
     "iscri_maschi": 0,
     "iscri_femm": 0,
-    "iscri_totali": 0,
+    "iscri_totali": 1133,
     "tvmas": 0,
     "tvfem": 0,
-    "tvotanti": 0,
-    "tvotival": 0,
-    "tvnonass": 0,
-    "tbianche": 0,
-    "tnulle": 0,
+    "tvotanti": 679,
+    "tvotival": 664,
+    "tvnonass": 20,
+    "tbianche": 1,
+    "tnulle": 14,
     "tvnulli": 0,
     "sk_contestate": 0,
-    "solosindpres": 0,
+    "solosindpres": 20,
     "solosindpres_nona": 0,
-    "totale_parz": 0,
-    "totale_gen": 0
+    "totale_parz": 15,
+    "totale_gen": 679
   },
   "ordinamento": [
+    3,
     1,
-    2,
-    3
+    2
   ]
 }
