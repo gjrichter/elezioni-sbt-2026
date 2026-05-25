@@ -124,21 +124,16 @@ async function fetchAffluenza(snapshot) {
     }
     slots.push({ cdafflu, ...dTot });
 
-    // scarica per-sezione a blocchi di 5 (evita socket hang up per troppe richieste parallele)
+    // scarica per-sezione in modo completamente sequenziale (1 richiesta alla volta)
     sezioni[cdafflu] = {};
-    const AFFLU_BATCH = 5;
-    for (let start = 1; start <= N_SEZIONI; start += AFFLU_BATCH) {
-      const end   = Math.min(start + AFFLU_BATCH - 1, N_SEZIONI);
-      const batch = Array.from({ length: end - start + 1 }, (_, i) => start + i);
-      await Promise.all(batch.map(async s => {
-        const urlSez = `${BASE_SITE}/static_json/online/${snapshot}/${CDELE_NUMERIC}/voti_afflu_${PARTIZIONE}_${cdafflu}_${s}.json`;
-        try {
-          const d = await fetchJSON(urlSez);
-          sezioni[cdafflu][s] = { tvotanti: d.tvotanti || 0, iscri_totale: d.iscri_totale || 0 };
-        } catch (e) {
-          if (!e.message.startsWith('HTTP 404')) throw e;
-        }
-      }));
+    for (let s = 1; s <= N_SEZIONI; s++) {
+      const urlSez = `${BASE_SITE}/static_json/online/${snapshot}/${CDELE_NUMERIC}/voti_afflu_${PARTIZIONE}_${cdafflu}_${s}.json`;
+      try {
+        const d = await fetchJSON(urlSez);
+        sezioni[cdafflu][s] = { tvotanti: d.tvotanti || 0, iscri_totale: d.iscri_totale || 0 };
+      } catch (e) {
+        if (!e.message.startsWith('HTTP 404')) throw e;
+      }
     }
     console.log(`  affluenza cdafflu=${cdafflu} (${dTot.anagrafica?.descrizione}): ${dTot.tvotanti} votanti`);
   }
@@ -154,13 +149,11 @@ async function main() {
   // 1) risolvi snapshot path
   const snapshot = await resolveSnapshotPath();
 
-  // 2a) scarica totali (sezione 0 = aggregato) — piccola chiamata, completa in pochi secondi
+  // 2a) scarica totali (sezione 0 = aggregato) — sequenziale, 1 richiesta alla volta
   console.log('Fetching totals...');
-  const [raggrupTot, listeTot, candidatiTot] = await Promise.all([
-    fetchRaggrup(snapshot, null),
-    fetchListe(snapshot, null),
-    fetchCandidati(snapshot, null),
-  ]);
+  const raggrupTot   = await fetchRaggrup(snapshot, null);
+  const listeTot     = await fetchListe(snapshot, null);
+  const candidatiTot = await fetchCandidati(snapshot, null);
 
   // 2b) scarica affluenza separatamente — richiede molte chiamate, non tenere aperte le totali in parallelo
   console.log('Fetching affluenza...');
@@ -183,33 +176,21 @@ async function main() {
   if (listeTot)     saveJSON(path.join(histDir, 'totale_liste.json'),     listeTot);
   if (candidatiTot) saveJSON(path.join(histDir, 'totale_candidati.json'), candidatiTot);
 
-  // 3) scarica per sezione (parallelo, a blocchi di 3 — 3 sez × 3 file = 9 conn simultanee)
+  // 3) scarica per sezione — completamente sequenziale (1 richiesta alla volta)
   console.log(`Fetching up to ${N_SEZIONI} sezioni...`);
   const sezioniData = [];
-  const BATCH = 3;
 
-  outer:
-  for (let start = 1; start <= N_SEZIONI; start += BATCH) {
-    const end = Math.min(start + BATCH - 1, N_SEZIONI);
-    const batch = Array.from({ length: end - start + 1 }, (_, i) => start + i);
+  for (let s = 1; s <= N_SEZIONI; s++) {
+    const raggrup = await fetchRaggrup(snapshot, s);
+    const liste   = await fetchListe(snapshot, s);
+    const cand    = await fetchCandidati(snapshot, s);
 
-    const results = await Promise.all(batch.map(async s => {
-      const [raggrup, liste, cand] = await Promise.all([
-        fetchRaggrup(snapshot, s),
-        fetchListe(snapshot, s),
-        fetchCandidati(snapshot, s),
-      ]);
-      return { sezione: s, raggrup, liste, cand };
-    }));
-
-    for (const r of results) {
-      if (!r.raggrup && !r.liste) {
-        console.log(`  sezione ${r.sezione}: not found — fine sezioni`);
-        break outer;
-      }
-      sezioniData.push(r);
-      process.stdout.write(`  sezione ${r.sezione} ok\n`);
+    if (!raggrup && !liste) {
+      console.log(`  sezione ${s}: not found — fine sezioni`);
+      break;
     }
+    sezioniData.push({ sezione: s, raggrup, liste, cand });
+    process.stdout.write(`  sezione ${s} ok\n`);
   }
 
   // salva per sezione
