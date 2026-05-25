@@ -1,6 +1,6 @@
 {
-  "fetched_at": "2026-05-25T21:38:02.302Z",
-  "snapshot": "20260525_233555",
+  "fetched_at": "2026-05-25T22:09:07.162Z",
+  "snapshot": "20260526_000537",
   "anagrafica": [
     {
       "idpartizione": 0,
@@ -202,79 +202,79 @@
   "voti": {
     "arrVotiListe": {
       "1": {
-        "voti": 1756,
+        "voti": 1781,
         "voti_nona": 0
       },
       "2": {
-        "voti": 720,
+        "voti": 736,
         "voti_nona": 0
       },
       "3": {
-        "voti": 1217,
+        "voti": 1215,
         "voti_nona": 0
       },
       "4": {
-        "voti": 3048,
+        "voti": 3101,
         "voti_nona": 0
       },
       "5": {
-        "voti": 548,
+        "voti": 554,
         "voti_nona": 0
       },
       "6": {
-        "voti": 1463,
+        "voti": 1468,
         "voti_nona": 0
       },
       "7": {
-        "voti": 914,
+        "voti": 903,
         "voti_nona": 0
       },
       "8": {
-        "voti": 1601,
+        "voti": 1604,
         "voti_nona": 0
       },
       "9": {
-        "voti": 1603,
+        "voti": 1615,
         "voti_nona": 0
       },
       "10": {
-        "voti": 1639,
+        "voti": 1656,
         "voti_nona": 0
       },
       "11": {
-        "voti": 1583,
+        "voti": 1592,
         "voti_nona": 0
       },
       "12": {
-        "voti": 3912,
+        "voti": 3946,
         "voti_nona": 0
       },
       "13": {
-        "voti": 1070,
+        "voti": 1097,
         "voti_nona": 0
       },
       "14": {
-        "voti": 682,
+        "voti": 697,
         "voti_nona": 0
       }
     },
     "tot_sezio": 41,
     "iscri_maschi": 0,
     "iscri_femm": 0,
-    "iscri_totali": 38992,
+    "iscri_totali": 39273,
     "tvmas": 0,
     "tvfem": 0,
-    "tvotanti": 23139,
-    "tvotival": 21756,
+    "tvotanti": 23363,
+    "tvotival": 21965,
     "tvnonass": 0,
-    "tbianche": 93,
-    "tnulle": 297,
+    "tbianche": 97,
+    "tnulle": 308,
     "tvnulli": 0,
-    "sk_contestate": 19,
-    "solosindpres": 974,
+    "sk_contestate": 10,
+    "solosindpres": 983,
     "solosindpres_nona": 0,
-    "totale_parz": 409,
-    "totale_gen": 23139
+    "totale_parz": 415,
+    "totale_gen": 23363
   },
   "ordinamento": [
     12,
