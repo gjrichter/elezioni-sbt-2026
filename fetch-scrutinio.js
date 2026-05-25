@@ -180,10 +180,10 @@ async function main() {
   if (listeTot)     saveJSON(path.join(histDir, 'totale_liste.json'),     listeTot);
   if (candidatiTot) saveJSON(path.join(histDir, 'totale_candidati.json'), candidatiTot);
 
-  // 3) scarica per sezione (parallelo, a blocchi di 10)
+  // 3) scarica per sezione (parallelo, a blocchi di 3 — 3 sez × 3 file = 9 conn simultanee)
   console.log(`Fetching up to ${N_SEZIONI} sezioni...`);
   const sezioniData = [];
-  const BATCH = 10;
+  const BATCH = 3;
 
   outer:
   for (let start = 1; start <= N_SEZIONI; start += BATCH) {
