@@ -154,14 +154,17 @@ async function main() {
   // 1) risolvi snapshot path
   const snapshot = await resolveSnapshotPath();
 
-  // 2) scarica totali (sezione 0 = aggregato) + affluenza intermedia
-  console.log('Fetching totals + affluenza...');
-  const [raggrupTot, listeTot, candidatiTot, affluenza] = await Promise.all([
+  // 2a) scarica totali (sezione 0 = aggregato) — piccola chiamata, completa in pochi secondi
+  console.log('Fetching totals...');
+  const [raggrupTot, listeTot, candidatiTot] = await Promise.all([
     fetchRaggrup(snapshot, null),
     fetchListe(snapshot, null),
     fetchCandidati(snapshot, null),
-    fetchAffluenza(snapshot),
   ]);
+
+  // 2b) scarica affluenza separatamente — richiede molte chiamate, non tenere aperte le totali in parallelo
+  console.log('Fetching affluenza...');
+  const affluenza = await fetchAffluenza(snapshot);
   const { slots: affluenzaSlots, sezioni: affluenzaSezioni } = affluenza;
 
   const timestamp = fetchedAt.replace(/[:.]/g, '-');
