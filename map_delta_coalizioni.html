@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Variazione coalizioni 2021→2026 – SBdT</title>
+  <title>Variazione partiti comparabili 2021→2026 – SBdT</title>
   <script src="https://cdn.jsdelivr.net/gh/gjrichter/ixmaps-flat@master/ixmaps.js"></script>
   <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/gjrichter/ixmaps-flat@master/usercharts/d3/arrow_chart.js"></script>
   <style>
     html, body {
       width: 100%; height: 100%; margin: 0; overflow: hidden;
@@ -68,12 +69,12 @@
 <body>
 
 <div id="controls">
-  <h2>Variazione coalizioni 2021 → 2026</h2>
+  <h2>Variazione partiti comparabili 2021 → 2026</h2>
   <span id="badge-cs" class="badge badge-cs"></span>
   <span id="badge-cd" class="badge badge-cd"></span>
   <span id="legend-note">
-    ↖ rosso = Centro-sinistra &nbsp;·&nbsp; ↗ blu = Centro-destra
-    &nbsp;·&nbsp; ▲ guadagno &nbsp;·&nbsp; ▼ perdita &nbsp;·&nbsp; dimensione = entità (pp)
+    ↖ rosso = Sinistra (PD+M5S+AVS+CambiaSBT) &nbsp;·&nbsp; ↗ blu = CDX (FdI+Lega+FI+CCP)
+    &nbsp;·&nbsp; ▲ guadagno &nbsp;·&nbsp; ▼ perdita &nbsp;·&nbsp; % su totale voti lista
   </span>
 </div>
 
@@ -87,15 +88,48 @@
 
 <script>
 
-// ── LISTE PER COALIZIONE ──────────────────────────────────────────────────────
+// ── WRAPPER arrowChart CON ROTAZIONE ─────────────────────────────────────────
+// Crea un <g rotate(angle)> figlio dentro args.target, vi reindirizza il draw
+// standard di arrowChart, poi ripristina il target originale.
+window.ixmaps = window.ixmaps || {};
 
-// 2021
-var CS_LISTE_21 = [1,2,3,4,5,6,7,8,9,10,11,18,19]; // Spazzafumo+Bottiglieri+Canducci+Angelini
-var CD_LISTE_21 = [12,13,14,15,16,17];               // Piunti
+function makeRotatedArrowChart(angle) {
+  return function(SVGDocument, args) {
+    var origTarget = args.target;
+    var rotG = d3.select(origTarget)
+                 .append("g")
+                 .attr("transform", "rotate(" + angle + ")")
+                 .node();
+    args.target = rotG;
+    var result = ixmaps.arrowChart(SVGDocument, args);
+    args.target = origTarget;
+    return result;
+  };
+}
+ixmaps.arrowChartLeft_init  = function(SVGDocument, args) {
+  if (typeof ixmaps.arrowChart_init === "function") ixmaps.arrowChart_init(SVGDocument, args);
+};
+ixmaps.arrowChartRight_init = function(SVGDocument, args) {
+  if (typeof ixmaps.arrowChart_init === "function") ixmaps.arrowChart_init(SVGDocument, args);
+};
+ixmaps.arrowChartLeft  = makeRotatedArrowChart(-15);
+ixmaps.arrowChartRight = makeRotatedArrowChart(+15);
 
-// 2026
-var CS_LISTE_26 = [1,2,3,4,5,6];                     // Fede + D'Andrea
-var CD_LISTE_26 = [7,8,9,10,11,12,13,14];            // Mozzoni
+// ── PARTITI COMPARABILI (presenti in ENTRAMBE le elezioni) ───────────────────
+// Sinistra: PD, M5S, AVS/Europa Verde, Cambia SBT
+var CS_COPPIE = [
+  { n21:  8, n26:  4, nome: "PD"         },
+  { n21: 19, n26:  3, nome: "M5S"        },
+  { n21:  9, n26:  1, nome: "AVS/Verdi"  },
+  { n21: 18, n26:  2, nome: "Cambia SBT" }
+];
+// Centrodestra: FdI, Lega, FI, CCP
+var CD_COPPIE = [
+  { n21: 17, n26: 12, nome: "FdI"   },
+  { n21: 15, n26:  9, nome: "Lega"  },
+  { n21: 16, n26: 11, nome: "FI"    },
+  { n21:  1, n26: 13, nome: "CCP ★" }
+];
 
 var N_SEZ         = 43;
 var MIN_VOTI_SEDE = 50;
@@ -108,7 +142,6 @@ var sediGj   = null;
 var lData21  = {};   // [sezione] = { [nlista]: voti, _total: N }
 var lData26  = {};
 var myMap    = null;
-var ACTIVE_THEME = null;
 
 // ── CARICA LISTE PER SEZIONE ──────────────────────────────────────────────────
 function loadListeSez(base, n) {
@@ -128,175 +161,123 @@ function loadListeSez(base, n) {
     .catch(function() { return { sezione: n, data: { _total: 0 } }; });
 }
 
-// ── SOMMA LISTA VOTI PER COALIZIONE ───────────────────────────────────────────
-function sumCoal(data, liste) {
-  return liste.reduce(function(s, nl) { return s + (data[nl] || 0); }, 0);
+// ── SOMMA VOTI PARTITI COMPARABILI ────────────────────────────────────────────
+function sumCoppie(data, coppie, anno) {
+  return coppie.reduce(function(s, c) {
+    return s + (data[anno === 21 ? c.n21 : c.n26] || 0);
+  }, 0);
 }
 
-// ── CALCOLA DELTA PER SEDE ────────────────────────────────────────────────────
-function computeSediData() {
+// ── CALCOLA DELTA PER SEDE (un gruppo alla volta) ─────────────────────────────
+// Denominatore = totale voti TUTTE le liste; Numeratore = partiti comparabili.
+function computeSediGroup(coppie) {
   return sediGj.features.map(function(feat) {
     var p = feat.properties;
-    var csV21=0, cdV21=0, T21=0;
-    var csV26=0, cdV26=0, T26=0;
-
+    var v21=0, T21=0, v26=0, T26=0;
     for (var s = p.sez_da; s <= p.sez_a; s++) {
       var d21 = lData21[s] || {};
       var d26 = lData26[s] || {};
-      csV21 += sumCoal(d21, CS_LISTE_21);
-      cdV21 += sumCoal(d21, CD_LISTE_21);
-      T21   += d21._total || 0;
-      csV26 += sumCoal(d26, CS_LISTE_26);
-      cdV26 += sumCoal(d26, CD_LISTE_26);
-      T26   += d26._total || 0;
+      v21 += sumCoppie(d21, coppie, 21);
+      T21 += d21._total || 0;
+      v26 += sumCoppie(d26, coppie, 26);
+      T26 += d26._total || 0;
     }
-
     if (T21 < MIN_VOTI_SEDE || T26 < MIN_VOTI_SEDE) return null;
-
-    var csPct21 = +(100 * csV21 / T21).toFixed(1);
-    var cdPct21 = +(100 * cdV21 / T21).toFixed(1);
-    var csPct26 = +(100 * csV26 / T26).toFixed(1);
-    var cdPct26 = +(100 * cdV26 / T26).toFixed(1);
-    var csDelta = +(csPct26 - csPct21).toFixed(1);
-    var cdDelta = +(cdPct26 - cdPct21).toFixed(1);
-
+    var pct21 = +(100 * v21 / T21).toFixed(1);
+    var pct26 = +(100 * v26 / T26).toFixed(1);
+    var delta = +(pct26 - pct21).toFixed(1);
     return {
       sez_da:    p.sez_da,
       nome:      p.nome,
       indirizzo: p.indirizzo,
       sezioni:   p.sezioni,
-      csPct21:   csPct21,  csPct26: csPct26,  csDelta: csDelta,
-      cdPct21:   cdPct21,  cdPct26: cdPct26,  cdDelta: cdDelta,
-      max_delta: Math.max(Math.abs(csDelta), Math.abs(cdDelta))
+      pct21:     pct21,
+      pct26:     pct26,
+      delta:     delta
     };
   }).filter(function(d) { return d !== null; });
 }
 
-// ── CUSTOM DRAW: due frecce per sede ─────────────────────────────────────────
-window.ixmaps = window.ixmaps || {};
-
-ixmaps.coalitionArrows_init = function(SVGDocument, args) {};
-
-ixmaps.coalitionArrows = function(SVGDocument, args) {
-  if (!args.item) return false;
-
-  // valori via args.values[] (pipe-separated binding)
-  var maxDelta = Math.abs(parseFloat(args.values ? args.values[0] : args.value) || 0);
-  var csVal    = parseFloat(args.values ? args.values[1] : 0) || 0;
-  var cdVal    = parseFloat(args.values ? args.values[2] : 0) || 0;
-
-  if (maxDelta === 0) return false;
-
-  var nRangeScale = args.theme.nRangeScale || 1;
-  var baseH = args.maxSize * 20 * nRangeScale;   // altezza per max_delta
-  if (baseH === 0) return false;
-
-  var svg = d3.select(args.target);
-  var opacity = args.theme.fillOpacity || 0.85;
-
-  // scala ogni freccia proporzionalmente al suo delta
-  var csH = baseH * Math.abs(csVal) / maxDelta;
-  var cdH = baseH * Math.abs(cdVal) / maxDelta;
-
-  // CS: rosso, inclinato -15° (verso sinistra)
-  if (Math.abs(csVal) > 0.05) drawArrow(svg, csVal, csH, "#e74c3c", -15, opacity);
-  // CD: blu, inclinato +15° (verso destra)
-  if (Math.abs(cdVal) > 0.05) drawArrow(svg, cdVal, cdH, "#2980b9", +15, opacity);
-
-  return { x: 0, y: 0 };
-};
-
-function drawArrow(svg, val, h, color, angle, opacity) {
-  var w      = Math.max(5, h * 0.38);
-  var headH  = Math.min(h * 0.42, w * 1.3);
-  var shaftH = h - headH;
-  var shaftW = w * 0.38;
-
-  var g = svg.append("g").attr("transform", "rotate(" + angle + ")");
-
-  if (val > 0) {
-    // freccia su
-    g.append("rect")
-      .attr("x", -shaftW / 2).attr("y", -h + headH)
-      .attr("width", shaftW).attr("height", shaftH)
-      .style("fill", color).style("fill-opacity", opacity);
-    g.append("polygon")
-      .attr("points",
-        "0," + (-h) + " " +
-        (-w / 2) + "," + (-h + headH) + " " +
-        ( w / 2) + "," + (-h + headH))
-      .style("fill", color).style("fill-opacity", opacity);
-  } else {
-    // freccia giù
-    g.append("rect")
-      .attr("x", -shaftW / 2).attr("y", 0)
-      .attr("width", shaftW).attr("height", shaftH)
-      .style("fill", color).style("fill-opacity", opacity);
-    g.append("polygon")
-      .attr("points",
-        "0," + h + " " +
-        (-w / 2) + "," + (h - headH) + " " +
-        ( w / 2) + "," + (h - headH))
-      .style("fill", color).style("fill-opacity", opacity);
-  }
-}
-
 // ── AGGIORNA MAPPA ────────────────────────────────────────────────────────────
 function updateMap() {
-  var sediData = computeSediData();
+  var sediCS = computeSediGroup(CS_COPPIE);
+  var sediCD = computeSediGroup(CD_COPPIE);
 
   // totali città
   var csV21=0, cdV21=0, T21=0, csV26=0, cdV26=0, T26=0;
   for (var s = 1; s <= N_SEZ; s++) {
     var d21 = lData21[s] || {};
     var d26 = lData26[s] || {};
-    csV21 += sumCoal(d21, CS_LISTE_21); cdV21 += sumCoal(d21, CD_LISTE_21); T21 += d21._total || 0;
-    csV26 += sumCoal(d26, CS_LISTE_26); cdV26 += sumCoal(d26, CD_LISTE_26); T26 += d26._total || 0;
+    csV21 += sumCoppie(d21, CS_COPPIE, 21); T21 += d21._total || 0;
+    csV26 += sumCoppie(d26, CS_COPPIE, 26); T26 += d26._total || 0;
+    cdV21 += sumCoppie(d21, CD_COPPIE, 21);
+    cdV26 += sumCoppie(d26, CD_COPPIE, 26);
   }
   var csDeltaCity = T21>0&&T26>0 ? +((100*csV26/T26)-(100*csV21/T21)).toFixed(1) : 0;
   var cdDeltaCity = T21>0&&T26>0 ? +((100*cdV26/T26)-(100*cdV21/T21)).toFixed(1) : 0;
-  var fmt = function(v) { return (v>=0?"+":"")+v+" pp  ("+(T21>0?(100*( v>0?csV21:cdV21)/T21).toFixed(1):"—")+"% → "+(T26>0?(100*(v>0?csV26:cdV26)/T26).toFixed(1):"—")+"%)"; };
 
   document.getElementById("badge-cs").textContent =
-    "CS: " + (csDeltaCity>=0?"+":"") + csDeltaCity + " pp  (" +
+    "Sinistra: " + (csDeltaCity>=0?"+":"") + csDeltaCity + " pp  (" +
     (T21>0?(100*csV21/T21).toFixed(1):"—") + "% → " +
     (T26>0?(100*csV26/T26).toFixed(1):"—") + "%)";
   document.getElementById("badge-cd").textContent =
-    "CD: " + (cdDeltaCity>=0?"+":"") + cdDeltaCity + " pp  (" +
+    "CDX: " + (cdDeltaCity>=0?"+":"") + cdDeltaCity + " pp  (" +
     (T21>0?(100*cdV21/T21).toFixed(1):"—") + "% → " +
     (T26>0?(100*cdV26/T26).toFixed(1):"—") + "%)";
 
-  var prev = ACTIVE_THEME;
-  var themeName = "coalizioni_delta";
-
   myMap.then(function(api) {
-    if (prev) try { api.removeTheme(prev); } catch(e) {}
+    try { api.removeTheme("cs_arrows"); } catch(e) {}
+    try { api.removeTheme("cd_arrows"); } catch(e) {}
 
+    // ── tema Sinistra (rosso) ─────────────────────────────────────────────────
     myMap.layer("sedi")
-      .data({ obj: sediData, type: "json" })
-      .binding({ geo: "sez_da", value: "max_delta", values: "max_delta|csDelta|cdDelta" })
+      .data({ obj: sediCS, type: "json" })
+      .binding({ geo: "sez_da", value: "delta" })
       .type("CHART|USER|SIZE|VALUES")
       .style({
-        userdraw:         "coalitionArrows",
-        colorscheme:      ["#e74c3c", "#2980b9"],
+        userdraw:         "arrowChartLeft",
+        colorscheme:      ["#c0392b", "#e74c3c"],   // neg=rosso scuro / pos=rosso
         rangecentervalue: 0,
-        normalsizevalue:  20,
+        normalsizevalue:  2,
         fillopacity:      0.85,
         rangescale:       0.5,
-        showdata:         "false"
+        showdata:         "true",
+        units:            " pp",
+        valuedecimals:    1
       })
       .meta({
-        name:    themeName,
-        title:   "Variazione coalizioni 2021→2026",
+        name:    "cs_arrows",
+        title:   "Sinistra 2021→2026",
         tooltip: "<b>{{nome}}</b><br>{{indirizzo}}<br>Sezioni: {{sezioni}}<br>" +
-                 "<span style='color:#e74c3c'>● CS</span> " +
-                 "{{csPct21}}% → {{csPct26}}%  <b>{{csDelta}} pp</b><br>" +
-                 "<span style='color:#5dade2'>● CD</span> " +
-                 "{{cdPct21}}% → {{cdPct26}}%  <b>{{cdDelta}} pp</b>"
+                 "<span style='color:#e74c3c'>● Sinistra</span> (PD+M5S+AVS+CambiaSBT)<br>" +
+                 "{{pct21}}% → {{pct26}}%  <b>{{delta}} pp</b>"
       })
       .define();
 
-    ACTIVE_THEME = themeName;
+    // ── tema CDX (blu) ────────────────────────────────────────────────────────
+    myMap.layer("sedi")
+      .data({ obj: sediCD, type: "json" })
+      .binding({ geo: "sez_da", value: "delta" })
+      .type("CHART|USER|SIZE|VALUES")
+      .style({
+        userdraw:         "arrowChartRight",
+        colorscheme:      ["#1a5276", "#2980b9"],   // neg=blu scuro / pos=blu
+        rangecentervalue: 0,
+        normalsizevalue:  2,
+        fillopacity:      0.85,
+        rangescale:       0.5,
+        showdata:         "true",
+        units:            " pp",
+        valuedecimals:    1
+      })
+      .meta({
+        name:    "cd_arrows",
+        title:   "CDX 2021→2026",
+        tooltip: "<b>{{nome}}</b><br>{{indirizzo}}<br>Sezioni: {{sezioni}}<br>" +
+                 "<span style='color:#5dade2'>● CDX</span> (FdI+Lega+FI+CCP)<br>" +
+                 "{{pct21}}% → {{pct26}}%  <b>{{delta}} pp</b>"
+      })
+      .define();
   });
 }
 
