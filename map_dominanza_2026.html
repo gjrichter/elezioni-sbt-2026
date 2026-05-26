@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dominanza CS / CDX per sede – SBdT 2026</title>
+  <script src="https://cdn.jsdelivr.net/gh/gjrichter/ixmaps-flat@master/ixmaps.js"></script>
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/gjrichter/ixmaps-flat@master/usercharts/d3/arrow_chart.js"></script>
+  <style>
+    html, body {
+      width: 100%; height: 100%; margin: 0; overflow: hidden;
+      font-family: sans-serif; display: flex; flex-direction: column;
+    }
+
+    /* ── CONTROLS BAR ── */
+    #controls {
+      flex-shrink: 0;
+      background: #1a2030;
+      color: #fff;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    #controls h2 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin: 0;
+      white-space: nowrap;
+      opacity: 0.9;
+    }
+    .badge {
+      font-size: 0.80rem; font-weight: 700;
+      padding: 4px 12px; border-radius: 20px; white-space: nowrap;
+    }
+    .badge-cs { background: rgba(231,76,60,0.25);  color: #e74c3c; }
+    .badge-cd { background: rgba(41,128,185,0.25); color: #5dade2; }
+    #legend-note {
+      font-size: 0.72rem; opacity: 0.42; white-space: nowrap; margin-left: auto;
+    }
+
+    @media (max-width: 540px) {
+      #controls { flex-direction: column; align-items: stretch; padding: 8px 10px; gap: 6px; }
+      #legend-note { display: none; }
+    }
+
+    /* ── MAP ── */
+    #map-wrapper { flex: 1; position: relative; overflow: hidden; }
+    #map { width: 100%; height: 100%; }
+
+    #app-loading {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255,255,255,0.92);
+      padding: 1em 2.5em; border-radius: 8px;
+      font-size: 1em; z-index: 9999;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .spinner {
+      width: 18px; height: 18px;
+      border: 2px solid #ccc; border-top-color: #2980b9;
+      border-radius: 50%; animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+<div id="controls">
+  <h2>Dominanza CS / CDX per sede – 2026</h2>
+  <span id="badge-cs" class="badge badge-cs"></span>
+  <span id="badge-cd" class="badge badge-cd"></span>
+  <span id="legend-note">
+    ▲ blu = CDX sopra (FdI+Lega+FI+CCP) &nbsp;·&nbsp;
+    ▼ rosso = Sinistra sopra (PD+M5S+AVS+CambiaSBT) &nbsp;·&nbsp;
+    dimensione = distacco in voti
+  </span>
+</div>
+
+<div id="map-wrapper">
+  <div id="app-loading">
+    <div class="spinner"></div>
+    Caricamento dati 2026…
+  </div>
+  <div id="map"></div>
+</div>
+
+<script>
+
+// ── LISTE COMPARABILI 2026 ────────────────────────────────────────────────────
+var CS_NL26 = [1, 2, 3, 4];       // AVS/Verdi, Cambia SBT, M5S, PD
+var CD_NL26 = [9, 11, 12, 13];    // Lega, FI, FdI, CCP
+
+var N_SEZ         = 43;
+var MIN_VOTI_SEDE = 50;
+var BASE26   = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/sezioni/";
+var SEDI_URL = "https://raw.githubusercontent.com/gjrichter/elezioni-sbt-2026/main/data/sedi_sezioni_elettorali.geojson";
+
+// ── STATO GLOBALE ─────────────────────────────────────────────────────────────
+var sediGj  = null;
+var lData26 = {};   // [sezione] = { [nlista]: voti, _total: N }
+var myMap   = null;
+
+// ── CARICA LISTE PER SEZIONE ──────────────────────────────────────────────────
+function loadListeSez(n) {
+  var pad = String(n).padStart(3, "0");
+  return fetch(BASE26 + pad + "/liste.json?_=" + Date.now())
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      var arr = (d.voti || {}).arrVotiListe || {};
+      var row = { _total: 0 };
+      Object.keys(arr).forEach(function(nl) {
+        var v = arr[nl].voti || 0;
+        row[nl] = v;
+        row._total += v;
+      });
+      return { sezione: n, data: row };
+    })
+    .catch(function() { return { sezione: n, data: { _total: 0 } }; });
+}
+
+// ── SOMMA VOTI ────────────────────────────────────────────────────────────────
+function sumNl(data, nlListe) {
+  return nlListe.reduce(function(s, nl) { return s + (data[nl] || 0); }, 0);
+}
+
+// ── CALCOLA DATI PER SEDE ─────────────────────────────────────────────────────
+// diff = cdV - csV  →  positivo = CDX sopra (freccia blu)
+//                      negativo = CS sopra  (freccia rossa)
+function computeSediData() {
+  return sediGj.features.map(function(feat) {
+    var p = feat.properties;
+    var csV=0, cdV=0, T=0;
+    for (var s = p.sez_da; s <= p.sez_a; s++) {
+      var d = lData26[s] || {};
+      csV += sumNl(d, CS_NL26);
+      cdV += sumNl(d, CD_NL26);
+      T   += d._total || 0;
+    }
+    if (T < MIN_VOTI_SEDE) return null;
+    var csPct = +(100 * csV / T).toFixed(1);
+    var cdPct = +(100 * cdV / T).toFixed(1);
+    var diff  = cdV - csV;                     // positivo = CDX sopra
+    var diffPp = +(cdPct - csPct).toFixed(1);
+    return {
+      sez_da:    p.sez_da,
+      nome:      p.nome,
+      indirizzo: p.indirizzo,
+      sezioni:   p.sezioni,
+      csV:       csV,
+      cdV:       cdV,
+      csPct:     csPct,
+      cdPct:     cdPct,
+      diff:      diff,
+      diffPp:    diffPp
+    };
+  }).filter(function(d) { return d !== null; });
+}
+
+// ── AGGIORNA MAPPA ────────────────────────────────────────────────────────────
+function updateMap() {
+  var sediData = computeSediData();
+
+  // totali città
+  var csV=0, cdV=0, T=0;
+  for (var s = 1; s <= N_SEZ; s++) {
+    var d = lData26[s] || {};
+    csV += sumNl(d, CS_NL26);
+    cdV += sumNl(d, CD_NL26);
+    T   += d._total || 0;
+  }
+  var csPct = T > 0 ? (100 * csV / T).toFixed(1) : "—";
+  var cdPct = T > 0 ? (100 * cdV / T).toFixed(1) : "—";
+  document.getElementById("badge-cs").textContent =
+    "Sinistra: " + csV.toLocaleString("it") + " voti (" + csPct + "%)";
+  document.getElementById("badge-cd").textContent =
+    "CDX: " + cdV.toLocaleString("it") + " voti (" + cdPct + "%)";
+
+  myMap.then(function(api) {
+    try { api.removeTheme("dominanza"); } catch(e) {}
+
+    myMap.layer("sedi")
+      .data({ obj: sediData, type: "json" })
+      .binding({ geo: "sez_da", value: "diff" })
+      .type("CHART|USER|SIZE|VALUES")
+      .style({
+        userdraw:         "arrowChart",
+        colorscheme:      ["#e74c3c", "#2980b9"],   // neg=rosso(CS) / pos=blu(CDX)
+        rangecentervalue: 0,
+        normalsizevalue:  100,
+        fillopacity:      0.85,
+        rangescale:       0.5,
+        showdata:         "true",
+        units:            " voti",
+        valuedecimals:    0
+      })
+      .meta({
+        name:    "dominanza",
+        title:   "Distacco CS / CDX 2026",
+        tooltip: "<b>{{nome}}</b><br>{{indirizzo}}<br>Sezioni: {{sezioni}}<br>" +
+                 "<span style='color:#e74c3c'>● Sinistra</span> {{csV}} voti ({{csPct}}%)<br>" +
+                 "<span style='color:#5dade2'>● CDX</span> {{cdV}} voti ({{cdPct}}%)<br>" +
+                 "Distacco: <b>{{diff}} voti ({{diffPp}} pp)</b>"
+      })
+      .define();
+  });
+}
+
+// ── AVVIO ─────────────────────────────────────────────────────────────────────
+var sezNums = Array.from({ length: N_SEZ }, function(_, i) { return i + 1; });
+
+Promise.all([
+  fetch(SEDI_URL + "?_=" + Date.now()).then(function(r) { return r.json(); }),
+  Promise.all(sezNums.map(function(n) { return loadListeSez(n); }))
+]).then(function(results) {
+  sediGj = results[0];
+  results[1].forEach(function(r) { lData26[r.sezione] = r.data; });
+
+  document.getElementById("app-loading").style.display = "none";
+
+  myMap = ixmaps.Map("map", {
+    mapType: "VT_TONER_LITE",
+    mode:    "pan",
+    legend:  "open",
+    tools:   true
+  })
+  .view({ center: { lat: 42.930, lng: 13.887 }, zoom: 13 })
+  .options({
+    objectscaling:   "dynamic",
+    normalSizeScale: "80000",
+    basemapopacity:  0.55,
+    flushChartDraw:  1000000
+  });
+
+  myMap.layer("sedi")
+    .data({ obj: sediGj, type: "geojson" })
+    .binding({ geo: "geometry", id: "sez_da", title: "nome" })
+    .type("FEATURE|SILENT")
+    .style({ colorscheme: ["none"], scale: 0, showdata: "true" })
+    .define();
+
+  updateMap();
+
+}).catch(function(e) {
+  document.getElementById("app-loading").innerHTML = "✗ Errore: " + e.message;
+});
+
+</script>
+</body>
+</html>
