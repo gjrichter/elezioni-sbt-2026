@@ -7,6 +7,27 @@
   <script src="https://cdn.jsdelivr.net/gh/gjrichter/ixmaps-flat@master/ixmaps.js"></script>
   <script src="https://d3js.org/d3.v3.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/gjrichter/ixmaps-flat@master/usercharts/d3/arrow_chart.js"></script>
+  <script>
+  // Wrapper: redirige il draw di arrowChart in un <g rotate(angle)> figlio
+  window.ixmaps = window.ixmaps || {};
+  function makeRotatedArrowChart(angle) {
+    return function(SVGDocument, args) {
+      var origTarget = args.target;
+      var rotG = d3.select(origTarget)
+                   .append("g")
+                   .attr("transform", "rotate(" + angle + ")")
+                   .node();
+      args.target = rotG;
+      var result = ixmaps.arrowChart(SVGDocument, args);
+      args.target = origTarget;
+      return result;
+    };
+  }
+  ixmaps.arrowChartLeft_init  = function(s,a){ if(typeof ixmaps.arrowChart_init==="function") ixmaps.arrowChart_init(s,a); };
+  ixmaps.arrowChartRight_init = function(s,a){ if(typeof ixmaps.arrowChart_init==="function") ixmaps.arrowChart_init(s,a); };
+  ixmaps.arrowChartLeft  = makeRotatedArrowChart(-15);
+  ixmaps.arrowChartRight = makeRotatedArrowChart(+15);
+  </script>
   <style>
     html, body {
       width: 100%; height: 100%; margin: 0; overflow: hidden;
@@ -127,10 +148,11 @@ function sumNl(data, nlListe) {
 }
 
 // ── CALCOLA DATI PER SEDE ─────────────────────────────────────────────────────
-// diff = cdV - csV  →  positivo = CDX sopra (freccia blu)
-//                      negativo = CS sopra  (freccia rossa)
-function computeSediData() {
-  return sediGj.features.map(function(feat) {
+// Restituisce due array: sedi dove CS è in testa, sedi dove CDX è in testa.
+// In entrambi il campo "margin" è sempre positivo (= distacco assoluto in voti).
+function computeSediGroups() {
+  var csWins = [], cdWins = [];
+  sediGj.features.forEach(function(feat) {
     var p = feat.properties;
     var csV=0, cdV=0, T=0;
     for (var s = p.sez_da; s <= p.sez_a; s++) {
@@ -139,12 +161,11 @@ function computeSediData() {
       cdV += sumNl(d, CD_NL26);
       T   += d._total || 0;
     }
-    if (T < MIN_VOTI_SEDE) return null;
-    var csPct = +(100 * csV / T).toFixed(1);
-    var cdPct = +(100 * cdV / T).toFixed(1);
-    var diff  = cdV - csV;                     // positivo = CDX sopra
+    if (T < MIN_VOTI_SEDE) return;
+    var csPct  = +(100 * csV / T).toFixed(1);
+    var cdPct  = +(100 * cdV / T).toFixed(1);
     var diffPp = +(cdPct - csPct).toFixed(1);
-    return {
+    var row = {
       sez_da:    p.sez_da,
       nome:      p.nome,
       indirizzo: p.indirizzo,
@@ -153,15 +174,20 @@ function computeSediData() {
       cdV:       cdV,
       csPct:     csPct,
       cdPct:     cdPct,
-      diff:      diff,
       diffPp:    diffPp
     };
-  }).filter(function(d) { return d !== null; });
+    if (csV > cdV) {
+      csWins.push(Object.assign({}, row, { margin: csV - cdV, marginPp: +(csPct - cdPct).toFixed(1) }));
+    } else if (cdV > csV) {
+      cdWins.push(Object.assign({}, row, { margin: cdV - csV, marginPp: +(cdPct - csPct).toFixed(1) }));
+    }
+  });
+  return { csWins: csWins, cdWins: cdWins };
 }
 
 // ── AGGIORNA MAPPA ────────────────────────────────────────────────────────────
 function updateMap() {
-  var sediData = computeSediData();
+  var groups = computeSediGroups();
 
   // totali città
   var csV=0, cdV=0, T=0;
@@ -179,30 +205,56 @@ function updateMap() {
     "CDX: " + cdV.toLocaleString("it") + " voti (" + cdPct + "%)";
 
   myMap.then(function(api) {
-    try { api.removeTheme("dominanza"); } catch(e) {}
+    try { api.removeTheme("cs_dom"); } catch(e) {}
+    try { api.removeTheme("cd_dom"); } catch(e) {}
 
+    // ── tema CS: freccia rossa inclinata a sinistra ───────────────────────────
     myMap.layer("sedi")
-      .data({ obj: sediData, type: "json" })
-      .binding({ geo: "sez_da", value: "diff" })
+      .data({ obj: groups.csWins, type: "json" })
+      .binding({ geo: "sez_da", value: "margin" })
       .type("CHART|USER|SIZE|VALUES")
       .style({
-        userdraw:         "arrowChart",
-        colorscheme:      ["#e74c3c", "#2980b9"],   // neg=rosso(CS) / pos=blu(CDX)
-        rangecentervalue: 0,
-        normalsizevalue:  100,
-        fillopacity:      0.85,
-        rangescale:       0.5,
-        showdata:         "true",
-        units:            " voti",
-        valuedecimals:    0
+        userdraw:        "arrowChartLeft",
+        colorscheme:     ["#e74c3c", "#e74c3c"],   // sempre rosso
+        normalsizevalue: 100,
+        fillopacity:     0.85,
+        rangescale:      0.5,
+        showdata:        "true",
+        units:           " voti",
+        valuedecimals:   0
       })
       .meta({
-        name:    "dominanza",
-        title:   "Distacco CS / CDX 2026",
+        name:    "cs_dom",
+        title:   "Sinistra in testa 2026",
         tooltip: "<b>{{nome}}</b><br>{{indirizzo}}<br>Sezioni: {{sezioni}}<br>" +
                  "<span style='color:#e74c3c'>● Sinistra</span> {{csV}} voti ({{csPct}}%)<br>" +
                  "<span style='color:#5dade2'>● CDX</span> {{cdV}} voti ({{cdPct}}%)<br>" +
-                 "Distacco: <b>{{diff}} voti ({{diffPp}} pp)</b>"
+                 "Distacco CS: <b>+{{margin}} voti (+{{marginPp}} pp)</b>"
+      })
+      .define();
+
+    // ── tema CDX: freccia blu inclinata a destra ──────────────────────────────
+    myMap.layer("sedi")
+      .data({ obj: groups.cdWins, type: "json" })
+      .binding({ geo: "sez_da", value: "margin" })
+      .type("CHART|USER|SIZE|VALUES")
+      .style({
+        userdraw:        "arrowChartRight",
+        colorscheme:     ["#2980b9", "#2980b9"],   // sempre blu
+        normalsizevalue: 100,
+        fillopacity:     0.85,
+        rangescale:      0.5,
+        showdata:        "true",
+        units:           " voti",
+        valuedecimals:   0
+      })
+      .meta({
+        name:    "cd_dom",
+        title:   "CDX in testa 2026",
+        tooltip: "<b>{{nome}}</b><br>{{indirizzo}}<br>Sezioni: {{sezioni}}<br>" +
+                 "<span style='color:#e74c3c'>● Sinistra</span> {{csV}} voti ({{csPct}}%)<br>" +
+                 "<span style='color:#5dade2'>● CDX</span> {{cdV}} voti ({{cdPct}}%)<br>" +
+                 "Distacco CDX: <b>+{{margin}} voti (+{{marginPp}} pp)</b>"
       })
       .define();
   });
