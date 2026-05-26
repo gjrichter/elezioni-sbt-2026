@@ -212,7 +212,7 @@ function updateMap() {
     myMap.layer("sedi")
       .data({ obj: groups.csWins, type: "json" })
       .binding({ geo: "sez_da", value: "margin" })
-      .type("CHART|USER|SIZE|VALUES")
+      .type("CHART|USER|SIZE|VALUES|AGGREGATE")
       .style({
         userdraw:        "arrowChartLeft",
         colorscheme:     ["#e74c3c", "#e74c3c"],   // sempre rosso
@@ -237,7 +237,7 @@ function updateMap() {
     myMap.layer("sedi")
       .data({ obj: groups.cdWins, type: "json" })
       .binding({ geo: "sez_da", value: "margin" })
-      .type("CHART|USER|SIZE|VALUES")
+      .type("CHART|USER|SIZE|VALUES|AGGREGATE")
       .style({
         userdraw:        "arrowChartRight",
         colorscheme:     ["#2980b9", "#2980b9"],   // sempre blu
