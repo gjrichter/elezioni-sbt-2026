@@ -233,12 +233,12 @@ function updateMap() {
     myMap.layer("sedi")
       .data({ obj: sediCS, type: "json" })
       .binding({ geo: "sez_da", value: "delta" })
-      .type("CHART|USER|SIZE|VALUES")
+      .type("CHART|USER|SIZE|VALUES|AGGREGATE")
       .style({
         userdraw:         "arrowChartLeft",
         colorscheme:      ["#c0392b", "#e74c3c"],   // neg=rosso scuro / pos=rosso
         rangecentervalue: 0,
-        normalsizevalue:  2,
+        normalsizevalue:  5,
         fillopacity:      0.85,
         rangescale:       0.5,
         showdata:         "true",
@@ -247,7 +247,7 @@ function updateMap() {
       })
       .meta({
         name:    "cs_arrows",
-        title:   "Sinistra 2021→2026",
+        title:   "PD+M5S+AVS+CambiaSBT 2021→2026",
         tooltip: "<b>{{nome}}</b><br>{{indirizzo}}<br>Sezioni: {{sezioni}}<br>" +
                  "<span style='color:#e74c3c'>● Sinistra</span> (PD+M5S+AVS+CambiaSBT)<br>" +
                  "{{pct21}}% → {{pct26}}%  <b>{{delta}} pp</b>"
@@ -258,12 +258,12 @@ function updateMap() {
     myMap.layer("sedi")
       .data({ obj: sediCD, type: "json" })
       .binding({ geo: "sez_da", value: "delta" })
-      .type("CHART|USER|SIZE|VALUES")
+      .type("CHART|USER|SIZE|VALUES|AGGREGATE")
       .style({
         userdraw:         "arrowChartRight",
         colorscheme:      ["#1a5276", "#2980b9"],   // neg=blu scuro / pos=blu
         rangecentervalue: 0,
-        normalsizevalue:  2,
+        normalsizevalue:  5,
         fillopacity:      0.85,
         rangescale:       0.5,
         showdata:         "true",
