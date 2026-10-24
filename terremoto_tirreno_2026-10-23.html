@@ -50,6 +50,10 @@
   .viz { margin: 1.6rem 0 .6rem; border-radius: 6px; overflow: hidden; background: var(--panel); color: var(--fg); border: 1px solid var(--line); }
   #map { width: 100%; height: 340px; position: relative; }
   @media (max-width: 520px) { #map { height: 280px; } }
+  .views { display: flex; gap: .5rem; padding: .7rem 1rem 0; flex-wrap: wrap; }
+  .views button { font: inherit; font-size: .86rem; padding: .3rem .8rem; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; }
+  .views button[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+  .views button:focus-visible { outline: 3px solid var(--link); outline-offset: 2px; }
   .bar { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .9rem; padding: .8rem 1rem .2rem; }
   #play { width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--accent); color: var(--bg); font-size: 1rem; cursor: pointer; }
   #play:focus-visible, #slider:focus-visible { outline: 3px solid var(--link); outline-offset: 2px; }
@@ -96,10 +100,14 @@
   <p>L'allerta maremoto di livello arancione è stata revocata dopo circa un'ora. La mappa di scuotimento dell'INGV stima intensità fino al V grado MCS alle Isole Eolie e in una vasta area della Sicilia settentrionale. A Palermo sono state evacuate scuole e uffici giudiziari e l'università ha sospeso le lezioni. Nelle prime ore non risultavano danni a persone o edifici.</p>
 
   <h2>La giornata sulla mappa</h2>
-  <p>Premi play o sposta la barra: gli eventi compaiono nell'ordine in cui sono avvenuti. L'area del cerchio cresce con la magnitudo, scritta al centro, e il colore indica la profondità dell'ipocentro. Quasi tutti gli ipocentri cadono in un'area di pochi chilometri, a nord delle isole Eolie.</p>
+  <p>Premi play o sposta la barra: gli eventi compaiono nell'ordine in cui sono avvenuti. L'area del cerchio cresce con la magnitudo, scritta al centro, e il colore indica la profondità dell'ipocentro. Con «Zoom sugli epicentri» i cerchi si separano. Quasi tutti gli ipocentri cadono in un'area di pochi chilometri, a nord delle isole Eolie.</p>
 
   <div class="viz">
     <div id="map"></div>
+    <div class="views">
+      <button id="v-all" type="button" aria-pressed="true">Tutta la Sicilia</button>
+      <button id="v-epi" type="button" aria-pressed="false">Zoom sugli epicentri</button>
+    </div>
     <div class="bar">
       <button id="play" type="button" aria-label="Avvia o metti in pausa">▶</button>
       <input id="slider" type="range" min="0" max="1440" step="10" value="1440" aria-label="Ora del giorno">
@@ -194,8 +202,23 @@ ixmaps.Map("map", { mapType: "#cfe1ee", mode: "pan", legend: "closed" })
     .data({ obj: QUAKES, type: "geojson" })
     .binding({ geo: "geometry", value: "cls", size: "sz", title: "label" })
     .type("CHART|BUBBLE|CATEGORICAL|VALUES|NOLEGEND")
-    .style({ colorscheme: COLORS, values: CLS, normalsizevalue: "300", scale: 1.2, fillopacity: 0.85, linecolor: "#0e2233", valuefield: "mag", valuedecimals: "1", shadow: "true", shadowblur: 4, shadowdx: 2, shadowdy: 3, showdata: "true" })
+    .style({ colorscheme: COLORS, values: CLS, normalsizevalue: "300", scale: 1.2, fillopacity: 0.55, linecolor: "#0e2233", linewidth: 1.2, valuefield: "mag", valuedecimals: "1", shadow: "true", shadowblur: 4, shadowdx: 2, shadowdy: 3, showdata: "true" })
     .meta({ name: "sismi", tooltip: "<b>{{theme.item.title}}</b>" }); }));
+
+// Vista: panoramica o epicentri (con cerchi più piccoli, così si separano)
+var VIEWS = {
+  all: { center: { lat: 37.85, lng: 14.3 },   zoom: 7,  scale: 1.2 },
+  epi: { center: { lat: 38.775, lng: 14.16 }, zoom: 11, scale: 0.5 }
+};
+function setView(key) {
+  var v = VIEWS[key];
+  try { ixmaps.map().view({ center: v.center, zoom: v.zoom }); } catch (err) {}
+  try { ixmaps.changeThemeStyle("sismi", "scale:" + v.scale, "set"); } catch (err) {}
+  document.getElementById("v-all").setAttribute("aria-pressed", key === "all");
+  document.getElementById("v-epi").setAttribute("aria-pressed", key === "epi");
+}
+document.getElementById("v-all").addEventListener("click", function () { setView("all"); });
+document.getElementById("v-epi").addEventListener("click", function () { setView("epi"); });
 
 // Barra temporale: gli eventi si accumulano
 var cur = 1440, playing = false, timer = null;
