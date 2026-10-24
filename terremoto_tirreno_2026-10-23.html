@@ -47,17 +47,18 @@
   dl.facts dt { font-size: .76rem; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
   dl.facts dd { margin: .15rem 0 0; font-family: var(--f-data); font-weight: 500; font-size: 1.02rem; }
 
-  .viz { margin: 1.6rem 0 .6rem; border-radius: 6px; overflow: hidden; background: #0f2233; color: #e6edf3; border: 1px solid var(--line); }
-  #map { width: 100%; height: 470px; position: relative; }
+  .viz { margin: 1.6rem 0 .6rem; border-radius: 6px; overflow: hidden; background: var(--panel); color: var(--fg); border: 1px solid var(--line); }
+  #map { width: 100%; height: 340px; position: relative; }
+  @media (max-width: 520px) { #map { height: 280px; } }
   .bar { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .9rem; padding: .8rem 1rem .2rem; }
-  #play { width: 40px; height: 40px; border-radius: 50%; border: 0; background: #ff8a4c; color: #0b1620; font-size: 1rem; cursor: pointer; }
-  #play:focus-visible, #slider:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
-  #slider { width: 100%; min-width: 0; accent-color: #ff8a4c; margin: 0; }
+  #play { width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--accent); color: var(--bg); font-size: 1rem; cursor: pointer; }
+  #play:focus-visible, #slider:focus-visible { outline: 3px solid var(--link); outline-offset: 2px; }
+  #slider { width: 100%; min-width: 0; accent-color: var(--accent); margin: 0; }
   #clock { font-family: var(--f-data); font-weight: 500; font-size: 1.15rem; min-width: 3.6rem; text-align: right; }
   .ticks { position: relative; height: 14px; margin: 0 calc(1rem + 40px + .9rem + 3.6rem + .9rem) 0 calc(1rem + 40px + .9rem); }
   .ticks i { position: absolute; top: 2px; width: 3px; height: 10px; border-radius: 1px; transform: translateX(-1px); }
-  .ticks b { position: absolute; top: -2px; font-family: var(--f-data); font-size: .7rem; font-weight: 500; color: #93a7b9; transform: translateX(-50%); }
-  .stat { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .4rem 1.2rem; padding: .5rem 1rem .9rem; font-size: .88rem; color: #b7c6d4; }
+  .ticks b { position: absolute; top: -2px; font-family: var(--f-data); font-size: .7rem; font-weight: 500; color: var(--muted); transform: translateX(-50%); }
+  .stat { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .4rem 1.2rem; padding: .5rem 1rem .9rem; font-size: .88rem; color: var(--muted); }
   #counter { font-family: var(--f-data); }
   .legend { display: flex; flex-wrap: wrap; gap: .3rem 1rem; }
   .legend span { display: inline-flex; align-items: center; gap: .35rem; }
@@ -108,10 +109,10 @@
     <div class="stat">
       <div id="counter">–</div>
       <div class="legend">
-        <span><i style="background:#ffd166"></i>sotto 3</span>
-        <span><i style="background:#ff9f43"></i>3–4</span>
-        <span><i style="background:#f4503f"></i>4–5</span>
-        <span><i style="background:#ff4d9a"></i>5 e oltre</span>
+        <span><i style="background:#f2b705"></i>sotto 3</span>
+        <span><i style="background:#f28c28"></i>3–4</span>
+        <span><i style="background:#e5412d"></i>4–5</span>
+        <span><i style="background:#b5179e"></i>5 e oltre</span>
       </div>
     </div>
   </div>
@@ -153,7 +154,7 @@ var EVENTS = [
   { id: "47612622", hm: "17:32", t: 1052, mag: 4.1, mt: "ML", depth: 7,  lat: 38.8235, lon: 14.1812 }
 ];
 var CLS = ["A", "B", "C", "D"];
-var COLORS = ["#ffd166", "#ff9f43", "#f4503f", "#ff4d9a"];
+var COLORS = ["#f2b705", "#f28c28", "#e5412d", "#b5179e"];
 function clsIndex(m) { return m >= 5 ? 3 : m >= 4 ? 2 : m >= 3 ? 1 : 0; }
 function pad(n) { return (n < 10 ? "0" : "") + n; }
 
@@ -181,20 +182,20 @@ document.getElementById("ticks").innerHTML = EVENTS.map(function (e) {
 document.getElementById("ticks").style.height = "30px";
 
 // Mappa: mapType a colore = sfondo piatto, senza tile esterne
-ixmaps.Map("map", { mapType: "#0f2233", mode: "pan", legend: "closed" })
+ixmaps.Map("map", { mapType: "#cfe1ee", mode: "pan", legend: "closed" })
   .view({ center: { lat: 38.45, lng: 14.4 }, zoom: 9 })
   .options({ objectscaling: "dynamic", normalSizeScale: "1000000", basemapopacity: 1, flushChartDraw: 1000000, datajs: false })
   .layer(ixmaps.layer("terra", function (l) { return l
     .data({ obj: LAND, type: "geojson" })
     .binding({ geo: "geometry" })
     .type("FEATURE|NOLEGEND")
-    .style({ colorscheme: ["#2a4258"], fillopacity: 1, linecolor: "#4f7390", linewidth: 0.8, showdata: "true" })
+    .style({ colorscheme: ["#f6f7f9"], fillopacity: 1, linecolor: "#8aa3b8", linewidth: 0.8, showdata: "true" })
     .meta({ name: "terra" }); }))
   .layer(ixmaps.layer("sismi", function (l) { return l
     .data({ obj: QUAKES, type: "geojson" })
     .binding({ geo: "geometry", value: "cls", size: "sz", title: "label" })
     .type("CHART|BUBBLE|CATEGORICAL|NOLEGEND")
-    .style({ colorscheme: COLORS, values: CLS, normalsizevalue: "300", scale: 1, fillopacity: 0.8, linecolor: "#ffffff", showdata: "true" })
+    .style({ colorscheme: COLORS, values: CLS, normalsizevalue: "300", scale: 1, fillopacity: 0.8, linecolor: "#0e2233", showdata: "true" })
     .meta({ name: "sismi", tooltip: "<b>{{theme.item.title}}</b>" }); }));
 
 // Barra temporale: gli eventi si accumulano
