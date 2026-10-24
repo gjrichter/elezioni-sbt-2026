@@ -182,7 +182,7 @@ document.getElementById("ticks").style.height = "30px";
 
 // Mappa: mapType a colore = sfondo piatto, senza tile esterne
 ixmaps.Map("map", { mapType: "#cfe1ee", mode: "pan", legend: "closed" })
-  .view({ center: { lat: 38.45, lng: 14.4 }, zoom: 9 })
+  .view({ center: { lat: 37.85, lng: 14.3 }, zoom: 7 })
   .options({ objectscaling: "dynamic", normalSizeScale: "1000000", basemapopacity: 1, flushChartDraw: 1000000, datajs: false })
   .layer(ixmaps.layer("terra", function (l) { return l
     .data({ obj: LAND, type: "geojson" })
