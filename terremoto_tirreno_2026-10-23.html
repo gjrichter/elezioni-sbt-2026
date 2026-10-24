@@ -189,7 +189,7 @@ document.getElementById("ticks").innerHTML = EVENTS.map(function (e) {
 document.getElementById("ticks").style.height = "30px";
 
 // Mappa: mapType a colore = sfondo piatto, senza tile esterne
-ixmaps.Map("map", { mapType: "#cfe1ee", mode: "pan", legend: "closed" })
+var myMap = ixmaps.Map("map", { mapType: "#cfe1ee", mode: "pan", legend: "closed" })
   .view({ center: { lat: 37.85, lng: 14.3 }, zoom: 7 })
   .options({ objectscaling: "dynamic", normalSizeScale: "1000000", basemapopacity: 1, flushChartDraw: 1000000, datajs: false })
   .layer(ixmaps.layer("terra", function (l) { return l
@@ -212,7 +212,17 @@ var VIEWS = {
 };
 function setView(key) {
   var v = VIEWS[key];
-  try { ixmaps.map().view({ center: v.center, zoom: v.zoom }); } catch (err) {}
+  var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // flyTo del MapLibre sottostante; lo zoom di ixmaps è di 1 sopra quello di MapLibre
+  try {
+    myMap.then(function (api) {
+      if (api && api.map && api.map.flyTo && !still) {
+        api.map.flyTo({ center: [v.center.lng, v.center.lat], zoom: v.zoom - 1, duration: 2200, essential: true });
+      } else {
+        ixmaps.map().view({ center: v.center, zoom: v.zoom });
+      }
+    });
+  } catch (err) { try { ixmaps.map().view({ center: v.center, zoom: v.zoom }); } catch (e2) {} }
   try { ixmaps.changeThemeStyle("sismi", "scale:" + v.scale, "set"); } catch (err) {}
   document.getElementById("v-all").setAttribute("aria-pressed", key === "all");
   document.getElementById("v-epi").setAttribute("aria-pressed", key === "epi");
