@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sequenza sismica Tirreno</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+Condensed:wght@700&family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* Layout: una colonna di lettura stretta, con la mappa a tutta larghezza di colonna e la barra temporale attaccata sotto. */
+  :root {
+    --bg: #f3f6f8;
+    --fg: #0e2233;
+    --muted: #52667a;
+    --line: #d3dde5;
+    --panel: #ffffff;
+    --accent: #b8420e;
+    --link: #0b5cab;
+    --f-head: "IBM Plex Sans Condensed", "Arial Narrow", sans-serif;
+    --f-body: "IBM Plex Sans", system-ui, sans-serif;
+    --f-data: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b1620; --fg: #e6edf3; --muted: #93a7b9; --line: #223648; --panel: #101f2c; --accent: #ff8a4c; --link: #7cb7f0;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b1620; --fg: #e6edf3; --muted: #93a7b9; --line: #223648; --panel: #101f2c; --accent: #ff8a4c; --link: #7cb7f0;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 17px; line-height: 1.65; }
+  .page { max-width: 760px; margin: 0 auto; padding-block: 2.2rem 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .kicker { font-family: var(--f-data); font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+  h1 { font-family: var(--f-head); font-weight: 700; font-size: clamp(2rem, 6vw, 3rem); line-height: 1.08; margin: .5rem 0 1rem; text-wrap: balance; }
+  h2 { font-family: var(--f-head); font-weight: 700; font-size: 1.45rem; line-height: 1.2; margin: 2.4rem 0 .6rem; text-wrap: balance; }
+  .lead { font-size: 1.15rem; color: var(--muted); max-width: 60ch; }
+  p { margin: 0 0 1rem; max-width: 65ch; }
+  a { color: var(--link); }
+
+  dl.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem 1.5rem; margin: 1.6rem 0 0; padding-top: 1rem; border-top: 2px solid var(--fg); }
+  dl.facts div { min-width: 0; }
+  dl.facts dt { font-size: .76rem; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+  dl.facts dd { margin: .15rem 0 0; font-family: var(--f-data); font-weight: 500; font-size: 1.02rem; }
+
+  .viz { margin: 1.6rem 0 .6rem; border-radius: 6px; overflow: hidden; background: #0f2233; color: #e6edf3; border: 1px solid var(--line); }
+  #map { width: 100%; height: 470px; position: relative; }
+  .bar { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .9rem; padding: .8rem 1rem .2rem; }
+  #play { width: 40px; height: 40px; border-radius: 50%; border: 0; background: #ff8a4c; color: #0b1620; font-size: 1rem; cursor: pointer; }
+  #play:focus-visible, #slider:focus-visible { outline: 3px solid #fff; outline-offset: 2px; }
+  #slider { width: 100%; min-width: 0; accent-color: #ff8a4c; margin: 0; }
+  #clock { font-family: var(--f-data); font-weight: 500; font-size: 1.15rem; min-width: 3.6rem; text-align: right; }
+  .ticks { position: relative; height: 14px; margin: 0 calc(1rem + 40px + .9rem + 3.6rem + .9rem) 0 calc(1rem + 40px + .9rem); }
+  .ticks i { position: absolute; top: 2px; width: 3px; height: 10px; border-radius: 1px; transform: translateX(-1px); }
+  .ticks b { position: absolute; top: -2px; font-family: var(--f-data); font-size: .7rem; font-weight: 500; color: #93a7b9; transform: translateX(-50%); }
+  .stat { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .4rem 1.2rem; padding: .5rem 1rem .9rem; font-size: .88rem; color: #b7c6d4; }
+  #counter { font-family: var(--f-data); }
+  .legend { display: flex; flex-wrap: wrap; gap: .3rem 1rem; }
+  .legend span { display: inline-flex; align-items: center; gap: .35rem; }
+  .legend i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+  .cap { font-size: .86rem; color: var(--muted); }
+
+  .tablewrap { overflow-x: auto; margin: .4rem 0 .8rem; }
+  table { border-collapse: collapse; width: 100%; font-size: .93rem; min-width: 520px; }
+  th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { font-size: .74rem; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  td { font-family: var(--f-data); font-weight: 500; }
+  td.n, th.n { text-align: right; }
+  tr.main td { background: var(--panel); color: var(--accent); }
+  ul.src { padding-left: 1.2rem; margin: 0; font-size: .92rem; }
+  ul.src li { margin-bottom: .3rem; }
+  @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+<main class="page">
+  <div class="kicker">INGV · Tirreno meridionale · venerdì 23 ottobre 2026</div>
+  <h1>Una scossa di magnitudo 5.5 nel mare a nord delle Eolie</h1>
+  <p class="lead">Nel giro di una giornata il Tirreno meridionale ha prodotto due scosse intorno a magnitudo 5 e diverse repliche sopra magnitudo 4, avvertite a Palermo, Messina e Reggio Calabria.</p>
+
+  <dl class="facts">
+    <div><dt>Scossa principale</dt><dd>12:19:15 · ML 5.0 (Mw 5.5)</dd></div>
+    <div><dt>Ipocentro</dt><dd>9 km · 38.79° N 14.17° E</dd></div>
+    <div><dt>Distanza</dt><dd>62 km da Malfa (Salina)</dd></div>
+    <div><dt>Seconda scossa forte</dt><dd>15:55:34 · Mw 5.0</dd></div>
+  </dl>
+
+  <h2>Cosa è successo</h2>
+  <p>Alle 12:19 l'INGV ha localizzato in mare, a 9 km di profondità, la scossa più forte della sequenza: magnitudo locale 5.0 e magnitudo momento 5.5. Il segnale più forte era stato preceduto alle 11:51 da un evento di ML 4.3, localizzato a 24 km di profondità, e seguito alle 12:24 da una replica di ML 4.0.</p>
+  <p>Nel pomeriggio, alle 15:55, è arrivata una seconda scossa importante. La prima stima, ML 4.6, è stata rivista a Mw 5.0, con ipocentro intorno a 5 km. Alle 17:32 si è aggiunta una scossa di ML 4.1.</p>
+  <p>L'allerta maremoto di livello arancione è stata revocata dopo circa un'ora. La mappa di scuotimento dell'INGV stima intensità fino al V grado MCS alle Isole Eolie e in una vasta area della Sicilia settentrionale. A Palermo sono state evacuate scuole e uffici giudiziari e l'università ha sospeso le lezioni. Nelle prime ore non risultavano danni a persone o edifici.</p>
+
+  <h2>La giornata sulla mappa</h2>
+  <p>Premi play o sposta la barra: gli eventi compaiono nell'ordine in cui sono avvenuti. L'area di ogni cerchio cresce con la magnitudo. Quasi tutti gli ipocentri cadono in un'area di pochi chilometri, a nord delle isole Eolie.</p>
+
+  <div class="viz">
+    <div id="map"></div>
+    <div class="bar">
+      <button id="play" type="button" aria-label="Avvia o metti in pausa">▶</button>
+      <input id="slider" type="range" min="0" max="1440" step="10" value="1440" aria-label="Ora del giorno">
+      <div id="clock">24:00</div>
+    </div>
+    <div class="ticks" id="ticks" aria-hidden="true"></div>
+    <div class="stat">
+      <div id="counter">–</div>
+      <div class="legend">
+        <span><i style="background:#ffd166"></i>sotto 3</span>
+        <span><i style="background:#ff9f43"></i>3–4</span>
+        <span><i style="background:#f4503f"></i>4–5</span>
+        <span><i style="background:#ff4d9a"></i>5 e oltre</span>
+      </div>
+    </div>
+  </div>
+  <p class="cap">Ora locale (CEST), 23 ottobre 2026, da 00:00 a 24:00. A sud del gruppo di epicentri si vedono le Eolie e la costa settentrionale della Sicilia.</p>
+
+  <h2>Gli eventi localizzati</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Ora</th><th class="n">Magnitudo</th><th class="n">Prof.</th><th>Coordinate</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+  <p class="cap">Valori dalle pagine evento dell'INGV, consultate il 24 ottobre. Sono preliminari e possono essere rivisti. Nella tabella e sulla mappa mancano le scosse minori per cui non ho trovato una localizzazione verificata.</p>
+
+  <h2>Un'area che trema spesso</h2>
+  <p>Il Tirreno meridionale è sismicamente attivo: dal 1985 l'INGV ha registrato qui numerosi terremoti di magnitudo superiore a 4.0. Dopo le scosse di venerdì la sequenza è rimasta in corso.</p>
+
+  <h2>Fonti</h2>
+  <ul class="src">
+    <li><a href="https://terremoti.ingv.it/event/47606532" target="_blank" rel="noopener">INGV, evento del 23 ottobre 2026 ore 12:19:15</a></li>
+    <li><a href="https://terremoti.ingv.it/event/47611152" target="_blank" rel="noopener">INGV, evento delle 15:55:34</a></li>
+    <li><a href="https://ingvterremoti.com/2026/10/23/sequenza-sismica-nel-mar-tirreno-meridionale-23-ottobre-2026/" target="_blank" rel="noopener">INGVterremoti, Sequenza sismica nel Mar Tirreno Meridionale</a></li>
+    <li><a href="https://palermo.gds.it/articoli/cronaca/2026/10/23/terremoto-a-palermo-scossa-avvertita-in-citta-e-in-diversi-centri-della-provincia-969b5d15-19ec-4d05-a3f3-05dbe50b38a6/" target="_blank" rel="noopener">Giornale di Sicilia, Terremoto a Palermo</a></li>
+    <li><a href="https://www.ilmessaggero.it/italia/terremoto_palermo_sicilia_eolie_allerta_maremoto_scuole_evacuate_tirreno_meridionale_magnitudo_danni-9843866.html" target="_blank" rel="noopener">Il Messaggero, Terremoto Palermo oggi</a></li>
+  </ul>
+  <p class="cap" style="margin-top:1rem">Mappa: <a href="https://www.npmjs.com/package/ixmaps-gl" target="_blank" rel="noopener">ixmaps-gl</a>. Linea di costa: Natural Earth.</p>
+</main>
+
+<script src="https://unpkg.com/ixmaps-gl@0.2.22/ixmaps-gl.js"></script>
+<script>
+// Eventi localizzati dall'INGV (ora italiana, CEST). t = minuti dalle 00:00 locali.
+var EVENTS = [
+  { id: "47602482", hm: "02:10", t: 130,  mag: 3.4, mt: "ML", depth: 32, lat: 38.7373, lon: 14.1362 },
+  { id: "47605832", hm: "11:51", t: 711,  mag: 4.3, mt: "ML", depth: 24, lat: 38.7277, lon: 14.1720 },
+  { id: "47606532", hm: "12:19", t: 739,  mag: 5.5, mt: "Mw", depth: 9,  lat: 38.7938, lon: 14.1717, main: true, note: "ML 5.0" },
+  { id: "47606742", hm: "12:24", t: 744,  mag: 4.0, mt: "ML", depth: 8,  lat: 38.7323, lon: 14.1517 },
+  { id: "47610942", hm: "15:48", t: 948,  mag: 2.4, mt: "ML", depth: 10, lat: 38.7602, lon: 14.1635 },
+  { id: "47611152", hm: "15:55", t: 955,  mag: 5.0, mt: "Mw", depth: 5,  lat: 38.7837, lon: 14.1693 },
+  { id: "47612622", hm: "17:32", t: 1052, mag: 4.1, mt: "ML", depth: 7,  lat: 38.8235, lon: 14.1812 }
+];
+var CLS = ["A", "B", "C", "D"];
+var COLORS = ["#ffd166", "#ff9f43", "#f4503f", "#ff4d9a"];
+function clsIndex(m) { return m >= 5 ? 3 : m >= 4 ? 2 : m >= 3 ? 1 : 0; }
+function pad(n) { return (n < 10 ? "0" : "") + n; }
+
+var LAND = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[16.4,36.3],[16.4,40.2],[16.4,40.2],[16.4,38.325],[16.339,38.301],[16.306,38.277],[16.17,38.144],[16.152,38.11],[16.126,38.005],[16.112,37.973],[16.101,37.96],[16.09,37.95],[16.076,37.94],[16.062,37.933],[16.015,37.924],[16,37.919],[15.943,37.933],[15.763,37.926],[15.734,37.931],[15.709,37.941],[15.684,37.953],[15.666,37.967],[15.644,37.988],[15.637,38.009],[15.637,38.027],[15.658,38.043],[15.633,38.075],[15.622,38.091],[15.626,38.107],[15.64,38.125],[15.648,38.144],[15.648,38.162],[15.637,38.186],[15.633,38.22],[15.651,38.242],[15.684,38.254],[15.788,38.277],[15.795,38.286],[15.799,38.291],[15.813,38.301],[15.817,38.306],[15.831,38.352],[15.903,38.473],[15.918,38.517],[15.918,38.551],[15.9,38.578],[15.871,38.605],[15.864,38.608],[15.849,38.613],[15.846,38.618],[15.835,38.628],[15.835,38.634],[15.835,38.639],[15.838,38.649],[15.846,38.661],[15.864,38.669],[15.903,38.679],[15.968,38.713],[16.004,38.725],[16.047,38.728],[16.119,38.721],[16.137,38.723],[16.152,38.731],[16.18,38.748],[16.202,38.777],[16.216,38.814],[16.22,38.856],[16.22,38.899],[16.216,38.919],[16.206,38.934],[16.191,38.944],[16.17,38.948],[16.155,38.954],[16.141,38.975],[16.083,39.076],[16.044,39.311],[16.033,39.344],[15.997,39.439],[15.957,39.478],[15.932,39.513],[15.903,39.535],[15.878,39.552],[15.867,39.564],[15.86,39.589],[15.849,39.615],[15.838,39.653],[15.817,39.679],[15.806,39.696],[15.788,39.797],[15.788,39.79],[15.784,39.81],[15.777,39.821],[15.77,39.824],[15.77,39.831],[15.781,39.868],[15.774,39.892],[15.741,39.93],[15.734,39.944],[15.727,39.964],[15.712,39.981],[15.68,40.008],[15.651,40.043],[15.63,40.057],[15.626,40.065],[15.626,40.077],[15.612,40.074],[15.536,40.077],[15.514,40.067],[15.496,40.047],[15.46,40.03],[15.428,40],[15.41,39.995],[15.36,40],[15.342,40.005],[15.313,40.033],[15.302,40.037],[15.295,40.032],[15.284,40.03],[15.273,40.028],[15.262,40.03],[15.262,40.037],[15.28,40.047],[15.262,40.074],[15.234,40.099],[15.208,40.113],[15.19,40.119],[15.126,40.17],[15.111,40.175],[15.097,40.173],[15.064,40.167],[15.046,40.168],[15.036,40.175],[15.021,40.195],[15.016,40.2],[16.4,40.2],[16.4,36.3],[16.4,36.3]]]}},{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[12.314,37.946],[12.321,37.941],[12.336,37.933],[12.354,37.928],[12.368,37.926],[12.357,37.914],[12.343,37.912],[12.325,37.918],[12.314,37.926],[12.3,37.919],[12.289,37.921],[12.278,37.929],[12.274,37.94],[12.289,37.938],[12.296,37.941],[12.307,37.945],[12.314,37.946]]]}},{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[15.003,38.392],[15.007,38.377],[15,38.372],[14.985,38.363],[14.964,38.382],[14.949,38.397],[14.946,38.412],[14.96,38.433],[14.967,38.433],[14.967,38.419],[14.982,38.412],[14.992,38.402],[15.003,38.392]]]}},{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[14.924,38.522],[14.956,38.522],[14.967,38.517],[14.96,38.502],[14.967,38.497],[14.974,38.49],[14.978,38.488],[14.978,38.482],[14.953,38.482],[14.956,38.47],[14.96,38.465],[14.967,38.461],[14.967,38.453],[14.949,38.451],[14.935,38.458],[14.92,38.468],[14.906,38.473],[14.899,38.482],[14.902,38.498],[14.91,38.515],[14.924,38.522]]]}},{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[14.816,38.585],[14.852,38.585],[14.866,38.581],[14.877,38.569],[14.874,38.566],[14.87,38.561],[14.863,38.549],[14.863,38.539],[14.823,38.552],[14.794,38.571],[14.816,38.585]]]}},{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[14.348,38.536],[14.344,38.547],[14.359,38.551],[14.362,38.539],[14.348,38.536]]]}},{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[14.575,38.556],[14.553,38.561],[14.542,38.574],[14.542,38.586],[14.546,38.588],[14.564,38.585],[14.575,38.576],[14.578,38.566],[14.586,38.561],[14.586,38.558],[14.575,38.556]]]}},{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[13.178,38.693],[13.164,38.691],[13.153,38.694],[13.153,38.703],[13.156,38.71],[13.171,38.718],[13.185,38.718],[13.196,38.711],[13.196,38.708],[13.178,38.693]]]}},{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[15.234,38.789],[15.23,38.784],[15.226,38.777],[15.219,38.774],[15.205,38.775],[15.187,38.789],[15.187,38.792],[15.194,38.797],[15.205,38.802],[15.208,38.806],[15.212,38.811],[15.219,38.813],[15.226,38.811],[15.234,38.807],[15.241,38.804],[15.237,38.796],[15.234,38.789]]]}},{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[15.648,38.267],[15.644,38.262],[15.633,38.26],[15.626,38.262],[15.583,38.24],[15.568,38.227],[15.565,38.215],[15.561,38.2],[15.576,38.2],[15.529,38.137],[15.5,38.085],[15.392,37.977],[15.302,37.865],[15.284,37.833],[15.266,37.811],[15.241,37.796],[15.212,37.762],[15.208,37.747],[15.208,37.737],[15.219,37.718],[15.219,37.706],[15.216,37.696],[15.201,37.685],[15.198,37.676],[15.198,37.656],[15.183,37.625],[15.18,37.603],[15.165,37.568],[15.115,37.522],[15.097,37.494],[15.093,37.477],[15.09,37.46],[15.093,37.36],[15.097,37.343],[15.104,37.33],[15.111,37.321],[15.18,37.291],[15.219,37.284],[15.237,37.274],[15.252,37.257],[15.262,37.234],[15.244,37.246],[15.237,37.242],[15.23,37.23],[15.219,37.22],[15.223,37.237],[15.216,37.246],[15.205,37.246],[15.194,37.24],[15.198,37.227],[15.183,37.207],[15.194,37.176],[15.216,37.156],[15.234,37.164],[15.248,37.159],[15.248,37.153],[15.23,37.149],[15.234,37.136],[15.248,37.119],[15.266,37.11],[15.288,37.109],[15.302,37.102],[15.309,37.087],[15.302,37.063],[15.288,37.068],[15.28,37.061],[15.284,37.048],[15.291,37.041],[15.313,37.045],[15.32,37.039],[15.331,37.028],[15.331,37.011],[15.324,37.009],[15.313,37.012],[15.309,37.018],[15.302,37.016],[15.27,37.001],[15.273,36.994],[15.266,36.989],[15.262,36.987],[15.27,36.98],[15.27,36.974],[15.244,36.972],[15.226,36.965],[15.212,36.957],[15.198,36.953],[15.176,36.943],[15.158,36.925],[15.108,36.82],[15.108,36.808],[15.093,36.8],[15.1,36.779],[15.118,36.747],[15.136,36.688],[15.133,36.675],[15.115,36.66],[15.093,36.655],[15.075,36.66],[15.054,36.671],[15.039,36.688],[15.032,36.693],[15.021,36.7],[15.007,36.703],[15,36.702],[14.992,36.697],[14.982,36.688],[14.956,36.698],[14.92,36.72],[14.881,36.73],[14.848,36.725],[14.78,36.7],[14.776,36.709],[14.773,36.71],[14.762,36.707],[14.744,36.719],[14.686,36.725],[14.672,36.744],[14.658,36.754],[14.6,36.773],[14.582,36.781],[14.568,36.778],[14.488,36.793],[14.478,36.805],[14.395,36.945],[14.37,36.974],[14.28,37.045],[14.208,37.082],[14.125,37.112],[14.089,37.117],[13.977,37.11],[13.966,37.109],[13.948,37.099],[13.938,37.095],[13.894,37.1],[13.833,37.139],[13.794,37.153],[13.75,37.159],[13.714,37.171],[13.682,37.19],[13.599,37.257],[13.57,37.274],[13.534,37.283],[13.488,37.288],[13.452,37.3],[13.423,37.315],[13.372,37.347],[13.329,37.367],[13.311,37.381],[13.3,37.386],[13.29,37.389],[13.279,37.394],[13.254,37.431],[13.246,37.436],[13.225,37.446],[13.214,37.458],[13.207,37.463],[13.196,37.467],[13.189,37.47],[13.178,37.484],[13.174,37.487],[13.052,37.5],[13.038,37.495],[13.027,37.494],[13.016,37.497],[13.009,37.507],[13.005,37.527],[13.002,37.536],[12.973,37.558],[12.944,37.568],[12.861,37.576],[12.782,37.575],[12.699,37.563],[12.66,37.565],[12.638,37.582],[12.595,37.637],[12.577,37.652],[12.562,37.658],[12.523,37.658],[12.505,37.666],[12.49,37.683],[12.476,37.703],[12.465,37.72],[12.462,37.735],[12.458,37.747],[12.458,37.761],[12.447,37.771],[12.436,37.782],[12.426,37.798],[12.429,37.809],[12.444,37.816],[12.447,37.811],[12.462,37.82],[12.465,37.823],[12.462,37.826],[12.469,37.853],[12.472,37.853],[12.476,37.872],[12.48,37.88],[12.476,37.885],[12.469,37.897],[12.465,37.906],[12.465,37.912],[12.465,37.914],[12.469,37.916],[12.49,37.955],[12.498,37.98],[12.505,37.997],[12.505,38.01],[12.494,38.022],[12.523,38.031],[12.548,38.054],[12.577,38.071],[12.609,38.063],[12.638,38.08],[12.652,38.091],[12.656,38.107],[12.663,38.117],[12.678,38.115],[12.692,38.112],[12.706,38.11],[12.724,38.125],[12.724,38.151],[12.721,38.176],[12.732,38.193],[12.739,38.181],[12.75,38.183],[12.76,38.181],[12.768,38.162],[12.789,38.117],[12.818,38.078],[12.829,38.07],[12.858,38.059],[12.868,38.051],[12.868,38.043],[12.901,38.027],[12.944,38.032],[13.027,38.063],[13.063,38.083],[13.07,38.091],[13.07,38.095],[13.07,38.102],[13.07,38.113],[13.066,38.124],[13.056,38.132],[13.056,38.142],[13.088,38.166],[13.084,38.174],[13.088,38.183],[13.102,38.189],[13.113,38.193],[13.124,38.191],[13.156,38.179],[13.178,38.176],[13.207,38.176],[13.232,38.184],[13.239,38.206],[13.254,38.203],[13.264,38.205],[13.279,38.21],[13.297,38.215],[13.311,38.22],[13.318,38.22],[13.322,38.218],[13.326,38.211],[13.326,38.205],[13.329,38.2],[13.365,38.179],[13.372,38.173],[13.372,38.14],[13.376,38.132],[13.39,38.103],[13.513,38.11],[13.542,38.095],[13.538,38.076],[13.542,38.068],[13.549,38.056],[13.556,38.049],[13.588,38.039],[13.621,38.015],[13.65,38],[13.696,37.994],[13.711,37.988],[13.707,37.985],[13.707,37.983],[13.704,37.98],[13.725,37.982],[13.79,37.973],[13.812,37.978],[13.858,37.997],[13.898,38.004],[13.912,38.012],[13.923,38.022],[13.938,38.029],[14.006,38.037],[14.02,38.049],[14.064,38.031],[14.082,38.024],[14.107,38.022],[14.121,38.022],[14.15,38.029],[14.272,38.015],[14.33,38.017],[14.384,38.029],[14.431,38.049],[14.463,38.037],[14.51,38.044],[14.636,38.081],[14.668,38.1],[14.697,38.122],[14.733,38.157],[14.744,38.161],[14.776,38.159],[14.798,38.161],[14.874,38.176],[14.888,38.183],[14.899,38.186],[14.906,38.188],[14.935,38.186],[14.946,38.181],[14.964,38.164],[14.971,38.159],[14.982,38.159],[15.007,38.152],[15.039,38.154],[15.05,38.152],[15.054,38.149],[15.064,38.135],[15.068,38.132],[15.09,38.129],[15.104,38.134],[15.122,38.14],[15.176,38.156],[15.205,38.183],[15.241,38.242],[15.237,38.249],[15.237,38.25],[15.237,38.254],[15.241,38.262],[15.237,38.265],[15.244,38.265],[15.248,38.254],[15.241,38.23],[15.244,38.216],[15.259,38.21],[15.273,38.208],[15.291,38.206],[15.32,38.211],[15.399,38.233],[15.421,38.245],[15.435,38.254],[15.471,38.267],[15.514,38.297],[15.529,38.303],[15.558,38.301],[15.615,38.281],[15.651,38.276],[15.648,38.267]]]}}]};
+
+var QUAKES = { type: "FeatureCollection", features: EVENTS.map(function (e) {
+  return { type: "Feature",
+    geometry: { type: "Point", coordinates: [e.lon, e.lat] },
+    properties: { t: e.t, mag: e.mag, cls: CLS[clsIndex(e.mag)], sz: Math.round(Math.pow(10, 0.5 * e.mag)),
+      label: e.mt + " " + e.mag.toFixed(1) + " · " + e.hm + " · prof. " + e.depth + " km" } };
+}) };
+
+// Tabella e segni sulla barra temporale
+document.getElementById("rows").innerHTML = EVENTS.map(function (e) {
+  return '<tr' + (e.main ? ' class="main"' : '') + '><td><a href="https://terremoti.ingv.it/event/' + e.id + '" target="_blank" rel="noopener">' + e.hm + '</a></td>'
+    + '<td class="n">' + e.mt + ' ' + e.mag.toFixed(1) + (e.note ? ' (' + e.note + ')' : '') + '</td>'
+    + '<td class="n">' + e.depth + ' km</td>'
+    + '<td>' + e.lat.toFixed(2) + '° N ' + e.lon.toFixed(2) + '° E</td></tr>';
+}).join("");
+document.getElementById("ticks").innerHTML = EVENTS.map(function (e) {
+  return '<i style="left:' + (e.t / 14.4) + '%;background:' + COLORS[clsIndex(e.mag)] + '"></i>';
+}).join("") + [0, 6, 12, 18, 24].map(function (h) {
+  return '<b style="left:' + (h / 24 * 100) + '%;top:12px">' + pad(h) + '</b>';
+}).join("");
+document.getElementById("ticks").style.height = "30px";
+
+// Mappa: mapType a colore = sfondo piatto, senza tile esterne
+ixmaps.Map("map", { mapType: "#0f2233", mode: "pan", legend: "closed" })
+  .view({ center: { lat: 38.45, lng: 14.4 }, zoom: 9 })
+  .options({ objectscaling: "dynamic", normalSizeScale: "1000000", basemapopacity: 1, flushChartDraw: 1000000, datajs: false })
+  .layer(ixmaps.layer("terra", function (l) { return l
+    .data({ obj: LAND, type: "geojson" })
+    .binding({ geo: "geometry" })
+    .type("FEATURE|NOLEGEND")
+    .style({ colorscheme: ["#2a4258"], fillopacity: 1, linecolor: "#4f7390", linewidth: 0.8, showdata: "true" })
+    .meta({ name: "terra" }); }))
+  .layer(ixmaps.layer("sismi", function (l) { return l
+    .data({ obj: QUAKES, type: "geojson" })
+    .binding({ geo: "geometry", value: "cls", size: "sz", title: "label" })
+    .type("CHART|BUBBLE|CATEGORICAL|NOLEGEND")
+    .style({ colorscheme: COLORS, values: CLS, normalsizevalue: "300", scale: 1, fillopacity: 0.8, linecolor: "#ffffff", showdata: "true" })
+    .meta({ name: "sismi", tooltip: "<b>{{theme.item.title}}</b>" }); }));
+
+// Barra temporale: gli eventi si accumulano
+var cur = 1440, playing = false, timer = null;
+function show(min) {
+  cur = min;
+  document.getElementById("slider").value = min;
+  document.getElementById("clock").textContent = pad(Math.floor(min / 60)) + ":" + pad(min % 60);
+  var vis = EVENTS.filter(function (e) { return e.t <= min; });
+  var mx = vis.reduce(function (a, e) { return Math.max(a, e.mag); }, 0);
+  document.getElementById("counter").textContent = vis.length + (vis.length === 1 ? " evento" : " eventi") + (vis.length ? " · magnitudo max " + mx.toFixed(1) : "");
+  try { ixmaps.changeThemeStyle("sismi", "filter:WHERE t <= " + min, "set"); } catch (err) {}
+}
+function toggle() {
+  playing = !playing;
+  document.getElementById("play").textContent = playing ? "❚❚" : "▶";
+  clearInterval(timer);
+  if (!playing) return;
+  if (cur >= 1440) show(0);
+  timer = setInterval(function () {
+    if (cur >= 1440) { toggle(); return; }
+    show(Math.min(1440, cur + 10));
+  }, 120);
+}
+document.getElementById("slider").addEventListener("input", function (ev) { if (playing) toggle(); show(+ev.target.value); });
+document.getElementById("play").addEventListener("click", toggle);
+show(1440);
+</script>
+</body>
+</html>
